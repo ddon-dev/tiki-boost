@@ -36,8 +36,8 @@ shadow_enabled = true
 [node name="Player" parent="." instance=ExtResource("1_fl4k8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.69424397, 0.71973974, 0, -0.71973974, 0.69424397, 0, 4.7223997, 4.968318)
+[node name="Camera3D" type="Camera3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 0.69424397, 0.71973974, 0, -0.71973974, 0.69424397, 0, 4.2223997, 4.968318)
 
 [node name="CSGBox3D" type="CSGBox3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
