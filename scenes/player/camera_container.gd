@@ -7,9 +7,11 @@ class_name CameraContainer extends Node3D
 @export_range(5.0, 45.0, 5.0) var h_accel: float = 15.0
 @export_range(5.0, 45.0, 5.0) var v_accel: float = 15.0
 @export var smooth_camera_tolerance: float = 0.3
+@export var final_rotation_speed: float = 25.0
 
 var cam_h_rotation: float = 0.0
 var cam_v_rotation: float = 0.0
+var level_finished: bool = false
 
 @onready var marble: RigidBody3D = %Marble
 @onready var h_rotation: Node3D = %HRotation
@@ -23,8 +25,15 @@ func _physics_process(delta: float) -> void:
 	
 	cam_v_rotation = clamp(cam_v_rotation, v_min, v_max)
 	
-	h_rotation.rotation_degrees.y = lerp(h_rotation.rotation_degrees.y, cam_h_rotation, delta * h_accel)
-	v_rotation.rotation_degrees.x = lerp(v_rotation.rotation_degrees.x, cam_v_rotation, delta * v_accel)
+	if level_finished:
+		# la cámara rota alrededor de la balita en el final del nivel
+		h_rotation.rotation_degrees.y = lerp(h_rotation.rotation_degrees.y, h_rotation.rotation_degrees.y + 1, delta * final_rotation_speed)
+		v_rotation.rotation_degrees.x = lerp(v_rotation.rotation_degrees.x, 0.0, 2 * delta)
+	else:
+		# la cámara sigue la balita normalmente
+		h_rotation.rotation_degrees.y = lerp(h_rotation.rotation_degrees.y, cam_h_rotation, delta * h_accel)
+		v_rotation.rotation_degrees.x = lerp(v_rotation.rotation_degrees.x, cam_v_rotation, delta * v_accel)
+	
 	rotation_degrees.z = 0
 
 func _input(event: InputEvent) -> void:
@@ -40,3 +49,7 @@ func _input(event: InputEvent) -> void:
 			_: pass
 			
 	
+
+func on_level_finish_point() -> void:
+	level_finished = true
+	smooth_camera_tolerance = 0.1
