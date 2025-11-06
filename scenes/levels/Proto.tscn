@@ -1,7 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://r5802t4ayrt0"]
+[gd_scene load_steps=9 format=3 uid="uid://r5802t4ayrt0"]
 
 [ext_resource type="PackedScene" uid="uid://bguscvtdsubse" path="res://scenes/player/Player.tscn" id="1_a6j5x"]
+[ext_resource type="Script" uid="uid://b8fx2gpqpf8tp" path="res://scripts/levels/level_manager.gd" id="2_rsu2w"]
 [ext_resource type="PackedScene" uid="uid://c1bkxh8p1litp" path="res://scenes/objects/FinishPoint.tscn" id="2_u1lr8"]
+[ext_resource type="PackedScene" uid="uid://c5teqd0w4tca1" path="res://scenes/ui/ProtoWinScreen.tscn" id="3_4t2bw"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6gjf6"]
 albedo_color = Color(0, 0, 0, 1)
@@ -21,6 +23,10 @@ glow_enabled = true
 
 [node name="Proto" type="Node3D"]
 
+[node name="LevelManager" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_rsu2w")
+
 [node name="Terrain" type="Node" parent="."]
 
 [node name="Ground" type="CSGBox3D" parent="Terrain"]
@@ -31,29 +37,37 @@ collision_layer = 2
 collision_mask = 0
 size = Vector3(64, 1, 64)
 
-[node name="CSGBox3D" type="CSGBox3D" parent="Terrain"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 15)
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Terrain"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 19.759386)
+use_collision = true
+collision_layer = 2
+radius = 3.0
+sides = 50
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Terrain/CSGCylinder3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.0473633)
+operation = 1
 use_collision = true
 collision_layer = 2
 collision_mask = 0
 size = Vector3(5, 1, 1)
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="Terrain"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 11)
+[node name="CSGBox3D2" type="CSGBox3D" parent="Terrain/CSGCylinder3D/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
 use_collision = true
 collision_layer = 2
 collision_mask = 0
 size = Vector3(5, 1, 1)
 
-[node name="CSGBox3D3" type="CSGBox3D" parent="Terrain"]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -2, 0, 13)
+[node name="CSGBox3D3" type="CSGBox3D" parent="Terrain/CSGCylinder3D/CSGBox3D"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -2, 0, -2)
 use_collision = true
 collision_layer = 2
 collision_mask = 0
 size = Vector3(5, 1, 1)
 
-[node name="CSGBox3D4" type="CSGBox3D" parent="Terrain"]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 2, 0, 13)
+[node name="CSGBox3D4" type="CSGBox3D" parent="Terrain/CSGCylinder3D/CSGBox3D"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 2, 0, -2)
 use_collision = true
 collision_layer = 2
 collision_mask = 0
@@ -66,7 +80,13 @@ environment = SubResource("Environment_bfnls")
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
 shadow_enabled = true
 
-[node name="PlayerRigidBody" parent="." instance=ExtResource("1_a6j5x")]
+[node name="Player" parent="." instance=ExtResource("1_a6j5x")]
 
 [node name="FinishPoint" parent="." instance=ExtResource("2_u1lr8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4208498, -16)
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="ProtoWinScreen" parent="UI" instance=ExtResource("3_4t2bw")]
+visible = false
+modulate = Color(1, 1, 1, 0)

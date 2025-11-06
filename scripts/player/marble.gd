@@ -6,17 +6,17 @@ class_name Marble extends RigidBody3D
 @export var finish_decel: float = 0.25
 
 @onready var camera: Camera3D = %Camera3D
+@onready var ground_check_ray: RayCast3D = %GroundCheckRay
 
-@warning_ignore("unused_signal")
-signal entered_level_finish_point
-
-var grounded: bool
 var can_move: bool = true
 var level_finished: bool = false
 
 func _physics_process(delta: float) -> void:
+	ground_check_ray.global_position = global_position
+	ground_check_ray.force_raycast_update()
+	
 	if can_move: 
-		movement(delta)
+		_movement(delta)
 	
 	if level_finished: gravity_scale = move_toward(gravity_scale, 0.0, finish_decel * delta)
 	
@@ -25,10 +25,10 @@ func _physics_process(delta: float) -> void:
 	if abs(linear_velocity.z) - max_velocity > 0.0:
 		linear_velocity.z = -max_velocity
 	
-	if Input.is_action_just_pressed("jump") && grounded:
-		jump()
+	if Input.is_action_just_pressed("jump") && ground_check_ray.is_colliding():
+		_jump()
 
-func movement(delta: float) -> void:
+func _movement(delta: float) -> void:
 	# f_input o forward_input, movimiento hacia adelante y hacia atrás
 	var f_input = (Input.get_action_raw_strength("backward") -  Input.get_action_raw_strength("forward"))
 	# h_input o horizontal_input, movimiento hacia los lados
@@ -44,9 +44,5 @@ func movement(delta: float) -> void:
 	apply_central_force(f_direction * move_speed * delta)
 	apply_central_force(h_direction * move_speed * delta)
 
-func jump() -> void:
-	apply_central_impulse(Vector3.UP * jump_force)
-
-func on_level_finish_point() -> void:
-	level_finished = true
-	can_move = false
+func _jump() -> void:
+	set_axis_velocity(Vector3.UP * jump_force)

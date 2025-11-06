@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://w0jfuhrs5lxo"
-path="res://.godot/imported/FinishPad.glb-56a39a31603d73edccfb334d978e543c.scn"
+path="res://.godot/imported/FinishPad.glb-ca3b7d98896dfcd84705fa790c83aeb5.scn"
 
 [deps]
 
-source_file="res://assets/meshes/FinishPad.glb"
-dest_files=["res://.godot/imported/FinishPad.glb-56a39a31603d73edccfb334d978e543c.scn"]
+source_file="res://assets/models/FinishPad.glb"
+dest_files=["res://.godot/imported/FinishPad.glb-ca3b7d98896dfcd84705fa790c83aeb5.scn"]
 
 [params]
 

@@ -47,9 +47,4 @@ func _input(event: InputEvent) -> void:
 			KEY_ESCAPE: Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 			KEY_SPACE: Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			_: pass
-			
 	
-
-func on_level_finish_point() -> void:
-	level_finished = true
-	smooth_camera_tolerance = 0.1

@@ -1,9 +1,9 @@
 [gd_scene load_steps=9 format=3 uid="uid://bguscvtdsubse"]
 
 [ext_resource type="Texture2D" uid="uid://ce6yr0wy8nkns" path="res://icon.svg" id="1_g1eag"]
-[ext_resource type="Script" uid="uid://djiifaqjw6fvn" path="res://scenes/player/marble.gd" id="1_gmlin"]
-[ext_resource type="Script" uid="uid://cfnlnq2oyww3u" path="res://scenes/player/camera_container.gd" id="2_lr6ob"]
-[ext_resource type="Script" uid="uid://bfp2ypo23idxt" path="res://scenes/player/ground_check_ray.gd" id="4_524rm"]
+[ext_resource type="Script" uid="uid://djiifaqjw6fvn" path="res://scripts/player/marble.gd" id="1_gmlin"]
+[ext_resource type="Script" uid="uid://dmcm12douotfi" path="res://scripts/player/player.gd" id="1_tpg5x"]
+[ext_resource type="Script" uid="uid://cfnlnq2oyww3u" path="res://scripts/player/camera_container.gd" id="2_lr6ob"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_lr6ob"]
 bounce = 0.5
@@ -15,7 +15,8 @@ bounce = 0.5
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l0f2b"]
 albedo_texture = ExtResource("1_g1eag")
 
-[node name="PlayerRigidBody" type="Node3D" groups=["player"]]
+[node name="Player" type="Node3D" groups=["player"]]
+script = ExtResource("1_tpg5x")
 
 [node name="Marble" type="RigidBody3D" parent="."]
 unique_name_in_owner = true
@@ -32,7 +33,15 @@ shape = SubResource("SphereShape3D_blcux")
 mesh = SubResource("SphereMesh_lkvwd")
 surface_material_override/0 = SubResource("StandardMaterial3D_l0f2b")
 
+[node name="GroundCheckRay" type="RayCast3D" parent="."]
+unique_name_in_owner = true
+target_position = Vector3(0, -0.7, 0)
+collision_mask = 2
+debug_shape_custom_color = Color(1, 0, 0, 1)
+debug_shape_thickness = 5
+
 [node name="CameraContainer" type="Node3D" parent="."]
+unique_name_in_owner = true
 script = ExtResource("2_lr6ob")
 
 [node name="HRotation" type="Node3D" parent="CameraContainer"]
@@ -49,11 +58,3 @@ margin = 1.5
 [node name="Camera3D" type="Camera3D" parent="CameraContainer/HRotation/VRotation/SpringArm3D"]
 unique_name_in_owner = true
 current = true
-
-[node name="GroundCheckRay" type="RayCast3D" parent="."]
-target_position = Vector3(0, -0.6, 0)
-collision_mask = 2
-script = ExtResource("4_524rm")
-
-[connection signal="entered_level_finish_point" from="Marble" to="Marble" method="on_level_finish_point"]
-[connection signal="entered_level_finish_point" from="Marble" to="CameraContainer" method="on_level_finish_point"]

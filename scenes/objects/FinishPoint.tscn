@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://c1bkxh8p1litp"]
 
-[ext_resource type="Script" uid="uid://sekcummsah5a" path="res://scenes/objects/finish_point.gd" id="1_2fa4v"]
-[ext_resource type="PackedScene" uid="uid://w0jfuhrs5lxo" path="res://assets/meshes/FinishPad.glb" id="1_rlt3t"]
+[ext_resource type="Script" uid="uid://sekcummsah5a" path="res://scripts/objects/finish_point.gd" id="1_2fa4v"]
+[ext_resource type="PackedScene" uid="uid://w0jfuhrs5lxo" path="res://assets/models/FinishPad.glb" id="1_rlt3t"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_rlt3t"]
 radius = 3.0
