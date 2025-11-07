@@ -4,14 +4,18 @@ class_name Marble extends RigidBody3D
 @export var max_velocity: float = 20.0
 @export var jump_force: float = 7.5
 @export var finish_decel: float = 0.25
+@export var jump_buffer_window: float = 0.075
 
 @onready var camera: Camera3D = %Camera3D
 @onready var ground_check_ray: RayCast3D = %GroundCheckRay
 
 var can_move: bool = true
 var level_finished: bool = false
+var jump_buffer_timer: float = 0.0
 
 func _physics_process(delta: float) -> void:
+	if jump_buffer_timer > 0: jump_buffer_timer -= delta
+	
 	ground_check_ray.global_position = global_position
 	ground_check_ray.force_raycast_update()
 	
@@ -25,7 +29,10 @@ func _physics_process(delta: float) -> void:
 	if abs(linear_velocity.z) - max_velocity > 0.0:
 		linear_velocity.z = -max_velocity
 	
-	if Input.is_action_just_pressed("jump") && ground_check_ray.is_colliding():
+	if Input.is_action_just_pressed("jump"):
+		jump_buffer_timer = jump_buffer_window
+	
+	if jump_buffer_timer > 0 && ground_check_ray.is_colliding():
 		_jump()
 
 func _movement(delta: float) -> void:
