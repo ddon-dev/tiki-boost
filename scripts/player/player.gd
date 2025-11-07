@@ -5,7 +5,7 @@ class_name Player extends Node3D
 @onready var camera: CameraContainer = %CameraContainer
 
 func _ready() -> void:
-	level_manager.current_spawnpoint = global_position
+	global_position = level_manager.current_spawnpoint
 	
 	level_manager.level_finished.connect(_on_level_finished)
 

@@ -59,26 +59,15 @@ margin = 1.5
 unique_name_in_owner = true
 current = true
 
-[node name="Timers" type="Node" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Coyote" type="Timer" parent="Timers"]
-unique_name_in_owner = true
-one_shot = true
-
-[node name="JumpBuffer" type="Timer" parent="Timers"]
-unique_name_in_owner = true
-one_shot = true
-
-[node name="Debug" type="CanvasLayer" parent="."]
-visible = false
-
-[node name="Control" type="Control" parent="Debug"]
+[node name="Control" type="Control" parent="CanvasLayer"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Debug/Control"]
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Control"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -92,20 +81,24 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 alignment = 1
 
-[node name="CoyoteLabel" type="Label" parent="Debug/Control/VBoxContainer"]
+[node name="CoyoteLabel" type="Label" parent="CanvasLayer/Control/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "coyote_timer == 0.0"
 horizontal_alignment = 1
 
-[node name="JumpBufferLabel" type="Label" parent="Debug/Control/VBoxContainer"]
+[node name="JumpBufferLabel" type="Label" parent="CanvasLayer/Control/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "jump_buffer == 0.0"
 horizontal_alignment = 1
 
-[node name="JumpBoolLabel" type="Label" parent="Debug/Control/VBoxContainer"]
+[node name="Node" type="Node" parent="."]
+
+[node name="Coyote" type="Timer" parent="Node"]
 unique_name_in_owner = true
-layout_mode = 2
-text = "is_jumping == false"
-horizontal_alignment = 1
+one_shot = true
+
+[node name="JumpBuffer" type="Timer" parent="Node"]
+unique_name_in_owner = true
+one_shot = true

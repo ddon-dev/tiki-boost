@@ -4,17 +4,34 @@ class_name Marble extends RigidBody3D
 @export var max_velocity: float = 20.0
 @export var jump_force: float = 7.5
 @export var finish_decel: float = 0.25
-@export var jump_buffer_window: float = 0.075
+@export var jump_buffer_window: float = 0.08
+@export var coyote_time_window: float = 0.08
 
 @onready var camera: Camera3D = %Camera3D
 @onready var ground_check_ray: RayCast3D = %GroundCheckRay
 
+var is_jumping: bool = false
 var can_move: bool = true
 var level_finished: bool = false
-var jump_buffer_timer: float = 0.0
+
+@onready var jump_buffer_timer: Timer = %JumpBuffer
+@onready var coyote_timer: Timer = %Coyote
+var coyote_time_active: bool = false
+
+func _ready() -> void:
+	coyote_timer.timeout.connect(func(): coyote_time_active = false)
 
 func _physics_process(delta: float) -> void:
-	if jump_buffer_timer > 0: jump_buffer_timer -= delta
+	#%JumpBufferLabel.text = "jump_buffer == %0.2f" % jump_buffer_timer.time_left
+	#%CoyoteLabel.text = "coyote_timer == %0.2f" % coyote_timer.time_left
+	#%JumpBoolLabel.text = "is_jumping == %s" % is_jumping
+
+	if ground_check_ray.is_colliding():
+		if is_jumping: is_jumping = false
+	else: 
+		if !is_jumping && !coyote_time_active: 
+			coyote_timer.start(coyote_time_window)
+			coyote_time_active = true
 	
 	ground_check_ray.global_position = global_position
 	ground_check_ray.force_raycast_update()
@@ -30,9 +47,9 @@ func _physics_process(delta: float) -> void:
 		linear_velocity.z = -max_velocity
 	
 	if Input.is_action_just_pressed("jump"):
-		jump_buffer_timer = jump_buffer_window
+		jump_buffer_timer.start(jump_buffer_window)
 	
-	if jump_buffer_timer > 0 && ground_check_ray.is_colliding():
+	if jump_buffer_timer.time_left > 0.0 && (ground_check_ray.is_colliding() || coyote_time_active):
 		_jump()
 
 func _movement(delta: float) -> void:
@@ -52,4 +69,10 @@ func _movement(delta: float) -> void:
 	apply_central_force(h_direction * move_speed * delta)
 
 func _jump() -> void:
+	is_jumping = true
+	coyote_time_active = false
 	set_axis_velocity(Vector3.UP * jump_force)
+
+func reset_position() -> void:
+	linear_velocity = Vector3.ZERO
+	angular_velocity = Vector3.ZERO
