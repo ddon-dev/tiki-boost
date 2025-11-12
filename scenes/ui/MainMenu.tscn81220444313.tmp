@@ -1,0 +1,88 @@
+[gd_scene load_steps=4 format=3 uid="uid://so18tatfe4un"]
+
+[ext_resource type="Script" uid="uid://dndkv03yk8wya" path="res://scripts/ui/MainMenu.gd" id="1_2ysvc"]
+[ext_resource type="Texture2D" uid="uid://bup8l41f00ub0" path="res://assets/art/title_small.png" id="1_vjtqc"]
+[ext_resource type="Theme" uid="uid://dg0bxpr4spgob" path="res://assets/themes/menu_theme.tres" id="2_6jbdy"]
+
+[node name="MainMenu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2ysvc")
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+metadata/_edit_use_anchors_ = true
+
+[node name="BoxContainer" type="BoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/BoxContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 55
+
+[node name="Title" type="TextureRect" parent="MarginContainer/BoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("1_vjtqc")
+
+[node name="MenuOptions" type="VBoxContainer" parent="MarginContainer/BoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_6jbdy")
+
+[node name="StartGame" type="Button" parent="MarginContainer/BoxContainer/VBoxContainer/MenuOptions"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Start Game"
+flat = true
+
+[node name="LevelSelect" type="Button" parent="MarginContainer/BoxContainer/VBoxContainer/MenuOptions"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Level Select"
+flat = true
+
+[node name="Customize" type="Button" parent="MarginContainer/BoxContainer/VBoxContainer/MenuOptions"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Customize"
+flat = true
+
+[node name="Settings" type="Button" parent="MarginContainer/BoxContainer/VBoxContainer/MenuOptions"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Settings"
+flat = true
+
+[node name="ExitGame" type="Button" parent="MarginContainer/BoxContainer/VBoxContainer/MenuOptions"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Exit Game"
+flat = true

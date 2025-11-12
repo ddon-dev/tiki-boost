@@ -15,6 +15,10 @@ run/main_scene="uid://r5802t4ayrt0"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+StageHandler="*res://scenes/levels/StageHandler.tscn"
+
 [file_customization]
 
 folder_colors={

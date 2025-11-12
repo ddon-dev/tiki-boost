@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bpxvdwxu57ghd"]
+
+[ext_resource type="Script" uid="uid://bhifx2n7dwxhc" path="res://scripts/globals/stage_handler.gd" id="1_srffu"]
+
+[node name="StageHandler" type="Node"]
+script = ExtResource("1_srffu")
+level_paths = Array[String](["uid://so18tatfe4un", "uid://r5802t4ayrt0"])
