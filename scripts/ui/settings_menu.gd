@@ -17,4 +17,4 @@ func apply_options():
 	sfx_pressed.play()
 	prev_menu.visible = true
 	settings_menu.visible = false
-	#GameManager.save_settings()
+	GameManager.save_settings()

@@ -22,7 +22,7 @@ func _ready() -> void:
 	get_tree().paused = false
 	scene_transition.fade_in()
 	menu_music.play()
-	menu_music.short_fade_in()
+	menu_music.fade_in()
 	start.pressed.connect(start_game)
 	level_select.pressed.connect(select_level)
 	customize.pressed.connect(customize_options)

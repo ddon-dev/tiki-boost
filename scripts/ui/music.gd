@@ -1,12 +1,16 @@
 extends AudioStreamPlayer
 
-func short_fade_in():
+@export var fade_in_target: int
+@export var fade_in_time: float
+@export var fade_out_time: int
+
+func fade_in():
 	var fade_in = get_tree().create_tween()
 	fade_in.tween_property(
 		self,
 		"volume_db",
-		-12,
-		0.5
+		fade_in_target,
+		fade_in_time
 	)
 	
 func fade_out():
@@ -15,5 +19,5 @@ func fade_out():
 		self,
 		"volume_db",
 		-150,
-		7
+		fade_out_time
 	)

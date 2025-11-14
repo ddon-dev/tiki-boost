@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://so18tatfe4un"]
+[gd_scene load_steps=9 format=3 uid="uid://so18tatfe4un"]
 
 [ext_resource type="Script" uid="uid://dndkv03yk8wya" path="res://scripts/ui/main_menu.gd" id="1_2ysvc"]
 [ext_resource type="Texture2D" uid="uid://bup8l41f00ub0" path="res://assets/art/ui/title_small.png" id="1_vjtqc"]
@@ -6,9 +6,8 @@
 [ext_resource type="Theme" uid="uid://dg0bxpr4spgob" path="res://assets/themes/menu_theme.tres" id="2_6jbdy"]
 [ext_resource type="PackedScene" uid="uid://dips56jowu6et" path="res://scenes/ui/SceneTransition.tscn" id="2_bhu4a"]
 [ext_resource type="AudioStream" uid="uid://btk3vkog5moeq" path="res://assets/audio/music/StarEye Spaceway - ViRiX Dreamcore .ogg" id="2_xpiny"]
-[ext_resource type="Script" uid="uid://druqdf0m635aj" path="res://scenes/ui/music.gd" id="4_7mi0g"]
-[ext_resource type="Script" uid="uid://dy3ssm4oq5te1" path="res://scenes/ui/settings_menu.gd" id="7_e2per"]
-[ext_resource type="Script" uid="uid://dc1o2upchel7g" path="res://scenes/ui/audio_settings.gd" id="9_nqjyj"]
+[ext_resource type="Script" uid="uid://druqdf0m635aj" path="res://scripts/ui/music.gd" id="4_7mi0g"]
+[ext_resource type="PackedScene" uid="uid://dvgka2vsrq0hy" path="res://scenes/ui/settings_menu.tscn" id="8_7mi0g"]
 
 [node name="MainMenu" type="Control" node_paths=PackedStringArray("scene_transition", "menu_music", "sfx_pressed")]
 process_mode = 3
@@ -33,6 +32,9 @@ stream = ExtResource("2_xpiny")
 volume_db = -25.0
 bus = &"Music"
 script = ExtResource("4_7mi0g")
+fade_in_target = -12
+fade_in_time = 0.5
+fade_out_time = 7
 
 [node name="ButtonPressedSFX" type="AudioStreamPlayer" parent="Sound"]
 stream = ExtResource("2_2ysvc")
@@ -110,155 +112,9 @@ size_flags_horizontal = 4
 text = "Exit Game"
 flat = true
 
-[node name="SettingsMenu" type="VBoxContainer" parent="MarginContainer/BoxContainer" node_paths=PackedStringArray("sfx_pressed", "prev_menu")]
+[node name="SettingsMenu" parent="MarginContainer/BoxContainer" node_paths=PackedStringArray("sfx_pressed", "prev_menu") instance=ExtResource("8_7mi0g")]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 4
-theme = ExtResource("2_6jbdy")
-theme_override_constants/separation = 42
-script = ExtResource("7_e2per")
 sfx_pressed = NodePath("../../../Sound/ButtonPressedSFX")
 prev_menu = NodePath("../InitMenu")
-
-[node name="Settings" type="Label" parent="MarginContainer/BoxContainer/SettingsMenu"]
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 62
-text = "Settings"
-horizontal_alignment = 1
-
-[node name="GraphicsSettings" type="VBoxContainer" parent="MarginContainer/BoxContainer/SettingsMenu"]
-layout_mode = 2
-size_flags_vertical = 3
-theme_override_constants/separation = 25
-
-[node name="Graphics" type="Label" parent="MarginContainer/BoxContainer/SettingsMenu/GraphicsSettings"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 45
-text = "Graphics"
-horizontal_alignment = 1
-
-[node name="Settings" type="VBoxContainer" parent="MarginContainer/BoxContainer/SettingsMenu/GraphicsSettings"]
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-
-[node name="Resolution" type="HBoxContainer" parent="MarginContainer/BoxContainer/SettingsMenu/GraphicsSettings/Settings"]
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-
-[node name="Resolution" type="Label" parent="MarginContainer/BoxContainer/SettingsMenu/GraphicsSettings/Settings/Resolution"]
-custom_minimum_size = Vector2(300, 0)
-layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "Resolution"
-
-[node name="SetRes" type="OptionButton" parent="MarginContainer/BoxContainer/SettingsMenu/GraphicsSettings/Settings/Resolution"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 8
-
-[node name="ScreenMode" type="HBoxContainer" parent="MarginContainer/BoxContainer/SettingsMenu/GraphicsSettings/Settings"]
-layout_mode = 2
-size_flags_vertical = 4
-
-[node name="ScreenMode" type="Label" parent="MarginContainer/BoxContainer/SettingsMenu/GraphicsSettings/Settings/ScreenMode"]
-custom_minimum_size = Vector2(300, 0)
-layout_mode = 2
-size_flags_horizontal = 0
-theme_override_font_sizes/font_size = 32
-text = "Screen Mode"
-
-[node name="SetMode" type="OptionButton" parent="MarginContainer/BoxContainer/SettingsMenu/GraphicsSettings/Settings/ScreenMode"]
-layout_mode = 2
-size_flags_horizontal = 8
-
-[node name="AudioSettings" type="VBoxContainer" parent="MarginContainer/BoxContainer/SettingsMenu" node_paths=PackedStringArray("sfx_pressed")]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme_override_constants/separation = 25
-script = ExtResource("9_nqjyj")
-sfx_pressed = NodePath("../../../../Sound/ButtonPressedSFX")
-
-[node name="Audio" type="Label" parent="MarginContainer/BoxContainer/SettingsMenu/AudioSettings"]
-layout_mode = 2
-theme_override_font_sizes/font_size = 45
-text = "Audio"
-horizontal_alignment = 1
-
-[node name="Settings" type="VBoxContainer" parent="MarginContainer/BoxContainer/SettingsMenu/AudioSettings"]
-custom_minimum_size = Vector2(300, 0)
-layout_mode = 2
-
-[node name="MasterSettings" type="HBoxContainer" parent="MarginContainer/BoxContainer/SettingsMenu/AudioSettings/Settings"]
-layout_mode = 2
-size_flags_horizontal = 0
-
-[node name="Master" type="Label" parent="MarginContainer/BoxContainer/SettingsMenu/AudioSettings/Settings/MasterSettings"]
-custom_minimum_size = Vector2(300, 0)
-layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "Master"
-
-[node name="MasterLevel" type="HSlider" parent="MarginContainer/BoxContainer/SettingsMenu/AudioSettings/Settings/MasterSettings"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(200, 0)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-max_value = 1.0
-step = 0.01
-
-[node name="MusicSettings" type="HBoxContainer" parent="MarginContainer/BoxContainer/SettingsMenu/AudioSettings/Settings"]
-layout_mode = 2
-size_flags_horizontal = 0
-
-[node name="Music" type="Label" parent="MarginContainer/BoxContainer/SettingsMenu/AudioSettings/Settings/MusicSettings"]
-custom_minimum_size = Vector2(300, 0)
-layout_mode = 2
-theme_override_font_sizes/font_size = 32
-text = "Music"
-
-[node name="MusicLevel" type="HSlider" parent="MarginContainer/BoxContainer/SettingsMenu/AudioSettings/Settings/MusicSettings"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(200, 0)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-max_value = 1.0
-step = 0.01
-
-[node name="SFXSettings" type="HBoxContainer" parent="MarginContainer/BoxContainer/SettingsMenu/AudioSettings/Settings"]
-layout_mode = 2
-size_flags_horizontal = 0
-
-[node name="SFX" type="Label" parent="MarginContainer/BoxContainer/SettingsMenu/AudioSettings/Settings/SFXSettings"]
-custom_minimum_size = Vector2(300, 0)
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_font_sizes/font_size = 32
-text = "SFX"
-
-[node name="SFXLevel" type="HSlider" parent="MarginContainer/BoxContainer/SettingsMenu/AudioSettings/Settings/SFXSettings"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(200, 0)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-max_value = 1.0
-step = 0.01
-
-[node name="ReturnButton" type="VBoxContainer" parent="MarginContainer/BoxContainer/SettingsMenu"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="ApplySettings" type="Button" parent="MarginContainer/BoxContainer/SettingsMenu/ReturnButton"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "Apply"
-flat = true

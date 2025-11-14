@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://djywbuh775mmg"]
+
+[ext_resource type="Texture2D" uid="uid://b14br3omfhuxu" path="res://assets/art/ui/splash_screen.png" id="1_7fm2c"]
+[ext_resource type="Script" uid="uid://doymjk0ichvwh" path="res://scenes/ui/splash_screen.gd" id="1_jsqgk"]
+[ext_resource type="PackedScene" uid="uid://dips56jowu6et" path="res://scenes/ui/SceneTransition.tscn" id="1_tnnoe"]
+
+[node name="SplashScreen" type="Control" node_paths=PackedStringArray("scene_transition", "wait_fade_out")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jsqgk")
+scene_transition = NodePath("SceneTransition")
+wait_fade_out = NodePath("Timers/FadeOut")
+
+[node name="SceneTransition" parent="." instance=ExtResource("1_tnnoe")]
+layout_mode = 1
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_7fm2c")
+
+[node name="Timers" type="Node" parent="."]
+
+[node name="SplashScreenDuration" type="Timer" parent="Timers"]
+wait_time = 1.5
+autostart = true
+
+[node name="FadeOut" type="Timer" parent="Timers"]
+
+[connection signal="timeout" from="Timers/SplashScreenDuration" to="." method="_on_splash_screen_duration_timeout"]

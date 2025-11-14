@@ -26,15 +26,15 @@ func _ready() -> void:
 
 func on_vol_mas_changed(new_value):
 	AudioServer.set_bus_volume_linear(AUDIOBUS.master, new_value)
-	#GameManager.game_settings.master_volume = new_value
+	GameManager.game_settings.master_volume = new_value
 	
 func on_vol_mus_changed(new_value):
 	AudioServer.set_bus_volume_linear(AUDIOBUS.music, new_value)
-	#GameManager.game_settings.music_volume = new_value
+	GameManager.game_settings.music_volume = new_value
 	
 func on_vol_sfx_changed(new_value):
 	AudioServer.set_bus_volume_linear(AUDIOBUS.sfx, new_value)
-	#GameManager.game_settings.sfx_volume = new_value
+	GameManager.game_settings.sfx_volume = new_value
 	
 func sfx_play():
 	sfx_pressed.play()

@@ -1,10 +1,10 @@
 [gd_scene load_steps=11 format=3 uid="uid://dh6qat532gkdc"]
 
-[ext_resource type="PackedScene" uid="uid://so18tatfe4un" path="res://scenes/ui/MainMenu.tscn" id="1_37kl0"]
-[ext_resource type="PackedScene" uid="uid://c1bkxh8p1litp" path="res://scenes/objects/FinishPoint.tscn" id="2_ppyta"]
-[ext_resource type="PackedScene" uid="uid://1tjylehjm63n" path="res://scenes/objects/DeathZone.tscn" id="3_ykrsh"]
-[ext_resource type="PackedScene" uid="uid://cht4105owcyed" path="res://scenes/objects/Checkpoint.tscn" id="4_g14j6"]
-[ext_resource type="Script" uid="uid://brhgl7cs7y3em" path="res://scripts/ui/menu_camera.gd" id="5_ykrsh"]
+[ext_resource type="PackedScene" uid="uid://so18tatfe4un" path="res://scenes/ui/MainMenu.tscn" id="1_dex4k"]
+[ext_resource type="PackedScene" uid="uid://c1bkxh8p1litp" path="res://scenes/objects/FinishPoint.tscn" id="2_e3kp8"]
+[ext_resource type="PackedScene" uid="uid://1tjylehjm63n" path="res://scenes/objects/DeathZone.tscn" id="3_5au3h"]
+[ext_resource type="PackedScene" uid="uid://cht4105owcyed" path="res://scenes/objects/Checkpoint.tscn" id="4_lijdy"]
+[ext_resource type="Script" uid="uid://brhgl7cs7y3em" path="res://scripts/ui/menu_camera.gd" id="5_bfhna"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vbegm"]
 albedo_color = Color(0, 0, 0, 1)
@@ -36,7 +36,7 @@ point_count = 4
 layer = 5
 follow_viewport_enabled = true
 
-[node name="MainMenu" parent="CanvasLayer" instance=ExtResource("1_37kl0")]
+[node name="MainMenu" parent="CanvasLayer" instance=ExtResource("1_dex4k")]
 
 [node name="Environment" type="Node3D" parent="."]
 
@@ -91,12 +91,12 @@ environment = SubResource("Environment_xersf")
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
 shadow_enabled = true
 
-[node name="FinishPoint" parent="Environment" instance=ExtResource("2_ppyta")]
+[node name="FinishPoint" parent="Environment" instance=ExtResource("2_e3kp8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4208498, -16)
 
-[node name="DeathZone" parent="Environment" instance=ExtResource("3_ykrsh")]
+[node name="DeathZone" parent="Environment" instance=ExtResource("3_5au3h")]
 
-[node name="Checkpoint" parent="Environment" instance=ExtResource("4_g14j6")]
+[node name="Checkpoint" parent="Environment" instance=ExtResource("4_lijdy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 24)
 
 [node name="MenuCamera" type="Node3D" parent="."]
@@ -116,4 +116,4 @@ rotation_mode = 0
 transform = Transform3D(1, 0, 0, 0, 1, -2.9802322e-08, 0, 2.9802322e-08, 1, 0, 0, 0)
 current = true
 near = 2.274
-script = ExtResource("5_ykrsh")
+script = ExtResource("5_bfhna")
