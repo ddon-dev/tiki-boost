@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://c5teqd0w4tca1"]
+[gd_scene load_steps=10 format=3 uid="uid://c5teqd0w4tca1"]
 
 [ext_resource type="Script" uid="uid://o0euwhh5gq4t" path="res://scripts/ui/proto_win_screen.gd" id="1_iywrl"]
 [ext_resource type="PackedScene" uid="uid://dips56jowu6et" path="res://scenes/ui/SceneTransition.tscn" id="2_hmyae"]
 [ext_resource type="Theme" uid="uid://dg0bxpr4spgob" path="res://assets/themes/menu_theme.tres" id="2_uihv6"]
 [ext_resource type="AudioStream" uid="uid://c2sx68vhfkwvj" path="res://assets/audio/sfx/ui/button_pressed.ogg" id="4_emipt"]
+[ext_resource type="AudioStream" uid="uid://beqysqrdka7qn" path="res://assets/audio/sfx/tikivictory2.ogg" id="4_xum4q"]
 [ext_resource type="Script" uid="uid://b3h8y8jqm5f2k" path="res://scripts/ui/menus/ask_restart_level.gd" id="5_yaqny"]
 [ext_resource type="Script" uid="uid://dle2co70qiwne" path="res://scripts/ui/menus/ask_return_menu.gd" id="6_emipt"]
 
@@ -44,6 +45,11 @@ unique_name_in_owner = true
 stream = ExtResource("4_emipt")
 volume_db = -6.0
 bus = &"SFX"
+
+[node name="VictoryJingle" type="AudioStreamPlayer" parent="Sound"]
+unique_name_in_owner = true
+stream = ExtResource("4_xum4q")
+volume_db = -6.0
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1

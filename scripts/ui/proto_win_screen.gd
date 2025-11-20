@@ -7,6 +7,7 @@ extends Control
 
 # Audio
 @onready var sfx_pressed: AudioStreamPlayer = %ButtonPressedSFX
+@onready var victory_jingle: AudioStreamPlayer = %VictoryJingle
 
 # Menus
 @export var ask_restart_level: VBoxContainer
@@ -41,5 +42,6 @@ func _on_menu_button_pressed() -> void:
 
 func _on_level_finished() -> void:
 	visible = true
+	victory_jingle.play()
 	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	create_tween().tween_property(self, "modulate:a", 1.0, 0.75)
