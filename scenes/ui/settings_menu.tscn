@@ -1,10 +1,10 @@
 [gd_scene load_steps=7 format=3 uid="uid://dvgka2vsrq0hy"]
 
 [ext_resource type="Theme" uid="uid://dg0bxpr4spgob" path="res://assets/themes/menu_theme.tres" id="1_x3vyp"]
-[ext_resource type="Script" uid="uid://dy3ssm4oq5te1" path="res://scripts/ui/settings_menu.gd" id="2_0b1cv"]
-[ext_resource type="Script" uid="uid://dnkybwhsyhofi" path="res://scenes/ui/resolutions.gd" id="3_0b1cv"]
-[ext_resource type="Script" uid="uid://dc1o2upchel7g" path="res://scripts/ui/audio_settings.gd" id="3_yu862"]
-[ext_resource type="Script" uid="uid://bbrf51pxvdvkv" path="res://scenes/ui/screen_mode.gd" id="4_yu862"]
+[ext_resource type="Script" uid="uid://dy3ssm4oq5te1" path="res://scripts/ui/settings/settings_menu.gd" id="2_0b1cv"]
+[ext_resource type="Script" uid="uid://dnkybwhsyhofi" path="res://scripts/ui/settings/resolutions.gd" id="3_0b1cv"]
+[ext_resource type="Script" uid="uid://dc1o2upchel7g" path="res://scripts/ui/settings/audio_settings.gd" id="3_yu862"]
+[ext_resource type="Script" uid="uid://bbrf51pxvdvkv" path="res://scripts/ui/settings/screen_mode.gd" id="4_yu862"]
 [ext_resource type="AudioStream" uid="uid://c2sx68vhfkwvj" path="res://assets/audio/sfx/ui/button_pressed.ogg" id="6_ywggk"]
 
 [node name="SettingsMenu" type="VBoxContainer"]

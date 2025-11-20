@@ -4,4 +4,5 @@
 
 [node name="StageHandler" type="Node"]
 script = ExtResource("1_srffu")
-level_paths = Array[String](["uid://dh6qat532gkdc", "uid://r5802t4ayrt0"])
+level_paths = Array[String](["uid://r5802t4ayrt0"])
+main_menu = "uid://dh6qat532gkdc"

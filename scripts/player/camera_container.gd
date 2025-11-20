@@ -44,7 +44,7 @@ func _input(event: InputEvent) -> void:
 	
 	if event is InputEventKey:
 		match event.keycode:
-			KEY_ESCAPE: Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+			KEY_F: Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 			KEY_SPACE: Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 			_: pass
 	

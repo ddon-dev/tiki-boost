@@ -1,12 +1,13 @@
 extends Node
 
 @export_file("*.tscn") var level_paths: Array[String]
+@export_file("*.tscn") var main_menu: String
 var current_level_path: String
 
 signal level_changed(new_level_path)
 
 func go_to_init_level():
-	go_to_level(level_paths[1])
+	go_to_level(level_paths[0])
 	get_tree().change_scene_to_file(current_level_path)
 	
 
@@ -27,7 +28,7 @@ func go_to_level(level_path):
 	level_changed.emit(current_level_path)
 	
 func go_to_menu():
-	go_to_level(level_paths[0])
+	current_level_path = main_menu
 	get_tree().change_scene_to_file(current_level_path)
 
 func restart_level():

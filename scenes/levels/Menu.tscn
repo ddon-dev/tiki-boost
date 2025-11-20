@@ -1,22 +1,22 @@
-[gd_scene load_steps=11 format=3 uid="uid://dh6qat532gkdc"]
+[gd_scene load_steps=12 format=3 uid="uid://dh6qat532gkdc"]
 
 [ext_resource type="PackedScene" uid="uid://so18tatfe4un" path="res://scenes/ui/MainMenu.tscn" id="1_dex4k"]
+[ext_resource type="Texture2D" uid="uid://brrjqum3ry1jw" path="res://assets/art/skyboxes/skybox1.png" id="2_5au3h"]
 [ext_resource type="PackedScene" uid="uid://c1bkxh8p1litp" path="res://scenes/objects/FinishPoint.tscn" id="2_e3kp8"]
 [ext_resource type="PackedScene" uid="uid://1tjylehjm63n" path="res://scenes/objects/DeathZone.tscn" id="3_5au3h"]
 [ext_resource type="PackedScene" uid="uid://cht4105owcyed" path="res://scenes/objects/Checkpoint.tscn" id="4_lijdy"]
-[ext_resource type="Script" uid="uid://brhgl7cs7y3em" path="res://scripts/ui/menu_camera.gd" id="5_bfhna"]
+[ext_resource type="Script" uid="uid://brhgl7cs7y3em" path="res://scripts/ui/menus/menu_camera.gd" id="5_bfhna"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vbegm"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lijdy"]
 albedo_color = Color(0, 0, 0, 1)
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ehkex"]
-sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
-ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_bfhna"]
+panorama = ExtResource("2_5au3h")
 
 [sub_resource type="Sky" id="Sky_6gjf6"]
-sky_material = SubResource("ProceduralSkyMaterial_ehkex")
+sky_material = SubResource("PanoramaSkyMaterial_bfhna")
 
-[sub_resource type="Environment" id="Environment_xersf"]
+[sub_resource type="Environment" id="Environment_32dg4"]
 background_mode = 2
 sky = SubResource("Sky_6gjf6")
 tonemap_mode = 2
@@ -42,7 +42,7 @@ follow_viewport_enabled = true
 
 [node name="Ground" type="CSGBox3D" parent="Environment"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
-material_override = SubResource("StandardMaterial3D_vbegm")
+material_override = SubResource("StandardMaterial3D_lijdy")
 use_collision = true
 collision_layer = 2
 collision_mask = 0
@@ -85,7 +85,7 @@ collision_mask = 0
 size = Vector3(5, 1, 1)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Environment"]
-environment = SubResource("Environment_xersf")
+environment = SubResource("Environment_32dg4")
 
 [node name="Sun" type="DirectionalLight3D" parent="Environment"]
 transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)

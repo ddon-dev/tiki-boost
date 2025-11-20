@@ -1,10 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://djywbuh775mmg"]
+[gd_scene load_steps=5 format=3 uid="uid://djywbuh775mmg"]
 
 [ext_resource type="Texture2D" uid="uid://b14br3omfhuxu" path="res://assets/art/ui/splash_screen.png" id="1_7fm2c"]
-[ext_resource type="Script" uid="uid://doymjk0ichvwh" path="res://scenes/ui/splash_screen.gd" id="1_jsqgk"]
+[ext_resource type="Script" uid="uid://doymjk0ichvwh" path="res://scripts/ui/splash_screen.gd" id="1_jsqgk"]
 [ext_resource type="PackedScene" uid="uid://dips56jowu6et" path="res://scenes/ui/SceneTransition.tscn" id="1_tnnoe"]
+[ext_resource type="AudioStream" uid="uid://h0n4gqwiexus" path="res://assets/audio/sfx/splash.ogg" id="2_lxol2"]
 
-[node name="SplashScreen" type="Control" node_paths=PackedStringArray("scene_transition", "wait_fade_out")]
+[node name="SplashScreen" type="Control" node_paths=PackedStringArray("scene_transition", "wait_fade_out", "splash_sfx")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -14,6 +15,11 @@ grow_vertical = 2
 script = ExtResource("1_jsqgk")
 scene_transition = NodePath("SceneTransition")
 wait_fade_out = NodePath("Timers/FadeOut")
+splash_sfx = NodePath("SplashSFX")
+
+[node name="SplashSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_lxol2")
+volume_db = -12.0
 
 [node name="SceneTransition" parent="." instance=ExtResource("1_tnnoe")]
 layout_mode = 1
@@ -30,9 +36,16 @@ texture = ExtResource("1_7fm2c")
 [node name="Timers" type="Node" parent="."]
 
 [node name="SplashScreenDuration" type="Timer" parent="Timers"]
-wait_time = 1.5
+wait_time = 2.5
+one_shot = true
+autostart = true
+
+[node name="SplashScreenSFXFire" type="Timer" parent="Timers"]
+wait_time = 0.2
+one_shot = true
 autostart = true
 
 [node name="FadeOut" type="Timer" parent="Timers"]
 
 [connection signal="timeout" from="Timers/SplashScreenDuration" to="." method="_on_splash_screen_duration_timeout"]
+[connection signal="timeout" from="Timers/SplashScreenSFXFire" to="." method="_on_splash_screen_sfx_fire_timeout"]

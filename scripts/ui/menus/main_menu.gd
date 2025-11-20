@@ -4,12 +4,14 @@ extends Control
 @export var scene_transition: Control
 
 # Audio
-@export var menu_music: AudioStreamPlayer
+@onready var menu_music: AudioStreamPlayer = %Music
 @export var sfx_pressed: AudioStreamPlayer
 
 # Menus
 @onready var init_menu: VBoxContainer = %InitMenu
 @onready var settings_menu: VBoxContainer = %SettingsMenu
+@onready var levels_menu: VBoxContainer = %LevelSelectMenu
+@export var menu_slide: AnimationPlayer
 
 # Buttons
 @onready var start: Button = %StartGame
@@ -38,6 +40,8 @@ func start_game():
 
 func select_level():
 	sfx_pressed.play()
+	levels_menu.visible = true
+	menu_slide.play("slide_left")
 
 func customize_options():
 	sfx_pressed.play()
@@ -45,6 +49,8 @@ func customize_options():
 func open_settings():
 	sfx_pressed.play()
 	settings_menu.visible = true
+	menu_slide.play("slide_left")
+	await menu_slide.animation_finished
 	init_menu.visible = false
 
 func exit_game():

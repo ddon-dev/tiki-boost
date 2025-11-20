@@ -1,5 +1,8 @@
 extends Node
 
+# Bools
+var canPause: bool = true
+
 #region Game Settings Vars
 const GAME_SETTINGS_PATH = "user://game_settings.tres"
 var game_settings: GameSettings
