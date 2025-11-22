@@ -10,6 +10,22 @@ class_name Marble extends RigidBody3D
 @onready var camera: Camera3D = %Camera3D
 @onready var ground_check_ray: RayCast3D = %GroundCheckRay
 
+# VFX
+@onready var speed_lines: ColorRect = %SpeedLines
+
+# Audio
+@onready var sfx_rolling: AudioStreamPlayer3D = %RollingSFX
+@onready var sfx_land: AudioStreamPlayer3D = %LandSFX
+@export var min_volume: float = 0 # Linear, no db
+@export var max_volume: float = 1
+@export var min_pitch: float = 0.65
+@export var max_pitch: float = 1
+
+var current_velocity: float
+var velocity_percent: float
+var target_volume_db: float
+var target_pitch: float
+
 var is_jumping: bool = false
 var can_move: bool = true
 var level_finished: bool = false
@@ -51,6 +67,38 @@ func _physics_process(delta: float) -> void:
 	
 	if jump_buffer_timer.time_left > 0.0 && (ground_check_ray.is_colliding() || coyote_time_active):
 		_jump()
+		
+	# Speed Lines
+	var density = linear_velocity.length() * 0.030
+	speed_lines.material.set_shader_parameter("line_density", density)
+	
+	# SFX
+	var is_grounded: bool = ground_check_ray.is_colliding()
+	current_velocity = linear_velocity.length()
+	velocity_percent = clamp(inverse_lerp(0.0, max_velocity, current_velocity), 0.0, 1.0)
+	target_volume_db = lerp(min_volume, max_volume, velocity_percent)
+	target_pitch = lerp(min_pitch, max_pitch, velocity_percent)
+		
+	sfx_rolling.volume_db = linear_to_db(target_volume_db)
+	sfx_rolling.pitch_scale = target_pitch
+
+	if is_grounded:
+		if not sfx_rolling.playing and current_velocity > 0.1:
+			sfx_rolling.play()
+		elif sfx_rolling.playing and current_velocity <= 0.1:
+			pass
+	else:
+		if sfx_rolling.playing:
+			sfx_rolling.stop()
+			sfx_rolling.volume_db = linear_to_db(0.0)
+			
+
+
+func _on_body_entered(body: Node) -> void:
+	sfx_land.volume_db = linear_to_db(target_volume_db)
+	if not sfx_land.is_playing():
+		sfx_land.play()
+	
 
 func _movement(delta: float) -> void:
 	# f_input o forward_input, movimiento hacia adelante y hacia atrás

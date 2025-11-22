@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://dh6qat532gkdc"]
 
-[ext_resource type="PackedScene" uid="uid://so18tatfe4un" path="res://scenes/ui/MainMenu.tscn" id="1_dex4k"]
+[ext_resource type="PackedScene" uid="uid://so18tatfe4un" path="res://scenes/ui/menus/MainMenu.tscn" id="1_dex4k"]
 [ext_resource type="Texture2D" uid="uid://brrjqum3ry1jw" path="res://assets/art/skyboxes/skybox1.png" id="2_5au3h"]
 [ext_resource type="PackedScene" uid="uid://c1bkxh8p1litp" path="res://scenes/objects/FinishPoint.tscn" id="2_e3kp8"]
 [ext_resource type="PackedScene" uid="uid://1tjylehjm63n" path="res://scenes/objects/DeathZone.tscn" id="3_5au3h"]

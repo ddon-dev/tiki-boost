@@ -1,0 +1,374 @@
+[gd_scene load_steps=15 format=3 uid="uid://bi3f5qubdhed3"]
+
+[ext_resource type="Script" uid="uid://ccaytwoonuu3b" path="res://scripts/ui/menus/pause_menu.gd" id="1_n5dsq"]
+[ext_resource type="Theme" uid="uid://dg0bxpr4spgob" path="res://assets/themes/menu_theme.tres" id="2_5twic"]
+[ext_resource type="AudioStream" uid="uid://cl34on87bfftb" path="res://assets/audio/sfx/ui/pause.ogg" id="2_cctyv"]
+[ext_resource type="PackedScene" uid="uid://dips56jowu6et" path="res://scenes/ui/SceneTransition.tscn" id="2_csaq8"]
+[ext_resource type="AudioStream" uid="uid://c2sx68vhfkwvj" path="res://assets/audio/sfx/ui/button_pressed.ogg" id="2_v5pi0"]
+[ext_resource type="PackedScene" uid="uid://dvgka2vsrq0hy" path="res://scenes/ui/menus/SettingsMenu.tscn" id="3_v5pi0"]
+[ext_resource type="Script" uid="uid://b3h8y8jqm5f2k" path="res://scripts/ui/menus/ask_restart_level.gd" id="5_cctyv"]
+[ext_resource type="Script" uid="uid://dle2co70qiwne" path="res://scripts/ui/menus/ask_return_menu.gd" id="7_rw35d"]
+[ext_resource type="Script" uid="uid://eboqcid7kuvt" path="res://scripts/ui/menus/ask_exit_game.gd" id="8_px486"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_px486"]
+bg_color = Color(3.3691526e-07, 0.41797125, 0.51075476, 0.16078432)
+
+[sub_resource type="Animation" id="Animation_nqjyj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Main:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Settings:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1152, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_7mi0g"]
+resource_name = "slide_left"
+length = 0.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Main:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.13333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-1152, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Settings:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.13333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1152, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_7vr37"]
+resource_name = "slide_right"
+length = 0.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Main:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.13333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-1152, 0), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Settings:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.13333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1152, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_px486"]
+_data = {
+&"RESET": SubResource("Animation_nqjyj"),
+&"slide_left": SubResource("Animation_7mi0g"),
+&"slide_right": SubResource("Animation_7vr37")
+}
+
+[node name="PauseMenu" type="Control" node_paths=PackedStringArray("menu_slide")]
+process_mode = 3
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_n5dsq")
+menu_slide = NodePath("MenuSlides")
+
+[node name="SceneTransition" parent="." instance=ExtResource("2_csaq8")]
+unique_name_in_owner = true
+layout_mode = 1
+
+[node name="Sound" type="Node" parent="."]
+
+[node name="PausePressedSFX" type="AudioStreamPlayer" parent="Sound"]
+unique_name_in_owner = true
+stream = ExtResource("2_cctyv")
+volume_db = -6.0
+
+[node name="ButtonPressedSFX" type="AudioStreamPlayer" parent="Sound"]
+unique_name_in_owner = true
+stream = ExtResource("2_v5pi0")
+volume_db = -6.0
+bus = &"SFX"
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_5twic")
+theme_override_styles/panel = SubResource("StyleBoxFlat_px486")
+metadata/_edit_use_anchors_ = true
+
+[node name="Main" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+metadata/_edit_use_anchors_ = true
+
+[node name="BoxContainer" type="BoxContainer" parent="Main"]
+layout_mode = 2
+mouse_filter = 2
+theme = ExtResource("2_5twic")
+metadata/_edit_use_anchors_ = true
+
+[node name="PauseMenu" type="VBoxContainer" parent="Main/BoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+mouse_filter = 2
+theme = ExtResource("2_5twic")
+theme_override_constants/separation = 55
+
+[node name="Pause" type="Label" parent="Main/BoxContainer/PauseMenu"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/line_spacing = 3
+theme_override_constants/shadow_outline_size = 45
+theme_override_font_sizes/font_size = 120
+text = "Pause"
+horizontal_alignment = 1
+
+[node name="MenuOptions" type="VBoxContainer" parent="Main/BoxContainer/PauseMenu"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("2_5twic")
+theme_override_constants/separation = 10
+
+[node name="Continue" type="Button" parent="Main/BoxContainer/PauseMenu/MenuOptions"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Continue"
+flat = true
+
+[node name="Settings" type="Button" parent="Main/BoxContainer/PauseMenu/MenuOptions"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Settings"
+flat = true
+
+[node name="RestartLevel" type="Button" parent="Main/BoxContainer/PauseMenu/MenuOptions"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Restart Level"
+flat = true
+
+[node name="GoToMenu" type="Button" parent="Main/BoxContainer/PauseMenu/MenuOptions"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Go to Menu"
+flat = true
+
+[node name="ExitGame" type="Button" parent="Main/BoxContainer/PauseMenu/MenuOptions"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Exit Game"
+flat = true
+
+[node name="AskRestartLevel" type="VBoxContainer" parent="Main/BoxContainer/PauseMenu" node_paths=PackedStringArray("menu_options")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 25
+script = ExtResource("5_cctyv")
+menu_options = NodePath("../MenuOptions")
+
+[node name="Ask" type="Label" parent="Main/BoxContainer/PauseMenu/AskRestartLevel"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 40
+text = "Restart Level?"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Main/BoxContainer/PauseMenu/AskRestartLevel"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 80
+
+[node name="ConfirmRestart" type="Button" parent="Main/BoxContainer/PauseMenu/AskRestartLevel/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Yes"
+flat = true
+
+[node name="CancelRestart" type="Button" parent="Main/BoxContainer/PauseMenu/AskRestartLevel/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "No"
+flat = true
+
+[node name="AskReturnMenu" type="VBoxContainer" parent="Main/BoxContainer/PauseMenu" node_paths=PackedStringArray("menu_options")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 25
+script = ExtResource("7_rw35d")
+menu_options = NodePath("../MenuOptions")
+
+[node name="Ask" type="Label" parent="Main/BoxContainer/PauseMenu/AskReturnMenu"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Return to Menu?"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Main/BoxContainer/PauseMenu/AskReturnMenu"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 80
+
+[node name="ConfirmMenu" type="Button" parent="Main/BoxContainer/PauseMenu/AskReturnMenu/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Yes"
+flat = true
+
+[node name="CancelMenu" type="Button" parent="Main/BoxContainer/PauseMenu/AskReturnMenu/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "No"
+flat = true
+
+[node name="AskExitGame" type="VBoxContainer" parent="Main/BoxContainer/PauseMenu"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 25
+script = ExtResource("8_px486")
+
+[node name="Ask" type="Label" parent="Main/BoxContainer/PauseMenu/AskExitGame"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Exit Game?"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Main/BoxContainer/PauseMenu/AskExitGame"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 80
+
+[node name="ConfirmExit" type="Button" parent="Main/BoxContainer/PauseMenu/AskExitGame/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Yes"
+flat = true
+
+[node name="CancelExit" type="Button" parent="Main/BoxContainer/PauseMenu/AskExitGame/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "No"
+flat = true
+
+[node name="Settings" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1152.0
+offset_right = 1151.9973
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="BoxContainer" type="BoxContainer" parent="Settings"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="SettingsMenu" parent="Settings/BoxContainer" node_paths=PackedStringArray("sfx_pressed", "prev_menu", "menu_slide") instance=ExtResource("3_v5pi0")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+sfx_pressed = NodePath("../../../Sound/ButtonPressedSFX")
+prev_menu = NodePath("../../../Main/BoxContainer/PauseMenu")
+menu_slide = NodePath("../../../MenuSlides")
+
+[node name="MenuSlides" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_px486")
+}
+
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]

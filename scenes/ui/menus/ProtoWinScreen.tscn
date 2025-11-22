@@ -1,0 +1,204 @@
+[gd_scene load_steps=10 format=3 uid="uid://c5teqd0w4tca1"]
+
+[ext_resource type="Script" uid="uid://o0euwhh5gq4t" path="res://scripts/ui/proto_win_screen.gd" id="1_iywrl"]
+[ext_resource type="PackedScene" uid="uid://dips56jowu6et" path="res://scenes/ui/SceneTransition.tscn" id="2_hmyae"]
+[ext_resource type="Theme" uid="uid://dg0bxpr4spgob" path="res://assets/themes/menu_theme.tres" id="2_uihv6"]
+[ext_resource type="AudioStream" uid="uid://c2sx68vhfkwvj" path="res://assets/audio/sfx/ui/button_pressed.ogg" id="4_emipt"]
+[ext_resource type="AudioStream" uid="uid://beqysqrdka7qn" path="res://assets/audio/sfx/tikivictory2.ogg" id="4_xum4q"]
+[ext_resource type="Script" uid="uid://b3h8y8jqm5f2k" path="res://scripts/ui/menus/ask_restart_level.gd" id="5_yaqny"]
+[ext_resource type="Script" uid="uid://dle2co70qiwne" path="res://scripts/ui/menus/ask_return_menu.gd" id="6_emipt"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uihv6"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uihv6"]
+bg_color = Color(0.23520002, 0.60760003, 0.98, 0.5647059)
+border_width_left = 150
+border_width_top = 150
+border_width_right = 150
+border_width_bottom = 150
+border_color = Color(0.34423995, 0.87972903, 0.99999994, 1)
+border_blend = true
+corner_radius_top_left = 500
+corner_radius_top_right = 500
+corner_radius_bottom_right = 500
+corner_radius_bottom_left = 500
+
+[node name="WinScreen" type="Control" node_paths=PackedStringArray("ask_restart_level", "ask_return_menu")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_iywrl")
+ask_restart_level = NodePath("MarginContainer/BoxContainer/VBoxContainer/PanelContainer/AskRestartLevel")
+ask_return_menu = NodePath("MarginContainer/BoxContainer/VBoxContainer/PanelContainer/AskReturnMenu")
+
+[node name="SceneTransition" parent="." instance=ExtResource("2_hmyae")]
+unique_name_in_owner = true
+layout_mode = 1
+
+[node name="Sound" type="Node" parent="."]
+
+[node name="ButtonPressedSFX" type="AudioStreamPlayer" parent="Sound"]
+unique_name_in_owner = true
+stream = ExtResource("4_emipt")
+volume_db = -6.0
+bus = &"SFX"
+
+[node name="VictoryJingle" type="AudioStreamPlayer" parent="Sound"]
+unique_name_in_owner = true
+stream = ExtResource("4_xum4q")
+volume_db = -6.0
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_uihv6")
+metadata/_edit_use_anchors_ = true
+
+[node name="BoxContainer" type="BoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/BoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 50
+
+[node name="Label" type="Label" parent="MarginContainer/BoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 102
+text = "LEVEL COMPLETE!"
+horizontal_alignment = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/BoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_uihv6")
+
+[node name="Background" type="Panel" parent="MarginContainer/BoxContainer/VBoxContainer/PanelContainer"]
+custom_minimum_size = Vector2(600, 300)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxFlat_uihv6")
+metadata/_edit_use_anchors_ = true
+
+[node name="Choices" type="VBoxContainer" parent="MarginContainer/BoxContainer/VBoxContainer/PanelContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme = ExtResource("2_uihv6")
+theme_override_constants/separation = 50
+alignment = 1
+
+[node name="Buttons" type="VBoxContainer" parent="MarginContainer/BoxContainer/VBoxContainer/PanelContainer/Choices"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="ContinueButton" type="Button" parent="MarginContainer/BoxContainer/VBoxContainer/PanelContainer/Choices/Buttons"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 46
+text = "Next Level"
+flat = true
+
+[node name="RestartButton" type="Button" parent="MarginContainer/BoxContainer/VBoxContainer/PanelContainer/Choices/Buttons"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 46
+text = "Restart"
+flat = true
+
+[node name="MenuButton" type="Button" parent="MarginContainer/BoxContainer/VBoxContainer/PanelContainer/Choices/Buttons"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 46
+text = "Main Menu"
+flat = true
+
+[node name="AskRestartLevel" type="VBoxContainer" parent="MarginContainer/BoxContainer/VBoxContainer/PanelContainer" node_paths=PackedStringArray("menu_options")]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 25
+script = ExtResource("5_yaqny")
+menu_options = NodePath("../Choices")
+
+[node name="Ask" type="Label" parent="MarginContainer/BoxContainer/VBoxContainer/PanelContainer/AskRestartLevel"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 40
+text = "Restart Level?"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/BoxContainer/VBoxContainer/PanelContainer/AskRestartLevel"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 80
+
+[node name="ConfirmRestart" type="Button" parent="MarginContainer/BoxContainer/VBoxContainer/PanelContainer/AskRestartLevel/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Yes"
+flat = true
+
+[node name="CancelRestart" type="Button" parent="MarginContainer/BoxContainer/VBoxContainer/PanelContainer/AskRestartLevel/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "No"
+flat = true
+
+[node name="AskReturnMenu" type="VBoxContainer" parent="MarginContainer/BoxContainer/VBoxContainer/PanelContainer" node_paths=PackedStringArray("menu_options")]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 25
+script = ExtResource("6_emipt")
+menu_options = NodePath("../Choices")
+
+[node name="Ask" type="Label" parent="MarginContainer/BoxContainer/VBoxContainer/PanelContainer/AskReturnMenu"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Return to Menu?"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/BoxContainer/VBoxContainer/PanelContainer/AskReturnMenu"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 80
+
+[node name="ConfirmMenu" type="Button" parent="MarginContainer/BoxContainer/VBoxContainer/PanelContainer/AskReturnMenu/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Yes"
+flat = true
+
+[node name="CancelMenu" type="Button" parent="MarginContainer/BoxContainer/VBoxContainer/PanelContainer/AskReturnMenu/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "No"
+flat = true

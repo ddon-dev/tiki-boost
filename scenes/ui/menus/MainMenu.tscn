@@ -1,0 +1,321 @@
+[gd_scene load_steps=14 format=3 uid="uid://so18tatfe4un"]
+
+[ext_resource type="Script" uid="uid://dndkv03yk8wya" path="res://scripts/ui/menus/main_menu.gd" id="1_2ysvc"]
+[ext_resource type="Texture2D" uid="uid://bup8l41f00ub0" path="res://assets/art/ui/title_small.png" id="1_vjtqc"]
+[ext_resource type="AudioStream" uid="uid://c2sx68vhfkwvj" path="res://assets/audio/sfx/ui/button_pressed.ogg" id="2_2ysvc"]
+[ext_resource type="Theme" uid="uid://dg0bxpr4spgob" path="res://assets/themes/menu_theme.tres" id="2_6jbdy"]
+[ext_resource type="PackedScene" uid="uid://dips56jowu6et" path="res://scenes/ui/SceneTransition.tscn" id="2_bhu4a"]
+[ext_resource type="AudioStream" uid="uid://btk3vkog5moeq" path="res://assets/audio/music/StarEye Spaceway - ViRiX Dreamcore .ogg" id="2_xpiny"]
+[ext_resource type="Script" uid="uid://druqdf0m635aj" path="res://scripts/ui/music.gd" id="4_7mi0g"]
+[ext_resource type="PackedScene" uid="uid://dvgka2vsrq0hy" path="res://scenes/ui/menus/SettingsMenu.tscn" id="8_7mi0g"]
+[ext_resource type="Script" uid="uid://cw2plsd54xmuy" path="res://scripts/ui/menus/level_select.gd" id="9_nqjyj"]
+
+[sub_resource type="Animation" id="Animation_nqjyj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Main:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Settings:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1152, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("LevelSelect:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1152, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_7mi0g"]
+resource_name = "slide_left"
+length = 0.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Main:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.13333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(-1152, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Settings:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.13333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1152, 0), Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("LevelSelect:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.13333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1152, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_7vr37"]
+resource_name = "slide_right"
+length = 0.15
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Main:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.13333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-1152, 0), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Settings:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.13333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1152, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("LevelSelect:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.01, 0.13333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1152, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nqjyj"]
+_data = {
+&"RESET": SubResource("Animation_nqjyj"),
+&"slide_left": SubResource("Animation_7mi0g"),
+&"slide_right": SubResource("Animation_7vr37")
+}
+
+[node name="MainMenu" type="Control" node_paths=PackedStringArray("scene_transition", "sfx_pressed", "menu_slide")]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2ysvc")
+scene_transition = NodePath("SceneTransition")
+sfx_pressed = NodePath("Sound/ButtonPressedSFX")
+menu_slide = NodePath("MenuSlides")
+
+[node name="SceneTransition" parent="." instance=ExtResource("2_bhu4a")]
+layout_mode = 1
+
+[node name="Sound" type="Node" parent="."]
+
+[node name="Music" type="AudioStreamPlayer" parent="Sound"]
+unique_name_in_owner = true
+stream = ExtResource("2_xpiny")
+volume_db = -25.0
+bus = &"Music"
+script = ExtResource("4_7mi0g")
+fade_in_target = 0.3
+fade_in_time = 0.5
+fade_out_time = 7
+
+[node name="ButtonPressedSFX" type="AudioStreamPlayer" parent="Sound"]
+stream = ExtResource("2_2ysvc")
+volume_db = -6.0
+bus = &"SFX"
+
+[node name="Main" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="BoxContainer" type="BoxContainer" parent="Main"]
+layout_mode = 2
+mouse_filter = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="InitMenu" type="VBoxContainer" parent="Main/BoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 4
+mouse_filter = 2
+theme_override_constants/separation = 55
+
+[node name="Title" type="TextureRect" parent="Main/BoxContainer/InitMenu"]
+layout_mode = 2
+texture = ExtResource("1_vjtqc")
+
+[node name="MenuOptions" type="VBoxContainer" parent="Main/BoxContainer/InitMenu"]
+layout_mode = 2
+theme = ExtResource("2_6jbdy")
+theme_override_constants/separation = 10
+
+[node name="StartGame" type="Button" parent="Main/BoxContainer/InitMenu/MenuOptions"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Start Game"
+flat = true
+
+[node name="LevelSelect" type="Button" parent="Main/BoxContainer/InitMenu/MenuOptions"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Level Select"
+flat = true
+
+[node name="Customize" type="Button" parent="Main/BoxContainer/InitMenu/MenuOptions"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Customize"
+flat = true
+
+[node name="Settings" type="Button" parent="Main/BoxContainer/InitMenu/MenuOptions"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Settings"
+flat = true
+
+[node name="ExitGame" type="Button" parent="Main/BoxContainer/InitMenu/MenuOptions"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Exit Game"
+flat = true
+
+[node name="Settings" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1152.0
+offset_right = 1151.9976
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="BoxContainer" type="BoxContainer" parent="Settings"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="SettingsMenu" parent="Settings/BoxContainer" node_paths=PackedStringArray("sfx_pressed", "prev_menu", "menu_slide") instance=ExtResource("8_7mi0g")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+sfx_pressed = NodePath("../../../Sound/ButtonPressedSFX")
+prev_menu = NodePath("../../../Main/BoxContainer/InitMenu")
+menu_slide = NodePath("../../../MenuSlides")
+
+[node name="LevelSelect" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1152.0
+offset_right = 1151.998
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("2_6jbdy")
+theme_override_constants/margin_left = 180
+theme_override_constants/margin_top = 48
+theme_override_constants/margin_right = 180
+theme_override_constants/margin_bottom = 35
+
+[node name="LevelSelectMenu" type="VBoxContainer" parent="LevelSelect" node_paths=PackedStringArray("sfx_pressed", "scene_transition", "menu_slide")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
+theme_override_constants/separation = 40
+script = ExtResource("9_nqjyj")
+sfx_pressed = NodePath("../../Sound/ButtonPressedSFX")
+scene_transition = NodePath("../../SceneTransition")
+menu_slide = NodePath("../../MenuSlides")
+
+[node name="LevelSelect" type="Label" parent="LevelSelect/LevelSelectMenu"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 60
+text = "Level Select"
+horizontal_alignment = 1
+
+[node name="LevelsContainer" type="GridContainer" parent="LevelSelect/LevelSelectMenu"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 367)
+layout_mode = 2
+
+[node name="Return" type="Button" parent="LevelSelect/LevelSelectMenu"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "Return"
+flat = true
+
+[node name="MenuSlides" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_nqjyj")
+}

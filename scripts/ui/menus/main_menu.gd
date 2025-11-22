@@ -22,6 +22,7 @@ extends Control
 
 func _ready() -> void:
 	get_tree().paused = false
+	AudioServer.set_bus_effect_enabled(1,0,false)
 	scene_transition.fade_in()
 	menu_music.play()
 	menu_music.fade_in()
