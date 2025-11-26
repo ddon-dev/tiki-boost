@@ -220,6 +220,7 @@ flat = true
 
 [node name="Customize" type="Button" parent="Main/BoxContainer/InitMenu/MenuOptions"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 text = "Customize"
@@ -240,6 +241,7 @@ text = "Exit Game"
 flat = true
 
 [node name="Settings" type="MarginContainer" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -270,6 +272,7 @@ prev_menu = NodePath("../../../Main/BoxContainer/InitMenu")
 menu_slide = NodePath("../../../MenuSlides")
 
 [node name="LevelSelect" type="MarginContainer" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
