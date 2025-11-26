@@ -1,0 +1,189 @@
+[gd_scene load_steps=15 format=3 uid="uid://c4lehq0yxrjve"]
+
+[ext_resource type="Script" uid="uid://b8fx2gpqpf8tp" path="res://scripts/levels/level_manager.gd" id="1_i81vb"]
+[ext_resource type="Texture2D" uid="uid://brrjqum3ry1jw" path="res://assets/art/skyboxes/skybox1.png" id="2_tqvfx"]
+[ext_resource type="PackedScene" uid="uid://c1bkxh8p1litp" path="res://scenes/objects/FinishPoint.tscn" id="3_gmvll"]
+[ext_resource type="PackedScene" uid="uid://25tan4gxgpbv" path="res://scenes/objects/BoostRing.tscn" id="3_tqvfx"]
+[ext_resource type="PackedScene" uid="uid://1tjylehjm63n" path="res://scenes/objects/DeathZone.tscn" id="4_mr7xf"]
+[ext_resource type="Material" uid="uid://dn1m1wale5wxo" path="res://assets/materials/proto_terrain.tres" id="5_x63ga"]
+[ext_resource type="PackedScene" uid="uid://dp0oysvtwt18b" path="res://scenes/objects/MovingPlatform.tscn" id="6_gmvll"]
+[ext_resource type="PackedScene" uid="uid://bguscvtdsubse" path="res://scenes/player/Player.tscn" id="6_sywh5"]
+[ext_resource type="PackedScene" uid="uid://dips56jowu6et" path="res://scenes/ui/SceneTransition.tscn" id="7_qs6ra"]
+[ext_resource type="PackedScene" uid="uid://c5teqd0w4tca1" path="res://scenes/ui/menus/ProtoWinScreen.tscn" id="8_x5lii"]
+[ext_resource type="PackedScene" uid="uid://bi3f5qubdhed3" path="res://scenes/ui/menus/PauseMenu.tscn" id="9_5dxya"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_fei51"]
+panorama = ExtResource("2_tqvfx")
+
+[sub_resource type="Sky" id="Sky_bij1w"]
+sky_material = SubResource("PanoramaSkyMaterial_fei51")
+
+[sub_resource type="Environment" id="Environment_ag8wc"]
+background_mode = 2
+sky = SubResource("Sky_bij1w")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="Level_03" type="Node3D"]
+
+[node name="LevelManager" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("1_i81vb")
+
+[node name="Environment" type="Node3D" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Environment"]
+environment = SubResource("Environment_ag8wc")
+
+[node name="Sun" type="DirectionalLight3D" parent="Environment"]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, -10)
+shadow_enabled = true
+
+[node name="Objects" type="Node3D" parent="Environment"]
+
+[node name="BoostRing" parent="Environment/Objects" instance=ExtResource("3_tqvfx")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 54, 2, 68)
+
+[node name="BoostRing2" parent="Environment/Objects" instance=ExtResource("3_tqvfx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 7, 38)
+
+[node name="BoostRing3" parent="Environment/Objects" instance=ExtResource("3_tqvfx")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 31, 3, -7)
+
+[node name="BoostRing4" parent="Environment/Objects" instance=ExtResource("3_tqvfx")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 35, 5, -7)
+
+[node name="BoostRing5" parent="Environment/Objects" instance=ExtResource("3_tqvfx")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 39, 4, -7)
+
+[node name="FinishPoint" parent="Environment/Objects" instance=ExtResource("3_gmvll")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66, -0.4208498, -7)
+
+[node name="DeathZone" parent="Environment/Objects" instance=ExtResource("4_mr7xf")]
+
+[node name="MovingPlatform" parent="Environment/Objects" instance=ExtResource("6_gmvll")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, -1, -22)
+move_direction = 4
+move_distance = 32
+
+[node name="Terrain" type="Node3D" parent="Environment"]
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Environment/Terrain"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -7)
+use_collision = true
+collision_layer = 2
+collision_mask = 0
+radius = 6.0
+height = 1.0
+sides = 32
+material = ExtResource("5_x63ga")
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Environment/Terrain"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66, -1, -7)
+use_collision = true
+collision_layer = 2
+collision_mask = 0
+radius = 3.0
+height = 1.0
+sides = 32
+material = ExtResource("5_x63ga")
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="Environment/Terrain"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24, 0, -7)
+use_collision = true
+collision_layer = 2
+collision_mask = 0
+radius = 3.0
+height = 1.0
+sides = 32
+material = ExtResource("5_x63ga")
+
+[node name="CSGCombiner3D2" type="CSGCombiner3D" parent="Environment/Terrain"]
+use_collision = true
+collision_layer = 2
+collision_mask = 0
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Environment/Terrain/CSGCombiner3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 71, -1, 68)
+use_collision = true
+collision_layer = 2
+collision_mask = 0
+radius = 6.0
+height = 1.0
+sides = 32
+material = ExtResource("5_x63ga")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Environment/Terrain/CSGCombiner3D2"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 63.5, -1, 68)
+size = Vector3(12, 1, 16)
+material = ExtResource("5_x63ga")
+
+[node name="CSGCombiner3D3" type="CSGCombiner3D" parent="Environment/Terrain"]
+use_collision = true
+collision_layer = 2
+collision_mask = 0
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Environment/Terrain/CSGCombiner3D3"]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 18.5, -1, 68)
+use_collision = true
+collision_layer = 2
+collision_mask = 0
+radius = 6.0
+height = 1.0
+sides = 32
+material = ExtResource("5_x63ga")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Environment/Terrain/CSGCombiner3D3"]
+transform = Transform3D(1.3113416e-07, 0, -1, 0, 1, 0, 1, 0, 1.3113416e-07, 26, -1, 68)
+size = Vector3(12, 1, 16)
+material = ExtResource("5_x63ga")
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="Environment/Terrain"]
+use_collision = true
+collision_layer = 2
+collision_mask = 0
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Environment/Terrain/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 68)
+use_collision = true
+collision_layer = 2
+collision_mask = 0
+radius = 6.0
+height = 1.0
+sides = 32
+material = ExtResource("5_x63ga")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Environment/Terrain/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 53.5)
+size = Vector3(12, 1, 29)
+material = ExtResource("5_x63ga")
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="Environment/Terrain/CSGCombiner3D"]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Environment/Terrain/CSGCombiner3D/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 45.5)
+size = Vector3(12, 4, 13)
+material = ExtResource("5_x63ga")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Environment/Terrain/CSGCombiner3D/CSGCombiner3D/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 0.96242696, -0.27154127, 0, 0.27154127, 0.96242696, 0, 1.8504448, 2.0346756)
+operation = 2
+size = Vector3(12, 5, 18)
+material = ExtResource("5_x63ga")
+
+[node name="Player" parent="." instance=ExtResource("6_sywh5")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, -10)
+
+[node name="SpawnPosition" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 71, 2, 68)
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="SceneTransition" parent="UI" instance=ExtResource("7_qs6ra")]
+metadata/_edit_use_anchors_ = true
+
+[node name="ProtoWinScreen" parent="UI" instance=ExtResource("8_x5lii")]
+visible = false
+modulate = Color(1, 1, 1, 0)
+
+[node name="PauseMenu" parent="UI" instance=ExtResource("9_5dxya")]
