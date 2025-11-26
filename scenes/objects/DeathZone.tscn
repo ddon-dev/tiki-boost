@@ -1,11 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://1tjylehjm63n"]
+[gd_scene load_steps=4 format=3 uid="uid://1tjylehjm63n"]
 
 [ext_resource type="Script" uid="uid://cpcl5cmmlu7xn" path="res://scripts/objects/death_zone.gd" id="1_c8b0k"]
+[ext_resource type="AudioStream" uid="uid://35cqbeo68uw2" path="res://assets/audio/sfx/player/fall.ogg" id="2_8iedi"]
 
 [sub_resource type="WorldBoundaryShape3D" id="WorldBoundaryShape3D_jj4px"]
 
-[node name="DeathZone" type="Node3D"]
+[node name="DeathZone" type="Node3D" node_paths=PackedStringArray("sfx_fall")]
 script = ExtResource("1_c8b0k")
+sfx_fall = NodePath("DeathSFX")
 
 [node name="DeathArea" type="Area3D" parent="."]
 collision_layer = 0
@@ -13,5 +15,11 @@ collision_layer = 0
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DeathArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -5.129963, 0)
 shape = SubResource("WorldBoundaryShape3D_jj4px")
+debug_color = Color(0.98, 0.26133332, 0, 1)
+
+[node name="DeathSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_8iedi")
+volume_db = -6.0
+bus = &"SFX"
 
 [connection signal="body_entered" from="DeathArea" to="." method="_on_death_area_body_entered"]

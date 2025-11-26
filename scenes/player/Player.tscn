@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bguscvtdsubse"]
+[gd_scene load_steps=13 format=3 uid="uid://bguscvtdsubse"]
 
 [ext_resource type="Texture2D" uid="uid://ce6yr0wy8nkns" path="res://icon.svg" id="1_g1eag"]
 [ext_resource type="Script" uid="uid://djiifaqjw6fvn" path="res://scripts/player/marble.gd" id="1_gmlin"]
@@ -7,6 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://b7qxxe8uxevgb" path="res://assets/audio/sfx/player/marble_land.ogg" id="5_npwbq"]
 [ext_resource type="PackedScene" uid="uid://cyiegm8n0mtur" path="res://scenes/ui/SpeedLines.tscn" id="5_tpg5x"]
 [ext_resource type="AudioStream" uid="uid://yq8glkop4dbp" path="res://assets/audio/sfx/player/marble_rolling.ogg" id="6_c3xxp"]
+[ext_resource type="AudioStream" uid="uid://bxcgpjw54clla" path="res://assets/audio/sfx/player/jump.ogg" id="6_v42im"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_lr6ob"]
 bounce = 0.5
@@ -50,6 +51,10 @@ bus = &"SFX"
 [node name="LandSFX" type="AudioStreamPlayer3D" parent="Marble/SFX"]
 unique_name_in_owner = true
 stream = ExtResource("5_npwbq")
+
+[node name="JumpSFX" type="AudioStreamPlayer3D" parent="Marble/SFX"]
+unique_name_in_owner = true
+stream = ExtResource("6_v42im")
 
 [node name="GroundCheckRay" type="RayCast3D" parent="."]
 unique_name_in_owner = true
