@@ -1,5 +1,6 @@
 class_name Marble extends RigidBody3D
 
+@export_category("Movement")
 @export var move_speed: float = 800.0
 @export var max_velocity: float = 20.0
 @export var jump_force: float = 7.5
@@ -18,6 +19,8 @@ class_name Marble extends RigidBody3D
 # Audio
 @onready var sfx_rolling: AudioStreamPlayer3D = %RollingSFX
 @onready var sfx_land: AudioStreamPlayer3D = %LandSFX
+
+@export_category("Sound")
 @export var min_volume: float = 0 # Linear, no db
 @export var max_volume: float = 1
 @export var min_pitch: float = 0.65

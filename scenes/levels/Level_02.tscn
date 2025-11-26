@@ -1,0 +1,150 @@
+[gd_scene load_steps=19 format=3 uid="uid://d2n2p5hgeocs0"]
+
+[ext_resource type="Script" uid="uid://b8fx2gpqpf8tp" path="res://scripts/levels/level_manager.gd" id="1_jntcg"]
+[ext_resource type="Script" uid="uid://beeirwibgd8ew" path="res://scripts/levels/level_02.gd" id="1_juc02"]
+[ext_resource type="Texture2D" uid="uid://brrjqum3ry1jw" path="res://assets/art/skyboxes/skybox1.png" id="2_3njdy"]
+[ext_resource type="PackedScene" uid="uid://cht4105owcyed" path="res://scenes/objects/Checkpoint.tscn" id="3_ivapw"]
+[ext_resource type="PackedScene" uid="uid://c1bkxh8p1litp" path="res://scenes/objects/FinishPoint.tscn" id="3_vvr1n"]
+[ext_resource type="PackedScene" uid="uid://1tjylehjm63n" path="res://scenes/objects/DeathZone.tscn" id="4_ivapw"]
+[ext_resource type="PackedScene" uid="uid://dp0oysvtwt18b" path="res://scenes/objects/MovingPlatform.tscn" id="5_3njdy"]
+[ext_resource type="Material" uid="uid://dn1m1wale5wxo" path="res://assets/materials/proto_terrain.tres" id="5_juc02"]
+[ext_resource type="PackedScene" uid="uid://bguscvtdsubse" path="res://scenes/player/Player.tscn" id="6_dsu4p"]
+[ext_resource type="PackedScene" uid="uid://dips56jowu6et" path="res://scenes/ui/SceneTransition.tscn" id="7_folmu"]
+[ext_resource type="Texture2D" uid="uid://cpqm0jfem7p4s" path="res://assets/art/textures/texture_01.png" id="7_ivapw"]
+[ext_resource type="PackedScene" uid="uid://c5teqd0w4tca1" path="res://scenes/ui/menus/ProtoWinScreen.tscn" id="8_8ccjp"]
+[ext_resource type="PackedScene" uid="uid://bi3f5qubdhed3" path="res://scenes/ui/menus/PauseMenu.tscn" id="9_4b1sg"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_vjhk1"]
+panorama = ExtResource("2_3njdy")
+
+[sub_resource type="Sky" id="Sky_bij1w"]
+sky_material = SubResource("PanoramaSkyMaterial_vjhk1")
+
+[sub_resource type="Environment" id="Environment_l2ngv"]
+background_mode = 2
+sky = SubResource("Sky_bij1w")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_juc02"]
+albedo_texture = ExtResource("7_ivapw")
+uv1_triplanar = true
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_juc02"]
+radius = 1.5
+
+[node name="Level_02" type="Node3D"]
+script = ExtResource("1_juc02")
+
+[node name="LevelManager" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("1_jntcg")
+
+[node name="Environment" type="Node3D" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Environment"]
+environment = SubResource("Environment_l2ngv")
+
+[node name="Sun" type="DirectionalLight3D" parent="Environment"]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, -10)
+shadow_enabled = true
+
+[node name="Objects" type="Node3D" parent="Environment"]
+
+[node name="Checkpoint" parent="Environment/Objects" instance=ExtResource("3_ivapw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, 29)
+
+[node name="FinishPoint" parent="Environment/Objects" instance=ExtResource("3_vvr1n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4208498, -16)
+
+[node name="DeathZone" parent="Environment/Objects" instance=ExtResource("4_ivapw")]
+
+[node name="MovingPlatform" parent="Environment/Objects" instance=ExtResource("5_3njdy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 38)
+active = false
+move_direction = 5
+move_distance = 16
+
+[node name="PlatformTrigger" type="Area3D" parent="Environment/Objects"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27, 1, 39)
+collision_layer = 2
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="Environment/Objects/PlatformTrigger"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
+radial_segments = 32
+rings = 16
+material = SubResource("StandardMaterial3D_juc02")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Objects/PlatformTrigger"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
+shape = SubResource("SphereShape3D_juc02")
+
+[node name="Terrain" type="Node3D" parent="Environment"]
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="Environment/Terrain"]
+use_collision = true
+collision_layer = 2
+collision_mask = 0
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Environment/Terrain/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 54)
+radius = 6.0
+height = 1.0
+sides = 32
+material = ExtResource("5_juc02")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Environment/Terrain"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -16)
+use_collision = true
+collision_layer = 2
+collision_mask = 0
+radius = 6.0
+height = 1.0
+sides = 32
+material = ExtResource("5_juc02")
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Environment/Terrain"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, -1, 0)
+use_collision = true
+collision_layer = 2
+collision_mask = 0
+radius = 6.0
+height = 1.0
+sides = 32
+material = ExtResource("5_juc02")
+
+[node name="CSGCylinder3D5" type="CSGCylinder3D" parent="Environment/Terrain"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, -1, 29)
+use_collision = true
+collision_layer = 2
+collision_mask = 0
+radius = 5.0
+height = 1.0
+sides = 32
+material = ExtResource("5_juc02")
+
+[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="Environment/Terrain"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, -1, 8)
+use_collision = true
+collision_layer = 2
+collision_mask = 0
+radius = 5.0
+height = 1.0
+sides = 32
+material = ExtResource("5_juc02")
+
+[node name="Player" parent="." instance=ExtResource("6_dsu4p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
+
+[node name="SpawnPosition" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 54)
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="SceneTransition" parent="UI" instance=ExtResource("7_folmu")]
+
+[node name="ProtoWinScreen" parent="UI" instance=ExtResource("8_8ccjp")]
+visible = false
+modulate = Color(1, 1, 1, 0)
+
+[node name="PauseMenu" parent="UI" instance=ExtResource("9_4b1sg")]

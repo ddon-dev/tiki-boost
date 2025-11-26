@@ -102,7 +102,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4208498, -16)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 24)
 
 [node name="Player" parent="." instance=ExtResource("1_a6j5x")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.086801, 0, 12.906026)
 
 [node name="SpawnPosition" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 2, 54)
