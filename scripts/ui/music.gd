@@ -5,8 +5,7 @@ extends AudioStreamPlayer
 @export var fade_out_time: int
 
 func fade_in():
-	var fade_in = get_tree().create_tween()
-	fade_in.tween_property(
+	create_tween().tween_property(
 		self,
 		"volume_linear",
 		fade_in_target,
@@ -14,8 +13,7 @@ func fade_in():
 	)
 	
 func fade_out():
-	var fade_out = get_tree().create_tween()
-	fade_out.tween_property(
+	create_tween().tween_property(
 		self,
 		"volume_db",
 		-150,

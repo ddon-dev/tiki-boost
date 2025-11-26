@@ -46,10 +46,10 @@ func load_settings():
 	game_settings = load(GAME_SETTINGS_PATH)
 	apply_settings(game_settings)
 	
-func apply_settings(game_settings: GameSettings):
-	AudioServer.set_bus_volume_linear(AUDIOBUS.master, game_settings.master_volume)
-	AudioServer.set_bus_volume_linear(AUDIOBUS.music, game_settings.music_volume)
-	AudioServer.set_bus_volume_linear(AUDIOBUS.sfx, game_settings.sfx_volume)
+func apply_settings(new_game_settings: GameSettings):
+	AudioServer.set_bus_volume_linear(AUDIOBUS.master, new_game_settings.master_volume)
+	AudioServer.set_bus_volume_linear(AUDIOBUS.music, new_game_settings.music_volume)
+	AudioServer.set_bus_volume_linear(AUDIOBUS.sfx, new_game_settings.sfx_volume)
 	GameManager.game_settings.screen_mode = get_window().mode
 	GameManager.game_settings.resolution = get_window().size
 #endregion

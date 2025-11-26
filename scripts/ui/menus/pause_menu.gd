@@ -48,6 +48,7 @@ func _input(event: InputEvent) -> void:
 				Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	
 func resume_game():
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	AudioServer.set_bus_effect_enabled(1,0,false)
 	get_tree().paused = !get_tree().paused
 	sfx_paused.play()

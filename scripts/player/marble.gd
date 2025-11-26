@@ -6,6 +6,8 @@ class_name Marble extends RigidBody3D
 @export var finish_decel: float = 0.25
 @export var jump_buffer_window: float = 0.08
 @export var coyote_time_window: float = 0.08
+@export var boost_default_speed: float = 40.0
+@export var boost_default_duration: float = 0.6
 
 @onready var camera: Camera3D = %Camera3D
 @onready var ground_check_ray: RayCast3D = %GroundCheckRay
@@ -34,6 +36,9 @@ var level_finished: bool = false
 @onready var coyote_timer: Timer = %Coyote
 var coyote_time_active: bool = false
 
+var is_boosted: bool = false
+var boost_timer: float = 0.0
+
 func _ready() -> void:
 	coyote_timer.timeout.connect(func(): coyote_time_active = false)
 
@@ -57,10 +62,15 @@ func _physics_process(delta: float) -> void:
 	
 	if level_finished: gravity_scale = move_toward(gravity_scale, 0.0, finish_decel * delta)
 	
-	if abs(linear_velocity.x) - max_velocity > 0.0:
-		linear_velocity.x = max_velocity
-	if abs(linear_velocity.z) - max_velocity > 0.0:
-		linear_velocity.z = -max_velocity
+	if is_boosted:
+		boost_timer -= delta
+		if boost_timer <= 0.0:
+			is_boosted = false
+	else:
+		if abs(linear_velocity.x) > max_velocity:
+			linear_velocity.x = sign(linear_velocity.x) * max_velocity
+		if abs(linear_velocity.z) > max_velocity:
+			linear_velocity.z = sign(linear_velocity.z) * max_velocity
 	
 	if Input.is_action_just_pressed("jump"):
 		jump_buffer_timer.start(jump_buffer_window)
@@ -91,14 +101,11 @@ func _physics_process(delta: float) -> void:
 		if sfx_rolling.playing:
 			sfx_rolling.stop()
 			sfx_rolling.volume_db = linear_to_db(0.0)
-			
 
-
-func _on_body_entered(body: Node) -> void:
+func _on_body_entered(_body: Node) -> void:
 	sfx_land.volume_db = linear_to_db(target_volume_db)
 	if not sfx_land.is_playing():
 		sfx_land.play()
-	
 
 func _movement(delta: float) -> void:
 	# f_input o forward_input, movimiento hacia adelante y hacia atrás
@@ -115,6 +122,21 @@ func _movement(delta: float) -> void:
 	
 	apply_central_force(f_direction * move_speed * delta)
 	apply_central_force(h_direction * move_speed * delta)
+
+func apply_speed_boost(direction: Vector3, speed: float, duration: float) -> void:
+	is_boosted = true
+	boost_timer = duration
+
+	var dir := direction.normalized()
+	if dir == Vector3.ZERO:
+		return
+
+	# Mantenemos la velocidad vertical actual para no matar saltos
+	var vy := linear_velocity.y
+	var new_vel := dir * speed
+	new_vel.y = vy
+
+	linear_velocity = new_vel
 
 func _jump() -> void:
 	is_jumping = true
