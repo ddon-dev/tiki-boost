@@ -34,15 +34,16 @@ script = ExtResource("1_hhyrm")
 environment = SubResource("Environment_10xc4")
 
 [node name="Sun" type="DirectionalLight3D" parent="Environment"]
-transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, -4.7000003)
 shadow_enabled = true
 
 [node name="Objects" type="Node3D" parent="Environment"]
 
 [node name="FinishPoint" parent="Environment/Objects" instance=ExtResource("2_xokhc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4208498, -16)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4208498, -25.5)
 
 [node name="DeathZone" parent="Environment/Objects" instance=ExtResource("3_hhyrm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.7000003)
 
 [node name="Terrain" type="Node3D" parent="Environment"]
 
@@ -52,26 +53,26 @@ collision_layer = 2
 collision_mask = 0
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="Environment/Terrain/CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 64)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 81.40349)
 radius = 6.0
 height = 1.0
 sides = 32
 material = ExtResource("5_5mpa8")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="Environment/Terrain/CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 48)
-size = Vector3(12, 1, 32)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 58.5)
+size = Vector3(12, 1, 45)
 material = ExtResource("5_5mpa8")
 
 [node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Environment/Terrain/CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 32)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 36)
 radius = 6.0
 height = 1.0
 sides = 32
 material = ExtResource("5_5mpa8")
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="Environment/Terrain"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -16)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -25.5)
 use_collision = true
 collision_layer = 2
 collision_mask = 0
@@ -81,7 +82,7 @@ sides = 32
 material = ExtResource("5_5mpa8")
 
 [node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Environment/Terrain"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, -1, 10)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, -1, 5.2999997)
 use_collision = true
 collision_layer = 2
 collision_mask = 0
@@ -91,7 +92,7 @@ sides = 32
 material = ExtResource("5_5mpa8")
 
 [node name="CSGCylinder3D3" type="CSGCylinder3D" parent="Environment/Terrain"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, -1, -1)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6999998, -1, -9.8)
 use_collision = true
 collision_layer = 2
 collision_mask = 0
@@ -111,13 +112,15 @@ sides = 32
 material = ExtResource("5_5mpa8")
 
 [node name="Player" parent="." instance=ExtResource("4_xokhc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.7000003)
 
 [node name="SpawnPosition" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 64)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 81.40349)
 
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="SceneTransition" parent="UI" instance=ExtResource("7_c83vx")]
+unique_name_in_owner = true
 
 [node name="ProtoWinScreen" parent="UI" instance=ExtResource("8_5dpfh")]
 visible = false

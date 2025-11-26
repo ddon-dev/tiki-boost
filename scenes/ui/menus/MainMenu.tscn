@@ -287,7 +287,6 @@ theme_override_constants/margin_bottom = 35
 
 [node name="LevelSelectMenu" type="VBoxContainer" parent="LevelSelect" node_paths=PackedStringArray("sfx_pressed", "scene_transition", "menu_slide")]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
 theme_override_constants/separation = 40
 script = ExtResource("9_nqjyj")

@@ -24,7 +24,6 @@ func confirm():
 	scene_transition.fade_out()
 	#menu_music.fade_out()
 	await sfx_pressed.finished
-	get_tree().paused = false
 	StageHandler.restart_level()
 	
 func cancel():

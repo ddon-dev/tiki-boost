@@ -4,11 +4,17 @@ class_name LevelManager extends Node
 signal checkpoint_reached(position: Vector3)
 signal level_finished
 
+# Scene Transition
+@onready var scene_transition: Control = %SceneTransition
+
 var current_spawnpoint: Vector3 = Vector3.ZERO
 
 func _ready() -> void:
+	get_tree().paused = false
+	GameManager.canPause = true
+	AudioServer.set_bus_effect_enabled(1,0,false)
 	current_spawnpoint = $"../SpawnPosition".global_position
-	
+	scene_transition.fade_in()
 	checkpoint_reached.connect(_checkpoint_reached)
  
 func _checkpoint_reached(position: Vector3) -> void:

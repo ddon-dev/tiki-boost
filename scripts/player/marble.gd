@@ -19,6 +19,7 @@ class_name Marble extends RigidBody3D
 # Audio
 @onready var sfx_rolling: AudioStreamPlayer3D = %RollingSFX
 @onready var sfx_land: AudioStreamPlayer3D = %LandSFX
+@onready var sfx_jump: AudioStreamPlayer3D = %JumpSFX
 
 @export_category("Sound")
 @export var min_volume: float = 0 # Linear, no db
@@ -76,10 +77,13 @@ func _physics_process(delta: float) -> void:
 			linear_velocity.z = sign(linear_velocity.z) * max_velocity
 	
 	if Input.is_action_just_pressed("jump"):
-		jump_buffer_timer.start(jump_buffer_window)
+		jump_buffer_timer.start(jump_buffer_window)		
 	
 	if jump_buffer_timer.time_left > 0.0 && (ground_check_ray.is_colliding() || coyote_time_active):
 		_jump()
+		if !sfx_jump.playing:
+			sfx_jump.play()
+
 		
 	# Speed Lines
 	var density = linear_velocity.length() * 0.030

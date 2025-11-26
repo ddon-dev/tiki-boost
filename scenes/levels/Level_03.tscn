@@ -64,6 +64,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66, -0.4208498, -7)
 
 [node name="MovingPlatform" parent="Environment/Objects" instance=ExtResource("6_gmvll")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, -1, -22)
+move_duration = 3.8
 move_direction = 4
 move_distance = 32
 
@@ -184,6 +185,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 71, 2, 68)
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="SceneTransition" parent="UI" instance=ExtResource("7_qs6ra")]
+unique_name_in_owner = true
 metadata/_edit_use_anchors_ = true
 
 [node name="ProtoWinScreen" parent="UI" instance=ExtResource("8_x5lii")]

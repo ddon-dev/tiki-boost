@@ -32,8 +32,9 @@ func _on_restart_button_pressed() -> void:
 
 func _on_continue_button_pressed() -> void:
 	sfx_pressed.play()
+	scene_transition.fade_out()
 	await sfx_pressed.finished
-	pass
+	StageHandler.go_to_next_level()
 
 func _on_menu_button_pressed() -> void:
 	sfx_pressed.play()

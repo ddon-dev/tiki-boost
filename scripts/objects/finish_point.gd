@@ -5,4 +5,5 @@ class_name FinishPoint extends Node3D
 func _on_finish_area_body_entered(body: Node3D) -> void:
 	if body is Marble:
 		level_manager.level_finished.emit()
+		GameManager.canPause = false
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
