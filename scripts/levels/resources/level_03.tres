@@ -5,4 +5,5 @@
 [resource]
 script = ExtResource("1_w7mif")
 level_path = "uid://c4lehq0yxrjve"
+is_tutorial = true
 metadata/_custom_type_script = "uid://b07ncf70dsirm"
