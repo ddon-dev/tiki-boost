@@ -15,6 +15,7 @@ class_name Marble extends RigidBody3D
 
 # VFX
 @onready var speed_lines: ColorRect = %SpeedLines
+@onready var radial_blur: ColorRect = %RadialBlur
 
 # Audio
 @onready var sfx_rolling: AudioStreamPlayer3D = %RollingSFX
@@ -84,14 +85,29 @@ func _physics_process(delta: float) -> void:
 		if !sfx_jump.playing:
 			sfx_jump.play()
 
-		
+	
+	current_velocity = linear_velocity.length()
 	# Speed Lines
-	var density = linear_velocity.length() * 0.030
+	var density = current_velocity * 0.030
 	speed_lines.material.set_shader_parameter("line_density", density)
+	
+	# RadialBlur
+	var blur_amount = current_velocity * 0.0005
+	var max_blur_amount = 0.025
+	var min_speed_threshold = 10
+	var max_speed_blur = 40
+	if (current_velocity < min_speed_threshold):
+		blur_amount = 0
+	else:
+		var speed_range = max_speed_blur - min_speed_threshold
+		var speed_blur_progress = (current_velocity - min_speed_threshold) / speed_range
+		speed_blur_progress = clamp(speed_blur_progress, 0.0, 1.0)
+		blur_amount = lerp(0.0, max_blur_amount, speed_blur_progress)
+		
+	radial_blur.material.set_shader_parameter("blur_power", blur_amount)
 	
 	# SFX
 	var is_grounded: bool = ground_check_ray.is_colliding()
-	current_velocity = linear_velocity.length()
 	velocity_percent = clamp(inverse_lerp(0.0, max_velocity, current_velocity), 0.0, 1.0)
 	target_volume_db = lerp(min_volume, max_volume, velocity_percent)
 	target_pitch = lerp(min_pitch, max_pitch, velocity_percent)
