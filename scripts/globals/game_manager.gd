@@ -55,8 +55,8 @@ func apply_settings(new_game_settings: GameSettings):
 #endregion
 
 #region Level Music
-func start_music():
-	var internal_number: int = 0
-	for level_path in StageHandler.level_paths:
-		if internal_number <= 2:
+func play_music():
+	if StageHandler.current_level.is_tutorial:
 			MusicManager.play_tutorial_music()
+	if StageHandler.current_level.is_main_menu:
+			MusicManager.play_menu_music()

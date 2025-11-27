@@ -19,12 +19,11 @@ extends VBoxContainer
 
 func _ready() -> void:
 	return_menu.pressed.connect(go_back)
-	var internal_number: int = 0
 	var level_number: int = 1
 	var tut_number: int = 1
-	for level_path in StageHandler.level_paths:
+	for level_path in StageHandler.levels:
 		var button = Button.new()
-		if internal_number <=2:
+		if level_path.is_tutorial:
 			button.text = "Tutorial %s" % tut_number
 			tut_number += 1
 		else:
@@ -39,7 +38,6 @@ func _ready() -> void:
 			await sfx_pressed.finished
 			StageHandler.go_to_level(level_path)
 		)
-		internal_number += 1
 
 func go_back():
 	sfx_pressed.play()
