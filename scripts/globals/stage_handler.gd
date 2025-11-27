@@ -3,7 +3,7 @@ extends Node
 @export var levels: Array[LevelData]
 @export var main_menu: LevelData
 var current_level: LevelData
-
+@export var last_level: LevelData # Set to the first tutorial level by default
 signal level_changed(new_level_path)
 
 func go_to_init_level():
@@ -22,10 +22,16 @@ func go_to_next_level():
 		go_to_menu()
 
 func go_to_level(levels: LevelData):
-	current_level = levels
+	set_last_level()
 	get_tree().change_scene_to_file(current_level.level_path)
 	level_changed.emit(current_level)
-	
+
+func set_last_level():
+	last_level = current_level
+
+func set_current_level():
+	pass
+
 func go_to_menu():
 	current_level = main_menu
 	get_tree().change_scene_to_file(current_level.level_path)

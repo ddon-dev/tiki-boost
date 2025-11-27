@@ -1,7 +1,8 @@
-[gd_scene load_steps=16 format=3 uid="uid://v8aba8e4rxts"]
+[gd_scene load_steps=17 format=3 uid="uid://v8aba8e4rxts"]
 
 [ext_resource type="Script" uid="uid://b8fx2gpqpf8tp" path="res://scripts/levels/level_manager.gd" id="1_hhyrm"]
 [ext_resource type="Texture2D" uid="uid://brrjqum3ry1jw" path="res://assets/art/skyboxes/skybox1.png" id="1_wee7o"]
+[ext_resource type="Resource" uid="uid://cn714o1wk8y6b" path="res://scripts/levels/resources/level_01.tres" id="2_shv8k"]
 [ext_resource type="PackedScene" uid="uid://c1bkxh8p1litp" path="res://scenes/objects/FinishPoint.tscn" id="2_xokhc"]
 [ext_resource type="PackedScene" uid="uid://1tjylehjm63n" path="res://scenes/objects/DeathZone.tscn" id="3_hhyrm"]
 [ext_resource type="PackedScene" uid="uid://bguscvtdsubse" path="res://scenes/player/Player.tscn" id="4_xokhc"]
@@ -30,8 +31,10 @@ glow_enabled = true
 [node name="LevelManager" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("1_hhyrm")
+level_data = ExtResource("2_shv8k")
 
 [node name="Environment" type="Node3D" parent="."]
+unique_name_in_owner = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Environment"]
 environment = SubResource("Environment_10xc4")
