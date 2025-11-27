@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dj7pcyskv5k1u"
-path.s3tc="res://.godot/imported/tutorial_times.png-a05b5cb451a9ccf676e4b66c3b2ff8a5.s3tc.ctex"
+uid="uid://kbto5h4dexcv"
+path.s3tc="res://.godot/imported/tutorial_rings.png-7a47e13658196847cd81b35907abc4f0.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/art/tutorial_times.png"
-dest_files=["res://.godot/imported/tutorial_times.png-a05b5cb451a9ccf676e4b66c3b2ff8a5.s3tc.ctex"]
+source_file="res://assets/art/tutorial_signs/tutorial_rings.png"
+dest_files=["res://.godot/imported/tutorial_rings.png-7a47e13658196847cd81b35907abc4f0.s3tc.ctex"]
 
 [params]
 

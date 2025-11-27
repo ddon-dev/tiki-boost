@@ -53,3 +53,10 @@ func apply_settings(new_game_settings: GameSettings):
 	GameManager.game_settings.screen_mode = get_window().mode
 	GameManager.game_settings.resolution = get_window().size
 #endregion
+
+#region Level Music
+func start_music():
+	var internal_number: int = 0
+	for level_path in StageHandler.level_paths:
+		if internal_number <= 2:
+			MusicManager.play_tutorial_music()

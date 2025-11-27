@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c1wid8mrsk4d"
-path.s3tc="res://.godot/imported/tutorial_jump.png-3cbbae3bcf5105310a16503669588e5b.s3tc.ctex"
+uid="uid://1h7thk3hwfbp"
+path.s3tc="res://.godot/imported/tutorial_checkpoint.png-66cea3f199b5d8ce02d04544ec16ddb3.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/art/tutorial_jump.png"
-dest_files=["res://.godot/imported/tutorial_jump.png-3cbbae3bcf5105310a16503669588e5b.s3tc.ctex"]
+source_file="res://assets/art/tutorial_signs/tutorial_checkpoint.png"
+dest_files=["res://.godot/imported/tutorial_checkpoint.png-66cea3f199b5d8ce02d04544ec16ddb3.s3tc.ctex"]
 
 [params]
 

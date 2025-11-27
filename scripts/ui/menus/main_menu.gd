@@ -4,7 +4,7 @@ extends Control
 @export var scene_transition: Control
 
 # Audio
-@onready var menu_music: AudioStreamPlayer = %Music
+#@onready var menu_music: AudioStreamPlayer = %Music
 @export var sfx_pressed: AudioStreamPlayer
 
 # Menus
@@ -24,8 +24,9 @@ func _ready() -> void:
 	get_tree().paused = false
 	AudioServer.set_bus_effect_enabled(1,0,false)
 	scene_transition.fade_in()
-	menu_music.play()
-	menu_music.fade_in()
+	MusicManager.play_menu_music()
+	#menu_music.play()
+	#menu_music.fade_in()
 	start.pressed.connect(start_game)
 	level_select.pressed.connect(select_level)
 	customize.pressed.connect(customize_options)
@@ -35,7 +36,7 @@ func _ready() -> void:
 func start_game():
 	sfx_pressed.play()
 	scene_transition.fade_out()
-	menu_music.fade_out()
+	#menu_music.fade_out()
 	await sfx_pressed.finished
 	StageHandler.go_to_init_level()
 
@@ -57,6 +58,6 @@ func open_settings():
 func exit_game():
 	sfx_pressed.play()
 	scene_transition.fade_out()
-	menu_music.fade_out()
+	#menu_music.fade_out()
 	await sfx_pressed.finished
 	get_tree().quit()

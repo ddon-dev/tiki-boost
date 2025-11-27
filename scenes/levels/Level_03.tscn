@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://c4lehq0yxrjve"]
+[gd_scene load_steps=17 format=3 uid="uid://c4lehq0yxrjve"]
 
 [ext_resource type="Script" uid="uid://b8fx2gpqpf8tp" path="res://scripts/levels/level_manager.gd" id="1_i81vb"]
 [ext_resource type="Texture2D" uid="uid://brrjqum3ry1jw" path="res://assets/art/skyboxes/skybox1.png" id="2_tqvfx"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://dips56jowu6et" path="res://scenes/ui/SceneTransition.tscn" id="7_qs6ra"]
 [ext_resource type="PackedScene" uid="uid://c5teqd0w4tca1" path="res://scenes/ui/menus/ProtoWinScreen.tscn" id="8_x5lii"]
 [ext_resource type="PackedScene" uid="uid://bi3f5qubdhed3" path="res://scenes/ui/menus/PauseMenu.tscn" id="9_5dxya"]
+[ext_resource type="Texture2D" uid="uid://kbto5h4dexcv" path="res://assets/art/tutorial_signs/tutorial_rings.png" id="9_x63ga"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_fei51"]
 panorama = ExtResource("2_tqvfx")
@@ -175,6 +176,14 @@ transform = Transform3D(1, 0, 0, 0, 0.96242696, -0.27154127, 0, 0.27154127, 0.96
 operation = 2
 size = Vector3(12, 5, 18)
 material = ExtResource("5_x63ga")
+
+[node name="TutorialSigns" type="Node3D" parent="Environment/Terrain"]
+
+[node name="SignRing" type="Sprite3D" parent="Environment/Terrain/TutorialSigns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57.676487, 1.8355398, 73.34605)
+modulate = Color(0.9, 0.9, 0.9, 0.9607843)
+billboard = 1
+texture = ExtResource("9_x63ga")
 
 [node name="Player" parent="." instance=ExtResource("6_sywh5")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, -10)

@@ -1,16 +1,15 @@
-[gd_scene load_steps=17 format=3 uid="uid://v8aba8e4rxts"]
+[gd_scene load_steps=16 format=3 uid="uid://v8aba8e4rxts"]
 
 [ext_resource type="Script" uid="uid://b8fx2gpqpf8tp" path="res://scripts/levels/level_manager.gd" id="1_hhyrm"]
-[ext_resource type="Script" uid="uid://c8cknxggcf0w1" path="res://scenes/levels/level_01.gd" id="1_shv8k"]
 [ext_resource type="Texture2D" uid="uid://brrjqum3ry1jw" path="res://assets/art/skyboxes/skybox1.png" id="1_wee7o"]
 [ext_resource type="PackedScene" uid="uid://c1bkxh8p1litp" path="res://scenes/objects/FinishPoint.tscn" id="2_xokhc"]
 [ext_resource type="PackedScene" uid="uid://1tjylehjm63n" path="res://scenes/objects/DeathZone.tscn" id="3_hhyrm"]
 [ext_resource type="PackedScene" uid="uid://bguscvtdsubse" path="res://scenes/player/Player.tscn" id="4_xokhc"]
-[ext_resource type="Texture2D" uid="uid://da8klwwxlyou6" path="res://assets/art/tutorial_move.png" id="5_5dpfh"]
+[ext_resource type="Texture2D" uid="uid://da8klwwxlyou6" path="res://assets/art/tutorial_signs/tutorial_move.png" id="5_5dpfh"]
 [ext_resource type="Material" uid="uid://dn1m1wale5wxo" path="res://assets/materials/proto_terrain.tres" id="5_5mpa8"]
-[ext_resource type="Texture2D" uid="uid://c1wid8mrsk4d" path="res://assets/art/tutorial_jump.png" id="6_vlkw4"]
+[ext_resource type="Texture2D" uid="uid://c1wid8mrsk4d" path="res://assets/art/tutorial_signs/tutorial_jump.png" id="6_vlkw4"]
 [ext_resource type="PackedScene" uid="uid://dips56jowu6et" path="res://scenes/ui/SceneTransition.tscn" id="7_c83vx"]
-[ext_resource type="Texture2D" uid="uid://dj7pcyskv5k1u" path="res://assets/art/tutorial_times.png" id="7_xpxa0"]
+[ext_resource type="Texture2D" uid="uid://dj7pcyskv5k1u" path="res://assets/art/tutorial_signs/tutorial_times.png" id="7_xpxa0"]
 [ext_resource type="PackedScene" uid="uid://c5teqd0w4tca1" path="res://scenes/ui/menus/ProtoWinScreen.tscn" id="8_5dpfh"]
 [ext_resource type="PackedScene" uid="uid://bi3f5qubdhed3" path="res://scenes/ui/menus/PauseMenu.tscn" id="9_vlkw4"]
 
@@ -27,7 +26,6 @@ tonemap_mode = 2
 glow_enabled = true
 
 [node name="Level_01" type="Node3D"]
-script = ExtResource("1_shv8k")
 
 [node name="LevelManager" type="Node" parent="."]
 unique_name_in_owner = true

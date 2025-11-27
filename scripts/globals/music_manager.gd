@@ -7,7 +7,8 @@ extends AudioStreamPlayer
 @export var fade_out_time: int
 
 # Level's Music
-@export_category("Level's Music")
+@export_category("Music Manager")
+@export var menu_music: AudioStream
 @export var tutorial_music: AudioStream
 @export var orange_levels_music: AudioStream
 
@@ -20,6 +21,14 @@ func play_orange_levels_music():
 	if stream != orange_levels_music:
 		stream = orange_levels_music
 		play()
+
+func play_menu_music():
+	if stream != menu_music:
+		stream = menu_music
+		play()
+		
+func stop_music():
+	stop()
 
 func fade_in():
 	create_tween().tween_property(

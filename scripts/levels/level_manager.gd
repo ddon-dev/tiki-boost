@@ -12,6 +12,7 @@ var current_spawnpoint: Vector3 = Vector3.ZERO
 func _ready() -> void:
 	get_tree().paused = false
 	GameManager.canPause = true
+	GameManager.start_music()
 	AudioServer.set_bus_effect_enabled(1,0,false)
 	current_spawnpoint = $"../SpawnPosition".global_position
 	scene_transition.fade_in()

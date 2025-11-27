@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://d2n2p5hgeocs0"]
+[gd_scene load_steps=21 format=3 uid="uid://d2n2p5hgeocs0"]
 
 [ext_resource type="Script" uid="uid://b8fx2gpqpf8tp" path="res://scripts/levels/level_manager.gd" id="1_jntcg"]
 [ext_resource type="Script" uid="uid://beeirwibgd8ew" path="res://scripts/levels/level_02.gd" id="1_juc02"]
@@ -13,6 +13,8 @@
 [ext_resource type="Texture2D" uid="uid://cpqm0jfem7p4s" path="res://assets/art/textures/texture_01.png" id="7_ivapw"]
 [ext_resource type="PackedScene" uid="uid://c5teqd0w4tca1" path="res://scenes/ui/menus/ProtoWinScreen.tscn" id="8_8ccjp"]
 [ext_resource type="PackedScene" uid="uid://bi3f5qubdhed3" path="res://scenes/ui/menus/PauseMenu.tscn" id="9_4b1sg"]
+[ext_resource type="Texture2D" uid="uid://1h7thk3hwfbp" path="res://assets/art/tutorial_signs/tutorial_checkpoint.png" id="9_dsu4p"]
+[ext_resource type="Texture2D" uid="uid://dqgdua2tuwsok" path="res://assets/art/tutorial_signs/tutorial_activate.png" id="10_folmu"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_vjhk1"]
 panorama = ExtResource("2_3njdy")
@@ -78,6 +80,20 @@ material = SubResource("StandardMaterial3D_juc02")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Environment/Objects/PlatformTrigger"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -10)
 shape = SubResource("SphereShape3D_juc02")
+
+[node name="TutorialSigns" type="Node3D" parent="Environment/Objects"]
+
+[node name="SignCheckpoint" type="Sprite3D" parent="Environment/Objects/TutorialSigns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.7249165, 2.2765665, 50.09278)
+modulate = Color(0.9, 0.9, 0.9, 0.9607843)
+billboard = 1
+texture = ExtResource("9_dsu4p")
+
+[node name="SignActivate" type="Sprite3D" parent="Environment/Objects/TutorialSigns"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.203724, 2.4109344, 33.653896)
+modulate = Color(0.9, 0.9, 0.9, 0.9607843)
+billboard = 1
+texture = ExtResource("10_folmu")
 
 [node name="Terrain" type="Node3D" parent="Environment"]
 
