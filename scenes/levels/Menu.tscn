@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://dh6qat532gkdc"]
+[gd_scene load_steps=13 format=3 uid="uid://dh6qat532gkdc"]
 
 [ext_resource type="PackedScene" uid="uid://so18tatfe4un" path="res://scenes/ui/menus/MainMenu.tscn" id="1_dex4k"]
 [ext_resource type="Texture2D" uid="uid://brrjqum3ry1jw" path="res://assets/art/skyboxes/skybox1.png" id="2_5au3h"]
 [ext_resource type="PackedScene" uid="uid://c1bkxh8p1litp" path="res://scenes/objects/FinishPoint.tscn" id="2_e3kp8"]
+[ext_resource type="Resource" uid="uid://ilhmg3po5exv" path="res://scripts/levels/resources/main_menu.tres" id="2_re47u"]
 [ext_resource type="PackedScene" uid="uid://1tjylehjm63n" path="res://scenes/objects/DeathZone.tscn" id="3_5au3h"]
 [ext_resource type="PackedScene" uid="uid://cht4105owcyed" path="res://scenes/objects/Checkpoint.tscn" id="4_lijdy"]
 [ext_resource type="Script" uid="uid://brhgl7cs7y3em" path="res://scripts/ui/menus/menu_camera.gd" id="5_bfhna"]
@@ -37,6 +38,7 @@ layer = 5
 follow_viewport_enabled = true
 
 [node name="MainMenu" parent="CanvasLayer" instance=ExtResource("1_dex4k")]
+menu_data = ExtResource("2_re47u")
 
 [node name="Environment" type="Node3D" parent="."]
 
@@ -93,11 +95,14 @@ shadow_enabled = true
 
 [node name="FinishPoint" parent="Environment" instance=ExtResource("2_e3kp8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4208498, -16)
+script = null
 
 [node name="DeathZone" parent="Environment" instance=ExtResource("3_5au3h")]
+script = null
 
 [node name="Checkpoint" parent="Environment" instance=ExtResource("4_lijdy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 24)
+script = null
 
 [node name="MenuCamera" type="Node3D" parent="."]
 

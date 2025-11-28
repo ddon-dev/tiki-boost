@@ -1,12 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://so18tatfe4un"]
+[gd_scene load_steps=12 format=3 uid="uid://so18tatfe4un"]
 
 [ext_resource type="Script" uid="uid://dndkv03yk8wya" path="res://scripts/ui/menus/main_menu.gd" id="1_2ysvc"]
 [ext_resource type="Texture2D" uid="uid://bup8l41f00ub0" path="res://assets/art/ui/title_small.png" id="1_vjtqc"]
 [ext_resource type="AudioStream" uid="uid://c2sx68vhfkwvj" path="res://assets/audio/sfx/ui/button_pressed.ogg" id="2_2ysvc"]
 [ext_resource type="Theme" uid="uid://dg0bxpr4spgob" path="res://assets/themes/menu_theme.tres" id="2_6jbdy"]
 [ext_resource type="PackedScene" uid="uid://dips56jowu6et" path="res://scenes/ui/SceneTransition.tscn" id="2_bhu4a"]
-[ext_resource type="AudioStream" uid="uid://btk3vkog5moeq" path="res://assets/audio/music/StarEye Spaceway - ViRiX Dreamcore .ogg" id="2_xpiny"]
-[ext_resource type="Script" uid="uid://druqdf0m635aj" path="res://scripts/ui/music.gd" id="4_7mi0g"]
 [ext_resource type="PackedScene" uid="uid://dvgka2vsrq0hy" path="res://scenes/ui/menus/SettingsMenu.tscn" id="8_7mi0g"]
 [ext_resource type="Script" uid="uid://cw2plsd54xmuy" path="res://scripts/ui/menus/level_select.gd" id="9_nqjyj"]
 
@@ -153,16 +151,6 @@ menu_slide = NodePath("MenuSlides")
 layout_mode = 1
 
 [node name="Sound" type="Node" parent="."]
-
-[node name="Music" type="AudioStreamPlayer" parent="Sound"]
-unique_name_in_owner = true
-stream = ExtResource("2_xpiny")
-volume_db = -25.0
-bus = &"Music"
-script = ExtResource("4_7mi0g")
-fade_in_target = 0.3
-fade_in_time = 0.5
-fade_out_time = 7
 
 [node name="ButtonPressedSFX" type="AudioStreamPlayer" parent="Sound"]
 stream = ExtResource("2_2ysvc")

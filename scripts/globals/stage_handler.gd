@@ -21,17 +21,14 @@ func go_to_next_level():
 	else:
 		go_to_menu()
 
-func go_to_level(levels: LevelData):
-	current_level = levels
+func go_to_level(level: LevelData):
+	current_level = level
 	set_last_level()
 	get_tree().change_scene_to_file(current_level.level_path)
 	level_changed.emit(current_level)
 
 func set_last_level():
 	last_level = current_level
-
-func set_current_level():
-	pass
 
 func go_to_menu():
 	current_level = main_menu

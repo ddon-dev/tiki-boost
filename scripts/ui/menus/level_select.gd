@@ -2,7 +2,6 @@ extends VBoxContainer
 
 # Audio
 @export var sfx_pressed: AudioStreamPlayer
-@onready var menu_music: AudioStreamPlayer = %Music
 
 # Scene Transition
 @export var scene_transition: Control
@@ -34,7 +33,6 @@ func _ready() -> void:
 		button.pressed.connect(func():
 			sfx_pressed.play()
 			scene_transition.fade_out()
-			menu_music.fade_out()
 			await sfx_pressed.finished
 			StageHandler.go_to_level(level_path)
 		)

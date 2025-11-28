@@ -1,10 +1,12 @@
 extends Control
 
+@export_category("Level Data")
+@export var menu_data: LevelData
+
 # Scene Transition
 @export var scene_transition: Control
 
 # Audio
-#@onready var menu_music: AudioStreamPlayer = %Music
 @export var sfx_pressed: AudioStreamPlayer
 
 # Menus
@@ -21,6 +23,7 @@ extends Control
 @onready var exit: Button = %ExitGame
 
 func _ready() -> void:
+	StageHandler.current_level = menu_data
 	get_tree().paused = false
 	AudioServer.set_bus_effect_enabled(1,0,false)
 	scene_transition.fade_in()
@@ -34,6 +37,7 @@ func _ready() -> void:
 func start_game():
 	sfx_pressed.play()
 	scene_transition.fade_out()
+	MusicManager.fade_out()
 	await sfx_pressed.finished
 	StageHandler.go_to_init_level()
 

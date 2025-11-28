@@ -24,5 +24,5 @@ func _ready() -> void:
  
 func _checkpoint_reached(position: Vector3) -> void:
 	current_spawnpoint = position
-
+	
 # Lógica del reloj del nivel, puntaje
