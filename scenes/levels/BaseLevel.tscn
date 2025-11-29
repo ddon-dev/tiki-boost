@@ -1,0 +1,67 @@
+[gd_scene load_steps=13 format=3 uid="uid://dry26ix7f1644"]
+
+[ext_resource type="Script" uid="uid://b8fx2gpqpf8tp" path="res://scripts/levels/level_manager.gd" id="1_q5481"]
+[ext_resource type="Resource" uid="uid://dueocbx11abo0" path="res://scripts/levels/resources/level_03.tres" id="2_xrhif"]
+[ext_resource type="Texture2D" uid="uid://brrjqum3ry1jw" path="res://assets/art/skyboxes/skybox1.png" id="3_r140s"]
+[ext_resource type="PackedScene" uid="uid://c1bkxh8p1litp" path="res://scenes/objects/FinishPoint.tscn" id="4_bmn0g"]
+[ext_resource type="PackedScene" uid="uid://1tjylehjm63n" path="res://scenes/objects/DeathZone.tscn" id="5_0pu2i"]
+[ext_resource type="PackedScene" uid="uid://bguscvtdsubse" path="res://scenes/player/Player.tscn" id="6_l8bmu"]
+[ext_resource type="PackedScene" uid="uid://dips56jowu6et" path="res://scenes/ui/SceneTransition.tscn" id="7_5qyb3"]
+[ext_resource type="PackedScene" uid="uid://c5teqd0w4tca1" path="res://scenes/ui/menus/ProtoWinScreen.tscn" id="8_4uq16"]
+[ext_resource type="PackedScene" uid="uid://bi3f5qubdhed3" path="res://scenes/ui/menus/PauseMenu.tscn" id="9_0t5al"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_1cnrx"]
+panorama = ExtResource("3_r140s")
+
+[sub_resource type="Sky" id="Sky_bij1w"]
+sky_material = SubResource("PanoramaSkyMaterial_1cnrx")
+
+[sub_resource type="Environment" id="Environment_eiu47"]
+background_mode = 2
+sky = SubResource("Sky_bij1w")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="BaseLevel" type="Node3D"]
+
+[node name="LevelManager" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("1_q5481")
+level_data = ExtResource("2_xrhif")
+
+[node name="Environment" type="Node3D" parent="."]
+unique_name_in_owner = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Environment"]
+environment = SubResource("Environment_eiu47")
+
+[node name="Sun" type="DirectionalLight3D" parent="Environment"]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, -10)
+shadow_enabled = true
+
+[node name="Objects" type="Node3D" parent="Environment"]
+
+[node name="FinishPoint" parent="Environment/Objects" instance=ExtResource("4_bmn0g")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66, -0.4208498, -7)
+
+[node name="DeathZone" parent="Environment/Objects" instance=ExtResource("5_0pu2i")]
+
+[node name="Terrain" type="Node3D" parent="Environment"]
+
+[node name="Player" parent="." instance=ExtResource("6_l8bmu")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, -10)
+
+[node name="SpawnPosition" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 71, 2, 68)
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="SceneTransition" parent="UI" instance=ExtResource("7_5qyb3")]
+unique_name_in_owner = true
+metadata/_edit_use_anchors_ = true
+
+[node name="ProtoWinScreen" parent="UI" instance=ExtResource("8_4uq16")]
+visible = false
+modulate = Color(1, 1, 1, 0)
+
+[node name="PauseMenu" parent="UI" instance=ExtResource("9_0t5al")]

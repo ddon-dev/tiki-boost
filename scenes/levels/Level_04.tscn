@@ -1,68 +1,117 @@
-[gd_scene load_steps=15 format=3 uid="uid://c4xorc2vrdtev"]
+[gd_scene load_steps=15 format=3 uid="uid://deqynq8r0je81"]
 
-[ext_resource type="Script" uid="uid://dyix8qechqxhm" path="res://scripts/levels/level_04.gd" id="1_dn1an"]
+[ext_resource type="Resource" uid="uid://dueocbx11abo0" path="res://scripts/levels/resources/level_03.tres" id="2_3e2mo"]
 [ext_resource type="Script" uid="uid://b8fx2gpqpf8tp" path="res://scripts/levels/level_manager.gd" id="2_y4fcd"]
 [ext_resource type="Texture2D" uid="uid://brrjqum3ry1jw" path="res://assets/art/skyboxes/skybox1.png" id="3_qrwky"]
 [ext_resource type="PackedScene" uid="uid://1tjylehjm63n" path="res://scenes/objects/DeathZone.tscn" id="4_bh6y1"]
+[ext_resource type="PackedScene" uid="uid://c1bkxh8p1litp" path="res://scenes/objects/FinishPoint.tscn" id="4_dn1an"]
 [ext_resource type="PackedScene" uid="uid://bguscvtdsubse" path="res://scenes/player/Player.tscn" id="5_fcxuc"]
 [ext_resource type="PackedScene" uid="uid://dips56jowu6et" path="res://scenes/ui/SceneTransition.tscn" id="6_m4rvq"]
+[ext_resource type="Material" uid="uid://dn1m1wale5wxo" path="res://assets/materials/white_terrain.tres" id="6_y4fcd"]
 [ext_resource type="PackedScene" uid="uid://c5teqd0w4tca1" path="res://scenes/ui/menus/ProtoWinScreen.tscn" id="7_itf7o"]
+[ext_resource type="Material" uid="uid://cmuff7c3uviht" path="res://assets/materials/dark_terrain.tres" id="7_y4fcd"]
 [ext_resource type="PackedScene" uid="uid://bi3f5qubdhed3" path="res://scenes/ui/menus/PauseMenu.tscn" id="8_5mqba"]
-[ext_resource type="AudioStream" uid="uid://bjw4hoqt5hxkt" path="res://assets/audio/music/boogie - joyful, frozy, zachz winner.ogg" id="9_b3ata"]
-[ext_resource type="Script" uid="uid://druqdf0m635aj" path="res://scripts/ui/music.gd" id="10_d478c"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ndtll"]
-albedo_color = Color(0.08969059, 0.60884863, 0.3590096, 1)
-metallic_specular = 1.0
-roughness = 0.2
-normal_scale = -16.0
-refraction_enabled = true
-
-[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_7h2jl"]
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_y4fcd"]
 panorama = ExtResource("3_qrwky")
 
 [sub_resource type="Sky" id="Sky_bij1w"]
-sky_material = SubResource("PanoramaSkyMaterial_7h2jl")
+sky_material = SubResource("PanoramaSkyMaterial_y4fcd")
 
-[sub_resource type="Environment" id="Environment_mqh5v"]
+[sub_resource type="Environment" id="Environment_qrwky"]
 background_mode = 2
 sky = SubResource("Sky_bij1w")
 tonemap_mode = 2
 glow_enabled = true
 
-[node name="Level4" type="Node3D"]
-script = ExtResource("1_dn1an")
+[node name="Level_04" type="Node3D"]
 
 [node name="LevelManager" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("2_y4fcd")
+level_data = ExtResource("2_3e2mo")
 
 [node name="Environment" type="Node3D" parent="."]
+unique_name_in_owner = true
 
-[node name="Stage" type="Node3D" parent="Environment"]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Environment"]
+environment = SubResource("Environment_qrwky")
 
-[node name="Ground" type="CSGBox3D" parent="Environment/Stage"]
-transform = Transform3D(1.5, 0, 0, 0, 1, 0, 0, 0, 1, 0.22241211, 31.020111, -12.92583)
-material_override = SubResource("StandardMaterial3D_ndtll")
+[node name="Sun" type="DirectionalLight3D" parent="Environment"]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, -10)
+shadow_enabled = true
+
+[node name="Objects" type="Node3D" parent="Environment"]
+
+[node name="FinishPoint" parent="Environment/Objects" instance=ExtResource("4_dn1an")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 107.5, -37)
+
+[node name="DeathZone" parent="Environment/Objects" instance=ExtResource("4_bh6y1")]
+
+[node name="Terrain" type="Node3D" parent="Environment"]
+
+[node name="CSGCombiner3D2" type="CSGCombiner3D" parent="Environment/Terrain"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -64)
 use_collision = true
 collision_layer = 2
 collision_mask = 0
-size = Vector3(8, 0.4, 36.70378)
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="Environment"]
-environment = SubResource("Environment_mqh5v")
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Environment/Terrain/CSGCombiner3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -181, 0)
+height = 534.0
+sides = 32
+material = ExtResource("7_y4fcd")
 
-[node name="Sun" type="DirectionalLight3D" parent="Environment"]
-transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
-shadow_enabled = true
+[node name="CSGBox3D" type="CSGBox3D" parent="Environment/Terrain/CSGCombiner3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 91.5, 0)
+size = Vector3(76, 32, 76)
+material = ExtResource("6_y4fcd")
 
-[node name="DeathZone" parent="Environment" instance=ExtResource("4_bh6y1")]
+[node name="CSGSphere3D" type="CSGSphere3D" parent="Environment/Terrain/CSGCombiner3D2/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 36, 0)
+operation = 1
+radius = 42.0
+radial_segments = 32
+rings = 25
+material = ExtResource("7_y4fcd")
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="Environment/Terrain"]
+use_collision = true
+collision_layer = 2
+collision_mask = 0
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Environment/Terrain/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, -2.5, -1.5)
+size = Vector3(3, 5, 3)
+material = ExtResource("6_y4fcd")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Environment/Terrain/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5, -2.5, 1.5)
+size = Vector3(3, 5, 3)
+material = ExtResource("6_y4fcd")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Environment/Terrain/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, -2.5, -1.5)
+size = Vector3(3, 5, 3)
+material = ExtResource("6_y4fcd")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="Environment/Terrain/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5, -2.5, 1.5)
+size = Vector3(3, 5, 3)
+material = ExtResource("6_y4fcd")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="Environment/Terrain/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+operation = 1
+radius = 2.5
+radial_segments = 32
+rings = 20
+material = ExtResource("7_y4fcd")
 
 [node name="Player" parent="." instance=ExtResource("5_fcxuc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.086801, 0, 12.906026)
 
 [node name="SpawnPosition" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 32.965042, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -75,17 +124,3 @@ visible = false
 modulate = Color(1, 1, 1, 0)
 
 [node name="PauseMenu" parent="UI" instance=ExtResource("8_5mqba")]
-
-[node name="Audio" type="Node" parent="."]
-process_mode = 3
-
-[node name="Music" type="AudioStreamPlayer" parent="Audio"]
-unique_name_in_owner = true
-stream = ExtResource("9_b3ata")
-volume_db = -25.0
-autoplay = true
-bus = &"Music"
-script = ExtResource("10_d478c")
-fade_in_target = 0.3
-fade_in_time = 1.0
-fade_out_time = 7

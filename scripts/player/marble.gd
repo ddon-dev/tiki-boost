@@ -84,7 +84,6 @@ func _physics_process(delta: float) -> void:
 		_jump()
 		if !sfx_jump.playing:
 			sfx_jump.play()
-
 	
 	current_velocity = linear_velocity.length()
 	# Speed Lines
