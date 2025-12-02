@@ -3,6 +3,7 @@ class_name MovingPlatform extends AnimatableBody3D
 @export var active: bool = true
 @export var move_duration: float = 3.0
 @export var move_direction: Direction = Direction.POSITIVE_X
+@export var cooldown: float = 3.0
 @export_range(1, 100, 1) var move_distance: int = 10
 
 @onready var pause_timer: Timer = $PauseTimer
@@ -23,6 +24,7 @@ var player_touching: bool = false
 var last_position: Vector3
 
 func _ready() -> void:
+	pause_timer.wait_time = cooldown
 	start_position = global_position
 	pause_timer.start()
 
@@ -36,7 +38,7 @@ func move_platform() -> void:
 		tween.tween_property(self, "global_position", destination_point, move_duration).set_ease(Tween.EASE_IN_OUT)
 	else:
 		tween.tween_property(self, "global_position", start_position, move_duration).set_ease(Tween.EASE_IN_OUT)
-		
+	
 	await tween.finished
 	pause_timer.start()
 	

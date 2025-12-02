@@ -65,7 +65,7 @@ stream = ExtResource("6_v42im")
 
 [node name="GroundCheckRay" type="RayCast3D" parent="."]
 unique_name_in_owner = true
-target_position = Vector3(0, -0.7, 0)
+target_position = Vector3(0, -0.6, 0)
 collision_mask = 2
 debug_shape_custom_color = Color(1, 0, 0, 1)
 debug_shape_thickness = 5
@@ -104,16 +104,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
-
-[node name="Timers" type="Node" parent="."]
-
-[node name="Coyote" type="Timer" parent="Timers"]
-unique_name_in_owner = true
-one_shot = true
-
-[node name="JumpBuffer" type="Timer" parent="Timers"]
-unique_name_in_owner = true
-one_shot = true
 
 [node name="Debug" type="CanvasLayer" parent="."]
 visible = false

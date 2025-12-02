@@ -6,7 +6,7 @@ class_name Marble extends RigidBody3D
 @export var jump_force: float = 7.5
 @export var finish_decel: float = 0.25
 @export var jump_buffer_window: float = 0.08
-@export var coyote_time_window: float = 0.08
+@export var coyote_time_window: float = 0.1
 @export var boost_default_speed: float = 40.0
 @export var boost_default_duration: float = 0.6
 
@@ -30,34 +30,32 @@ class_name Marble extends RigidBody3D
 
 var current_velocity: float
 var velocity_percent: float
-var target_volume_db: float
-var target_pitch: float
-
-var is_jumping: bool = false
-var can_move: bool = true
-var level_finished: bool = false
-
-@onready var jump_buffer_timer: Timer = %JumpBuffer
-@onready var coyote_timer: Timer = %Coyote
-var coyote_time_active: bool = false
-
 var is_boosted: bool = false
 var boost_timer: float = 0.0
 
-func _ready() -> void:
-	coyote_timer.timeout.connect(func(): coyote_time_active = false)
+var is_jumping: bool = false
+var can_move: bool = true
+
+var coyote_timer: float
+var jump_buffer_timer: float
+
+var level_finished: bool = false
+var target_volume_db: float
+var target_pitch: float
 
 func _physics_process(delta: float) -> void:
-	#%JumpBufferLabel.text = "jump_buffer == %0.2f" % jump_buffer_timer.time_left
-	#%CoyoteLabel.text = "coyote_timer == %0.2f" % coyote_timer.time_left
+	#%JumpBufferLabel.text = "jump_buffer == %0.2f" % jump_buffer_timer
+	#%CoyoteLabel.text = "coyote_timer == %0.2f" % coyote_timer
 	#%JumpBoolLabel.text = "is_jumping == %s" % is_jumping
-
+	
+	if coyote_timer > 0.0: coyote_timer -= delta
+	if jump_buffer_timer > 0.0: jump_buffer_timer -= delta
+	
 	if ground_check_ray.is_colliding():
 		if is_jumping: is_jumping = false
 	else: 
-		if !is_jumping && !coyote_time_active: 
-			coyote_timer.start(coyote_time_window)
-			coyote_time_active = true
+		if !is_jumping && coyote_timer <= 0.0: 
+			coyote_timer = coyote_time_window
 	
 	ground_check_ray.global_position = global_position
 	ground_check_ray.force_raycast_update()
@@ -78,9 +76,9 @@ func _physics_process(delta: float) -> void:
 			linear_velocity.z = sign(linear_velocity.z) * max_velocity
 	
 	if Input.is_action_just_pressed("jump"):
-		jump_buffer_timer.start(jump_buffer_window)		
+		jump_buffer_timer = jump_buffer_window
 	
-	if jump_buffer_timer.time_left > 0.0 && (ground_check_ray.is_colliding() || coyote_time_active):
+	if jump_buffer_timer > 0.0 && (ground_check_ray.is_colliding() || coyote_timer > 0.0):
 		_jump()
 		if !sfx_jump.playing:
 			sfx_jump.play()
@@ -110,7 +108,7 @@ func _physics_process(delta: float) -> void:
 	velocity_percent = clamp(inverse_lerp(0.0, max_velocity, current_velocity), 0.0, 1.0)
 	target_volume_db = lerp(min_volume, max_volume, velocity_percent)
 	target_pitch = lerp(min_pitch, max_pitch, velocity_percent)
-		
+	
 	sfx_rolling.volume_db = linear_to_db(target_volume_db)
 	sfx_rolling.pitch_scale = target_pitch
 
@@ -148,21 +146,20 @@ func _movement(delta: float) -> void:
 func apply_speed_boost(direction: Vector3, speed: float, duration: float) -> void:
 	is_boosted = true
 	boost_timer = duration
-
+	
 	var dir := direction.normalized()
 	if dir == Vector3.ZERO:
 		return
-
-	# Mantenemos la velocidad vertical actual para no matar saltos
+	
 	var vy := linear_velocity.y
 	var new_vel := dir * speed
 	new_vel.y = vy
-
+	
 	linear_velocity = new_vel
 
 func _jump() -> void:
 	is_jumping = true
-	coyote_time_active = false
+	coyote_timer = 0.0
 	set_axis_velocity(Vector3.UP * jump_force)
 
 func reset_position() -> void:
