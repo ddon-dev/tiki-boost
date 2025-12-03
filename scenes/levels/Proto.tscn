@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://r5802t4ayrt0"]
+[gd_scene load_steps=20 format=3 uid="uid://r5802t4ayrt0"]
 
 [ext_resource type="PackedScene" uid="uid://bguscvtdsubse" path="res://scenes/player/Player.tscn" id="1_a6j5x"]
 [ext_resource type="Script" uid="uid://bk170h7ssh04d" path="res://scripts/levels/proto.gd" id="1_pu653"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://b8fx2gpqpf8tp" path="res://scripts/levels/level_manager.gd" id="2_rsu2w"]
 [ext_resource type="PackedScene" uid="uid://c1bkxh8p1litp" path="res://scenes/objects/FinishPoint.tscn" id="2_u1lr8"]
 [ext_resource type="PackedScene" uid="uid://c5teqd0w4tca1" path="res://scenes/ui/menus/ProtoWinScreen.tscn" id="3_4t2bw"]
+[ext_resource type="Script" path="res://scripts/globals/level_data.gd" id="3_f1qu2"]
 [ext_resource type="PackedScene" uid="uid://25tan4gxgpbv" path="res://scenes/objects/BoostRing.tscn" id="4_6l1bd"]
 [ext_resource type="PackedScene" uid="uid://cht4105owcyed" path="res://scenes/objects/Checkpoint.tscn" id="4_frr72"]
 [ext_resource type="PackedScene" uid="uid://1tjylehjm63n" path="res://scenes/objects/DeathZone.tscn" id="4_rsu2w"]
@@ -13,6 +14,11 @@
 [ext_resource type="PackedScene" uid="uid://dips56jowu6et" path="res://scenes/ui/SceneTransition.tscn" id="8_x1opv"]
 [ext_resource type="AudioStream" uid="uid://bjw4hoqt5hxkt" path="res://assets/audio/music/boogie - joyful, frozy, zachz winner.ogg" id="10_x1opv"]
 [ext_resource type="Script" uid="uid://druqdf0m635aj" path="res://scripts/ui/music.gd" id="12_x1opv"]
+
+[sub_resource type="Resource" id="Resource_l4ybo"]
+script = ExtResource("3_f1qu2")
+level_path = "uid://r5802t4ayrt0"
+metadata/_custom_type_script = "uid://b07ncf70dsirm"
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6gjf6"]
 albedo_color = Color(0, 0, 0, 1)
@@ -36,6 +42,7 @@ scene_transition = NodePath("UI/SceneTransition")
 [node name="LevelManager" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("2_rsu2w")
+level_data = SubResource("Resource_l4ybo")
 
 [node name="Environment" type="Node3D" parent="."]
 
@@ -109,12 +116,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 2, 54)
 [node name="UI" type="CanvasLayer" parent="."]
 
 [node name="SceneTransition" parent="UI" instance=ExtResource("8_x1opv")]
+unique_name_in_owner = true
 
 [node name="ProtoWinScreen" parent="UI" instance=ExtResource("3_4t2bw")]
+unique_name_in_owner = true
 visible = false
 modulate = Color(1, 1, 1, 0)
 
 [node name="PauseMenu" parent="UI" instance=ExtResource("7_v8j01")]
+unique_name_in_owner = true
 
 [node name="Audio" type="Node" parent="."]
 process_mode = 3

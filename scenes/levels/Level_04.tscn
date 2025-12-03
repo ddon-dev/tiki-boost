@@ -1,6 +1,6 @@
-[gd_scene load_steps=18 format=3 uid="uid://deqynq8r0je81"]
+[gd_scene load_steps=27 format=3 uid="uid://deqynq8r0je81"]
 
-[ext_resource type="Resource" uid="uid://dueocbx11abo0" path="res://scripts/levels/resources/level_03.tres" id="2_3e2mo"]
+[ext_resource type="Resource" uid="uid://btwy3aeds0ss4" path="res://scripts/levels/resources/level_04.tres" id="2_m4rvq"]
 [ext_resource type="Script" uid="uid://b8fx2gpqpf8tp" path="res://scripts/levels/level_manager.gd" id="2_y4fcd"]
 [ext_resource type="Texture2D" uid="uid://brrjqum3ry1jw" path="res://assets/art/skyboxes/skybox1.png" id="3_qrwky"]
 [ext_resource type="PackedScene" uid="uid://1tjylehjm63n" path="res://scenes/objects/DeathZone.tscn" id="4_bh6y1"]
@@ -14,6 +14,7 @@
 [ext_resource type="Material" uid="uid://cmuff7c3uviht" path="res://assets/materials/dark_terrain.tres" id="7_y4fcd"]
 [ext_resource type="PackedScene" uid="uid://bi3f5qubdhed3" path="res://scenes/ui/menus/PauseMenu.tscn" id="8_5mqba"]
 [ext_resource type="PackedScene" uid="uid://dp0oysvtwt18b" path="res://scenes/objects/MovingPlatform.tscn" id="8_fcxuc"]
+[ext_resource type="Texture2D" uid="uid://dny4w2daixbqi" path="res://assets/art/textures/Light/texture_08.png" id="10_m4rvq"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_y4fcd"]
 panorama = ExtResource("3_qrwky")
@@ -27,12 +28,40 @@ sky = SubResource("Sky_bij1w")
 tonemap_mode = 2
 glow_enabled = true
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_itf7o"]
+albedo_texture = ExtResource("10_m4rvq")
+uv1_scale = Vector3(0.1, 0.1, 0.1)
+uv1_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5mqba"]
+albedo_color = Color(0.7176471, 0.3882353, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fcxuc"]
+albedo_color = Color(0.24115604, 0.24115604, 0.24115604, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b3ata"]
+albedo_color = Color(0.5784952, 0.5780781, 3.85046e-07, 1)
+metallic = 0.33
+roughness = 0.4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d478c"]
+albedo_color = Color(0.31061712, 0.31061712, 0.3106171, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nlbql"]
+albedo_color = Color(0.5882353, 0.29411766, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0ljkm"]
+albedo_color = Color(0.5019608, 0.39607844, 0.09019608, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sdfdg"]
+albedo_color = Color(0.17591399, 0.4005539, 0.27734467, 1)
+
 [node name="Level_04" type="Node3D"]
 
 [node name="LevelManager" type="Node" parent="."]
 unique_name_in_owner = true
 script = ExtResource("2_y4fcd")
-level_data = ExtResource("2_3e2mo")
+level_data = ExtResource("2_m4rvq")
 
 [node name="Environment" type="Node3D" parent="."]
 unique_name_in_owner = true
@@ -47,7 +76,7 @@ shadow_enabled = true
 [node name="Objects" type="Node3D" parent="Environment"]
 
 [node name="FinishPoint" parent="Environment/Objects" instance=ExtResource("4_dn1an")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 53.5, -37)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 53.5, -77)
 
 [node name="DeathZone" parent="Environment/Objects" instance=ExtResource("4_bh6y1")]
 
@@ -88,7 +117,7 @@ material = ExtResource("7_y4fcd")
 [node name="CSGBox3D" type="CSGBox3D" parent="Environment/Terrain/KarimTower"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 37.5, 0)
 size = Vector3(76, 32, 76)
-material = ExtResource("6_y4fcd")
+material = SubResource("StandardMaterial3D_itf7o")
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="Environment/Terrain/KarimTower/CSGBox3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 36, 0)
@@ -111,26 +140,6 @@ sides = 32
 material = ExtResource("6_y4fcd")
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="Environment/Terrain/BasicPlatform/CSGCylinder3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
-operation = 1
-radius = 5.0
-radial_segments = 32
-rings = 25
-material = ExtResource("7_y4fcd")
-
-[node name="BasicPlatform2" type="CSGCombiner3D" parent="Environment/Terrain"]
-use_collision = true
-collision_layer = 2
-collision_mask = 0
-
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Environment/Terrain/BasicPlatform2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32, 110, -75)
-radius = 5.0
-height = 4.0
-sides = 32
-material = ExtResource("6_y4fcd")
-
-[node name="CSGSphere3D" type="CSGSphere3D" parent="Environment/Terrain/BasicPlatform2/CSGCylinder3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
 operation = 1
 radius = 5.0
@@ -401,35 +410,6 @@ radial_segments = 32
 rings = 25
 material = ExtResource("7_y4fcd")
 
-[node name="CurvePlatform" type="CSGCombiner3D" parent="Environment/Terrain"]
-use_collision = true
-collision_layer = 2
-collision_mask = 0
-
-[node name="CSGTorus3D" type="CSGTorus3D" parent="Environment/Terrain/CurvePlatform"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 110, -75)
-inner_radius = 14.0
-outer_radius = 9.0
-sides = 32
-ring_sides = 25
-material = ExtResource("7_y4fcd")
-
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Environment/Terrain/CurvePlatform/CSGTorus3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
-operation = 2
-radius = 30.0
-height = 4.0
-sides = 32
-material = ExtResource("6_y4fcd")
-
-[node name="CSGSphere3D" type="CSGSphere3D" parent="Environment/Terrain/CurvePlatform/CSGTorus3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 0, 0)
-operation = 1
-radius = 15.68
-radial_segments = 32
-rings = 25
-material = ExtResource("7_y4fcd")
-
 [node name="CurvePlatform2" type="CSGCombiner3D" parent="Environment/Terrain"]
 transform = Transform3D(0.9994149, 0.0038503995, 0.033984356, 0, 0.9936428, -0.11257891, -0.034201782, 0.11251304, 0.9930614, 23.682426, 1, -63)
 use_collision = true
@@ -640,50 +620,6 @@ radial_segments = 32
 rings = 25
 material = ExtResource("7_y4fcd")
 
-[node name="LargePlatform" type="CSGCombiner3D" parent="Environment/Terrain"]
-use_collision = true
-collision_layer = 2
-collision_mask = 0
-
-[node name="CSGBox3D" type="CSGBox3D" parent="Environment/Terrain/LargePlatform"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 108.5, -75)
-size = Vector3(24, 4, 6)
-material = ExtResource("6_y4fcd")
-
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Environment/Terrain/LargePlatform/CSGBox3D"]
-transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0.024521828, 2, 0.0095825195)
-operation = 1
-radius = 3.0
-height = 32.0
-sides = 32
-material = ExtResource("7_y4fcd")
-
-[node name="CSGBox3D2" type="CSGBox3D" parent="Environment/Terrain/LargePlatform"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 108, -75)
-size = Vector3(6, 5, 6)
-material = ExtResource("6_y4fcd")
-
-[node name="CSGSphere3D" type="CSGSphere3D" parent="Environment/Terrain/LargePlatform/CSGBox3D2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
-operation = 1
-radius = 3.0
-radial_segments = 32
-rings = 25
-material = ExtResource("7_y4fcd")
-
-[node name="CSGBox3D3" type="CSGBox3D" parent="Environment/Terrain/LargePlatform"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 108, -75)
-size = Vector3(6, 5, 6)
-material = ExtResource("6_y4fcd")
-
-[node name="CSGSphere3D" type="CSGSphere3D" parent="Environment/Terrain/LargePlatform/CSGBox3D3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
-operation = 1
-radius = 3.0
-radial_segments = 32
-rings = 25
-material = ExtResource("7_y4fcd")
-
 [node name="LargePlatform2" type="CSGCombiner3D" parent="Environment/Terrain"]
 transform = Transform3D(0.32648808, -0.020306714, 0.9449831, 0.07825792, 0.99691737, -0.005615088, -0.94195604, 0.07578567, 0.32707077, -53.23061, 38.44557, -91.186966)
 use_collision = true
@@ -727,6 +663,500 @@ radius = 3.0
 radial_segments = 32
 rings = 25
 material = ExtResource("7_y4fcd")
+
+[node name="Decoration" type="Node3D" parent="Environment"]
+
+[node name="Front" type="CSGCombiner3D" parent="Environment/Decoration"]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 53, -59)
+use_collision = true
+collision_layer = 2
+collision_mask = 0
+
+[node name="Pilars" type="CSGCombiner3D" parent="Environment/Decoration/Front"]
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Environment/Decoration/Front/Pilars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 3, -11)
+height = 5.0
+sides = 20
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Environment/Decoration/Front/Pilars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 3, -11)
+height = 5.0
+sides = 20
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="Environment/Decoration/Front/Pilars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 3, -4)
+height = 5.0
+sides = 20
+
+[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="Environment/Decoration/Front/Pilars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 3, -4)
+height = 5.0
+sides = 20
+
+[node name="CSGCylinder3D5" type="CSGCylinder3D" parent="Environment/Decoration/Front/Pilars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 3, 3)
+height = 5.0
+sides = 20
+
+[node name="CSGCylinder3D6" type="CSGCylinder3D" parent="Environment/Decoration/Front/Pilars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 3, 3)
+height = 5.0
+sides = 20
+
+[node name="Ceiling" type="CSGCombiner3D" parent="Environment/Decoration/Front"]
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Environment/Decoration/Front/Ceiling"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 2, -3.5)
+radius = 5.5
+height = 17.0
+sides = 32
+material = SubResource("StandardMaterial3D_5mqba")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Environment/Decoration/Front/Ceiling/CSGCylinder3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.5)
+operation = 2
+size = Vector3(15, 23, 10)
+material = SubResource("StandardMaterial3D_5mqba")
+
+[node name="Right" type="CSGCombiner3D" parent="Environment/Decoration"]
+transform = Transform3D(-3.4969112e-08, 0, 0.8, 0, 0.8, 0, -0.8, 0, -3.4969112e-08, -10.5, 53, -48)
+use_collision = true
+collision_layer = 2
+collision_mask = 0
+
+[node name="Pilars" type="CSGCombiner3D" parent="Environment/Decoration/Right"]
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Environment/Decoration/Right/Pilars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 3, -11)
+height = 5.0
+sides = 20
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Environment/Decoration/Right/Pilars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 3, -11)
+height = 5.0
+sides = 20
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="Environment/Decoration/Right/Pilars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 3, -4)
+height = 5.0
+sides = 20
+
+[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="Environment/Decoration/Right/Pilars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 3, -4)
+height = 5.0
+sides = 20
+
+[node name="CSGCylinder3D5" type="CSGCylinder3D" parent="Environment/Decoration/Right/Pilars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 3, 3)
+height = 5.0
+sides = 20
+
+[node name="CSGCylinder3D6" type="CSGCylinder3D" parent="Environment/Decoration/Right/Pilars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 3, 3)
+height = 5.0
+sides = 20
+
+[node name="Ceiling" type="CSGCombiner3D" parent="Environment/Decoration/Right"]
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Environment/Decoration/Right/Ceiling"]
+transform = Transform3D(1, 0, -4.2351647e-22, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 2, -3.5000029)
+radius = 5.5
+height = 17.0
+sides = 32
+material = SubResource("StandardMaterial3D_5mqba")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Environment/Decoration/Right/Ceiling/CSGCylinder3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.5)
+operation = 2
+size = Vector3(15, 23, 10)
+material = SubResource("StandardMaterial3D_5mqba")
+
+[node name="Left" type="CSGCombiner3D" parent="Environment/Decoration"]
+transform = Transform3D(-3.4969112e-08, 0, 0.8, 0, 0.8, 0, -0.8, 0, -3.4969112e-08, 17, 53, -48)
+use_collision = true
+collision_layer = 2
+collision_mask = 0
+
+[node name="Pilars" type="CSGCombiner3D" parent="Environment/Decoration/Left"]
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Environment/Decoration/Left/Pilars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 3, -11)
+height = 5.0
+sides = 20
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Environment/Decoration/Left/Pilars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 3, -11)
+height = 5.0
+sides = 20
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="Environment/Decoration/Left/Pilars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 3, -4)
+height = 5.0
+sides = 20
+
+[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="Environment/Decoration/Left/Pilars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 3, -4)
+height = 5.0
+sides = 20
+
+[node name="CSGCylinder3D5" type="CSGCylinder3D" parent="Environment/Decoration/Left/Pilars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 3, 3)
+height = 5.0
+sides = 20
+
+[node name="CSGCylinder3D6" type="CSGCylinder3D" parent="Environment/Decoration/Left/Pilars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 3, 3)
+height = 5.0
+sides = 20
+
+[node name="Ceiling" type="CSGCombiner3D" parent="Environment/Decoration/Left"]
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Environment/Decoration/Left/Ceiling"]
+transform = Transform3D(1, 0, -4.2351647e-22, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 2, -4.5)
+radius = 5.5
+height = 17.0
+sides = 32
+material = SubResource("StandardMaterial3D_5mqba")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Environment/Decoration/Left/Ceiling/CSGCylinder3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.5)
+operation = 2
+size = Vector3(15, 23, 10)
+material = SubResource("StandardMaterial3D_5mqba")
+
+[node name="Main" type="CSGCombiner3D" parent="Environment/Decoration"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 53, -50)
+use_collision = true
+collision_layer = 2
+collision_mask = 0
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Environment/Decoration/Main"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.125, 2)
+radius = 8.0
+height = 8.25
+sides = 32
+
+[node name="Door" type="CSGCombiner3D" parent="Environment/Decoration/Main/CSGCylinder3D"]
+operation = 2
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Environment/Decoration/Main/CSGCylinder3D/Door"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -1, -7.799999)
+material_override = SubResource("StandardMaterial3D_fcxuc")
+radius = 0.76
+height = 0.5
+sides = 20
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Environment/Decoration/Main/CSGCylinder3D/Door"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.5, -7.799999)
+material_override = SubResource("StandardMaterial3D_fcxuc")
+size = Vector3(1.52, 3, 0.5)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Environment/Decoration/Main/CSGCylinder3D/Door"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.125, -14)
+omni_range = 15.0
+
+[node name="Door2" type="CSGCombiner3D" parent="Environment/Decoration/Main/CSGCylinder3D"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+operation = 2
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Environment/Decoration/Main/CSGCylinder3D/Door2"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -1, -7.799999)
+material_override = SubResource("StandardMaterial3D_fcxuc")
+radius = 0.76
+height = 0.5
+sides = 20
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Environment/Decoration/Main/CSGCylinder3D/Door2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.5, -7.799999)
+material_override = SubResource("StandardMaterial3D_fcxuc")
+size = Vector3(1.52, 3, 0.5)
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="Environment/Decoration/Main/CSGCylinder3D/Door2"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, -2.125, -14)
+omni_range = 15.0
+
+[node name="Door3" type="CSGCombiner3D" parent="Environment/Decoration/Main/CSGCylinder3D"]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0, 0, 0)
+operation = 2
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Environment/Decoration/Main/CSGCylinder3D/Door3"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -1, -7.799999)
+material_override = SubResource("StandardMaterial3D_fcxuc")
+radius = 0.76
+height = 0.5
+sides = 20
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Environment/Decoration/Main/CSGCylinder3D/Door3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.5, -7.799999)
+material_override = SubResource("StandardMaterial3D_fcxuc")
+size = Vector3(1.52, 3, 0.5)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Environment/Decoration/Main/CSGCylinder3D/Door3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.125, -14)
+omni_range = 15.0
+
+[node name="Ceiling" type="CSGCombiner3D" parent="Environment/Decoration/Main"]
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="Environment/Decoration/Main/Ceiling"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.75, 2)
+radius = 8.5
+radial_segments = 32
+rings = 20
+material = SubResource("StandardMaterial3D_b3ata")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Environment/Decoration/Main/Ceiling/CSGSphere3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.5796509, 0)
+operation = 2
+size = Vector3(20, 11.840698, 20)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Environment/Decoration/Main/Ceiling/CSGSphere3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.165283, 0)
+operation = 2
+size = Vector3(20, 4.1694336, 20)
+
+[node name="CSGTorus3D" type="CSGTorus3D" parent="Environment/Decoration/Main/Ceiling/CSGSphere3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.25, 0)
+inner_radius = 8.0
+outer_radius = 8.4
+sides = 32
+ring_sides = 20
+material = SubResource("StandardMaterial3D_b3ata")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Environment/Decoration/Main/Ceiling"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 12.25, 2)
+radius = 0.3
+height = 3.5
+sides = 20
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Environment/Decoration/Main/Ceiling"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 12.25, 2)
+radius = 0.3
+height = 3.5
+sides = 20
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="Environment/Decoration/Main/Ceiling"]
+transform = Transform3D(0.49999997, 0, -0.8660253, 0, 1, 0, 0.8660253, 0, 0.49999997, -2.9999995, 12.25, -3.1961517)
+radius = 0.3
+height = 3.5
+sides = 20
+
+[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="Environment/Decoration/Main/Ceiling"]
+transform = Transform3D(0.49999997, 0, -0.8660253, 0, 1, 0, 0.8660253, 0, 0.49999997, 2.9999995, 12.25, 7.1961517)
+radius = 0.3
+height = 3.5
+sides = 20
+
+[node name="CSGCylinder3D5" type="CSGCylinder3D" parent="Environment/Decoration/Main/Ceiling"]
+transform = Transform3D(0.49999997, 0, 0.8660253, 0, 1, 0, -0.8660253, 0, 0.49999997, -2.9999995, 12.25, 7.1961517)
+radius = 0.3
+height = 3.5
+sides = 20
+
+[node name="CSGCylinder3D6" type="CSGCylinder3D" parent="Environment/Decoration/Main/Ceiling"]
+transform = Transform3D(0.49999997, 0, 0.8660253, 0, 1, 0, -0.8660253, 0, 0.49999997, 2.9999995, 12.25, -3.1961517)
+radius = 0.3
+height = 3.5
+sides = 20
+
+[node name="CSGSphere3D2" type="CSGSphere3D" parent="Environment/Decoration/Main/Ceiling"]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 12, 2)
+radius = 8.5
+radial_segments = 32
+rings = 20
+material = SubResource("StandardMaterial3D_b3ata")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Environment/Decoration/Main/Ceiling/CSGSphere3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.5796509, 0)
+operation = 2
+size = Vector3(20, 11.840698, 20)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Environment/Decoration/Main/Ceiling/CSGSphere3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.165283, 0)
+operation = 2
+size = Vector3(20, 3, 20)
+
+[node name="CSGCylinder3D7" type="CSGCylinder3D" parent="Environment/Decoration/Main/Ceiling"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 17.5, 2)
+radius = 5.0
+height = 3.0
+sides = 32
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="Environment/Decoration/Main/Ceiling/CSGCylinder3D7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.5077896, 0)
+radius = 7.1
+radial_segments = 32
+rings = 20
+material = SubResource("StandardMaterial3D_b3ata")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Environment/Decoration/Main/Ceiling/CSGCylinder3D7/CSGSphere3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+operation = 2
+size = Vector3(15, 9, 15)
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="Environment/Decoration/Main/Ceiling/CSGCylinder3D7/CSGSphere3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7, 0)
+radial_segments = 32
+rings = 20
+material = SubResource("StandardMaterial3D_b3ata")
+
+[node name="Trees" type="CSGCombiner3D" parent="Environment/Decoration"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 53, -50)
+use_collision = true
+collision_layer = 2
+collision_mask = 0
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Environment/Decoration/Trees"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0.6, -30.5)
+size = Vector3(3, 0.3, 14)
+material = SubResource("StandardMaterial3D_d478c")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Environment/Decoration/Trees/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+operation = 2
+size = Vector3(2.6, 0.1, 13.6)
+material = SubResource("StandardMaterial3D_nlbql")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Environment/Decoration/Trees/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -5)
+radius = 0.1
+height = 6.0
+material = SubResource("StandardMaterial3D_0ljkm")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Environment/Decoration/Trees/CSGBox3D/CSGCylinder3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+radius = 1.0
+height = 5.0
+cone = true
+material = SubResource("StandardMaterial3D_sdfdg")
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Environment/Decoration/Trees/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -2.5)
+radius = 0.1
+height = 6.0
+material = SubResource("StandardMaterial3D_0ljkm")
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Environment/Decoration/Trees/CSGBox3D/CSGCylinder3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+radius = 1.0
+height = 5.0
+cone = true
+material = SubResource("StandardMaterial3D_sdfdg")
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="Environment/Decoration/Trees/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+radius = 0.1
+height = 6.0
+material = SubResource("StandardMaterial3D_0ljkm")
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="Environment/Decoration/Trees/CSGBox3D/CSGCylinder3D3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+radius = 1.0
+height = 5.0
+cone = true
+material = SubResource("StandardMaterial3D_sdfdg")
+
+[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="Environment/Decoration/Trees/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 2.5)
+radius = 0.1
+height = 6.0
+material = SubResource("StandardMaterial3D_0ljkm")
+
+[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="Environment/Decoration/Trees/CSGBox3D/CSGCylinder3D4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+radius = 1.0
+height = 5.0
+cone = true
+material = SubResource("StandardMaterial3D_sdfdg")
+
+[node name="CSGCylinder3D5" type="CSGCylinder3D" parent="Environment/Decoration/Trees/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 5)
+radius = 0.1
+height = 6.0
+material = SubResource("StandardMaterial3D_0ljkm")
+
+[node name="CSGCylinder3D5" type="CSGCylinder3D" parent="Environment/Decoration/Trees/CSGBox3D/CSGCylinder3D5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+radius = 1.0
+height = 5.0
+cone = true
+material = SubResource("StandardMaterial3D_sdfdg")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Environment/Decoration/Trees"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0.5999985, -30.5)
+size = Vector3(3, 0.3, 14)
+material = SubResource("StandardMaterial3D_d478c")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="Environment/Decoration/Trees/CSGBox3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.1, 0)
+operation = 2
+size = Vector3(2.6, 0.1, 13.6)
+material = SubResource("StandardMaterial3D_nlbql")
+
+[node name="CSGCylinder3D6" type="CSGCylinder3D" parent="Environment/Decoration/Trees/CSGBox3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -5)
+radius = 0.1
+height = 6.0
+material = SubResource("StandardMaterial3D_0ljkm")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Environment/Decoration/Trees/CSGBox3D2/CSGCylinder3D6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+radius = 1.0
+height = 5.0
+cone = true
+material = SubResource("StandardMaterial3D_sdfdg")
+
+[node name="CSGCylinder3D7" type="CSGCylinder3D" parent="Environment/Decoration/Trees/CSGBox3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, -2.5)
+radius = 0.1
+height = 6.0
+material = SubResource("StandardMaterial3D_0ljkm")
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Environment/Decoration/Trees/CSGBox3D2/CSGCylinder3D7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+radius = 1.0
+height = 5.0
+cone = true
+material = SubResource("StandardMaterial3D_sdfdg")
+
+[node name="CSGCylinder3D8" type="CSGCylinder3D" parent="Environment/Decoration/Trees/CSGBox3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+radius = 0.1
+height = 6.0
+material = SubResource("StandardMaterial3D_0ljkm")
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="Environment/Decoration/Trees/CSGBox3D2/CSGCylinder3D8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+radius = 1.0
+height = 5.0
+cone = true
+material = SubResource("StandardMaterial3D_sdfdg")
+
+[node name="CSGCylinder3D9" type="CSGCylinder3D" parent="Environment/Decoration/Trees/CSGBox3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 2.5)
+radius = 0.1
+height = 6.0
+material = SubResource("StandardMaterial3D_0ljkm")
+
+[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="Environment/Decoration/Trees/CSGBox3D2/CSGCylinder3D9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+radius = 1.0
+height = 5.0
+cone = true
+material = SubResource("StandardMaterial3D_sdfdg")
+
+[node name="CSGCylinder3D10" type="CSGCylinder3D" parent="Environment/Decoration/Trees/CSGBox3D2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 5)
+radius = 0.1
+height = 6.0
+material = SubResource("StandardMaterial3D_0ljkm")
+
+[node name="CSGCylinder3D5" type="CSGCylinder3D" parent="Environment/Decoration/Trees/CSGBox3D2/CSGCylinder3D10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+radius = 1.0
+height = 5.0
+cone = true
+material = SubResource("StandardMaterial3D_sdfdg")
 
 [node name="Player" parent="." instance=ExtResource("5_fcxuc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
