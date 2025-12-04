@@ -77,11 +77,13 @@ unique_name_in_owner = true
 stream = ExtResource("6_v42im")
 
 [node name="Trail3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_180ig")
 cast_shadow = 0
 script = ExtResource("7_7oing")
 fromWidth = 0.12
 lifespan = 0.5
+scaleTexture = false
 startColor = Color(0, 0.40784314, 0.8235294, 1)
 
 [node name="GroundCheckRay" type="RayCast3D" parent="."]

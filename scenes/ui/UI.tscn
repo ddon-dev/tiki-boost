@@ -1,0 +1,43 @@
+[gd_scene load_steps=5 format=3 uid="uid://g6kt40g48fnf"]
+
+[ext_resource type="PackedScene" uid="uid://dips56jowu6et" path="res://scenes/ui/SceneTransition.tscn" id="1_s64wo"]
+[ext_resource type="PackedScene" uid="uid://c5teqd0w4tca1" path="res://scenes/ui/menus/ProtoWinScreen.tscn" id="2_dqg8s"]
+[ext_resource type="PackedScene" uid="uid://bi3f5qubdhed3" path="res://scenes/ui/menus/PauseMenu.tscn" id="3_tnv4l"]
+[ext_resource type="Theme" uid="uid://dg0bxpr4spgob" path="res://assets/themes/menu_theme.tres" id="4_j3nm3"]
+
+[node name="UI" type="CanvasLayer"]
+
+[node name="SceneTransition" parent="." instance=ExtResource("1_s64wo")]
+unique_name_in_owner = true
+
+[node name="ProtoWinScreen" parent="." instance=ExtResource("2_dqg8s")]
+visible = false
+modulate = Color(1, 1, 1, 0)
+
+[node name="PauseMenu" parent="." instance=ExtResource("3_tnv4l")]
+
+[node name="HUD" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("4_j3nm3")
+
+[node name="MarginContainer" type="MarginContainer" parent="HUD"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.16600001
+anchor_bottom = 0.108
+offset_right = 0.7679901
+offset_bottom = 0.01599884
+
+[node name="TimeLabel" type="Label" parent="HUD/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 1
+text = "00:00:00"
+horizontal_alignment = 1
+vertical_alignment = 1

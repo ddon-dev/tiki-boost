@@ -47,7 +47,7 @@ func _physics_process(delta: float) -> void:
 	#%JumpBufferLabel.text = "jump_buffer == %0.2f" % jump_buffer_timer
 	#%CoyoteLabel.text = "coyote_timer == %0.2f" % coyote_timer
 	#%JumpBoolLabel.text = "is_jumping == %s" % is_jumping
-	
+
 	if coyote_timer > 0.0: coyote_timer -= delta
 	if jump_buffer_timer > 0.0: jump_buffer_timer -= delta
 	
@@ -134,8 +134,9 @@ func _movement(delta: float) -> void:
 	var h_input = (Input.get_action_raw_strength("right") -  Input.get_action_raw_strength("left"))
 	
 	var camera_transform = camera.get_camera_transform()
-	var relative_camera_direction_z = camera_transform.basis.z.normalized()
-	var relative_camera_direction_x = camera_transform.basis.x.normalized()
+	
+	var relative_camera_direction_z = (camera_transform.basis.z * Vector3(1,0,1)).normalized()
+	var relative_camera_direction_x = (camera_transform.basis.x * Vector3(1,0,1)).normalized()
 	
 	var f_direction = f_input * relative_camera_direction_z
 	var h_direction = h_input * relative_camera_direction_x

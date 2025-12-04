@@ -1,6 +1,6 @@
 extends Control
 
-@onready var level_manager: LevelManager = %LevelManager
+@onready var level_manager: LevelManager = $"../../LevelManager"
 
 # Scene Transition
 @onready var scene_transition: Control = %SceneTransition

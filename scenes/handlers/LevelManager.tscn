@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cihamo12cblla"]
+
+[ext_resource type="Script" uid="uid://b8fx2gpqpf8tp" path="res://scripts/handlers/level_manager.gd" id="1_1rnm4"]
+[ext_resource type="Script" uid="uid://ckyjft07t8a1t" path="res://scripts/handlers/stopwatch.gd" id="3_ivs6i"]
+
+[node name="LevelManager" type="Node"]
+script = ExtResource("1_1rnm4")
+
+[node name="Stopwatch" type="Node" parent="."]
+script = ExtResource("3_ivs6i")

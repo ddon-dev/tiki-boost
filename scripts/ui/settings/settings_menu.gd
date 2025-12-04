@@ -10,7 +10,7 @@ extends VBoxContainer
 
 # Buttons
 @onready var apply: Button = %ApplySettings
-	
+
 func _ready() -> void:
 	apply.pressed.connect(apply_options)
 	

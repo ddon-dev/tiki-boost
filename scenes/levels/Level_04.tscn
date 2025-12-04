@@ -1,20 +1,18 @@
-[gd_scene load_steps=27 format=3 uid="uid://deqynq8r0je81"]
+[gd_scene load_steps=25 format=3 uid="uid://deqynq8r0je81"]
 
+[ext_resource type="PackedScene" uid="uid://cihamo12cblla" path="res://scenes/handlers/LevelManager.tscn" id="1_m4rvq"]
 [ext_resource type="Resource" uid="uid://btwy3aeds0ss4" path="res://scripts/levels/resources/level_04.tres" id="2_m4rvq"]
-[ext_resource type="Script" uid="uid://b8fx2gpqpf8tp" path="res://scripts/levels/level_manager.gd" id="2_y4fcd"]
 [ext_resource type="Texture2D" uid="uid://brrjqum3ry1jw" path="res://assets/art/skyboxes/skybox1.png" id="3_qrwky"]
 [ext_resource type="PackedScene" uid="uid://1tjylehjm63n" path="res://scenes/objects/DeathZone.tscn" id="4_bh6y1"]
 [ext_resource type="PackedScene" uid="uid://c1bkxh8p1litp" path="res://scenes/objects/FinishPoint.tscn" id="4_dn1an"]
 [ext_resource type="PackedScene" uid="uid://bguscvtdsubse" path="res://scenes/player/Player.tscn" id="5_fcxuc"]
-[ext_resource type="PackedScene" uid="uid://dips56jowu6et" path="res://scenes/ui/SceneTransition.tscn" id="6_m4rvq"]
 [ext_resource type="PackedScene" uid="uid://25tan4gxgpbv" path="res://scenes/objects/BoostRing.tscn" id="6_qrwky"]
 [ext_resource type="Material" uid="uid://dn1m1wale5wxo" path="res://assets/materials/white_terrain.tres" id="6_y4fcd"]
 [ext_resource type="PackedScene" uid="uid://cht4105owcyed" path="res://scenes/objects/Checkpoint.tscn" id="7_bh6y1"]
-[ext_resource type="PackedScene" uid="uid://c5teqd0w4tca1" path="res://scenes/ui/menus/ProtoWinScreen.tscn" id="7_itf7o"]
 [ext_resource type="Material" uid="uid://cmuff7c3uviht" path="res://assets/materials/dark_terrain.tres" id="7_y4fcd"]
-[ext_resource type="PackedScene" uid="uid://bi3f5qubdhed3" path="res://scenes/ui/menus/PauseMenu.tscn" id="8_5mqba"]
 [ext_resource type="PackedScene" uid="uid://dp0oysvtwt18b" path="res://scenes/objects/MovingPlatform.tscn" id="8_fcxuc"]
 [ext_resource type="Texture2D" uid="uid://dny4w2daixbqi" path="res://assets/art/textures/Light/texture_08.png" id="10_m4rvq"]
+[ext_resource type="PackedScene" uid="uid://g6kt40g48fnf" path="res://scenes/ui/UI.tscn" id="13_bh6y1"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_y4fcd"]
 panorama = ExtResource("3_qrwky")
@@ -58,9 +56,8 @@ albedo_color = Color(0.17591399, 0.4005539, 0.27734467, 1)
 
 [node name="Level_04" type="Node3D"]
 
-[node name="LevelManager" type="Node" parent="."]
+[node name="LevelManager" parent="." instance=ExtResource("1_m4rvq")]
 unique_name_in_owner = true
-script = ExtResource("2_y4fcd")
 level_data = ExtResource("2_m4rvq")
 
 [node name="Environment" type="Node3D" parent="."]
@@ -1162,16 +1159,6 @@ material = SubResource("StandardMaterial3D_sdfdg")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 
 [node name="SpawnPosition" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29, 15, -21)
 
-[node name="UI" type="CanvasLayer" parent="."]
-
-[node name="SceneTransition" parent="UI" instance=ExtResource("6_m4rvq")]
-unique_name_in_owner = true
-metadata/_edit_use_anchors_ = true
-
-[node name="ProtoWinScreen" parent="UI" instance=ExtResource("7_itf7o")]
-visible = false
-modulate = Color(1, 1, 1, 0)
-
-[node name="PauseMenu" parent="UI" instance=ExtResource("8_5mqba")]
+[node name="UI" parent="." instance=ExtResource("13_bh6y1")]

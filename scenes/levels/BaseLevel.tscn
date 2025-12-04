@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://dry26ix7f1644"]
 
-[ext_resource type="Script" uid="uid://b8fx2gpqpf8tp" path="res://scripts/levels/level_manager.gd" id="1_q5481"]
+[ext_resource type="Script" uid="uid://b8fx2gpqpf8tp" path="res://scripts/handlers/level_manager.gd" id="1_q5481"]
 [ext_resource type="Resource" uid="uid://dueocbx11abo0" path="res://scripts/levels/resources/level_03.tres" id="2_xrhif"]
 [ext_resource type="Texture2D" uid="uid://brrjqum3ry1jw" path="res://assets/art/skyboxes/skybox1.png" id="3_r140s"]
 [ext_resource type="PackedScene" uid="uid://c1bkxh8p1litp" path="res://scenes/objects/FinishPoint.tscn" id="4_bmn0g"]

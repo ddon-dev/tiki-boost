@@ -32,6 +32,7 @@ func move_platform() -> void:
 	if !active: return
 	
 	var tween = create_tween()
+	tween.set_process_mode(Tween.TWEEN_PROCESS_PHYSICS)
 	var destination_point: Vector3 = global_position + (move_distance * get_direction_vector())
 	
 	if moving_to:
