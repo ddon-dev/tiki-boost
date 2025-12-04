@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="MaterialData" load_steps=2 format=3 uid="uid://dpq52v1622q1x"]
+
+[ext_resource type="Script" uid="uid://qfuvka13ckmy" path="res://scripts/globals/material_data.gd" id="2_cp78s"]
+
+[resource]
+script = ExtResource("2_cp78s")
+metadata/_custom_type_script = "uid://qfuvka13ckmy"

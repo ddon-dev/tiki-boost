@@ -14,6 +14,18 @@ extends VBoxContainer
 
 func _ready() -> void:
 	return_menu.pressed.connect(go_back)
+	for skin in PlayerMaterials.skins:
+		var button = TextureButton.new()
+		button.ignore_texture_size = true
+		button.stretch_mode = 0
+		button.custom_minimum_size = Vector2(80, 80)
+		button.set_texture_normal(skin.icon)
+		skins_container.add_child(button)
+		#button.pressed.connect(func():
+			#sfx_pressed.play()
+			#await sfx_pressed.finished
+			#StageHandler.go_to_level(level_path)
+		#)
 	
 func go_back():
 	sfx_pressed.play()

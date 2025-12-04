@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=8 format=3 uid="uid://dg0bxpr4spgob"]
+[gd_resource type="Theme" load_steps=9 format=3 uid="uid://dg0bxpr4spgob"]
 
 [ext_resource type="FontFile" uid="uid://y16hiud5i3rd" path="res://assets/fonts/gomarice_shmup_in_the_zone.ttf" id="1_8yh44"]
 [ext_resource type="Texture2D" uid="uid://bp1pgb4k53drb" path="res://assets/art/ui/grabber.png" id="2_ff7ft"]
@@ -29,6 +29,13 @@ corner_radius_top_right = 90
 corner_radius_bottom_right = 90
 corner_radius_bottom_left = 90
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_624bp"]
+bg_color = Color(0.11070001, 0.23017502, 0.27, 0.36862746)
+corner_radius_top_left = 25
+corner_radius_top_right = 25
+corner_radius_bottom_right = 25
+corner_radius_bottom_left = 25
+
 [resource]
 Button/colors/font_color = Color(0.96474224, 0.96474224, 0.9647421, 1)
 Button/colors/font_focus_color = Color(0.25490198, 0.90588236, 1, 1)
@@ -40,6 +47,10 @@ Button/constants/outline_size = 21
 Button/font_sizes/font_size = 35
 Button/fonts/font = ExtResource("1_8yh44")
 Button/styles/focus = SubResource("StyleBoxEmpty_8yh44")
+ColorPickerButton/colors/font_color = Color(1, 1, 1, 1)
+ColorPickerButton/colors/font_outline_color = Color(0.78833514, 0.86708844, 0.86250234, 1)
+ColorPickerButton/font_sizes/font_size = 74
+ColorPickerButton/fonts/font = ExtResource("1_8yh44")
 HSlider/icons/grabber = ExtResource("2_ff7ft")
 HSlider/icons/grabber_highlight = ExtResource("3_624bp")
 HSlider/styles/grabber_area = SubResource("StyleBoxFlat_3jc4x")
@@ -54,3 +65,4 @@ Label/constants/shadow_outline_size = 37
 Label/fonts/font = ExtResource("1_8yh44")
 PopupMenu/font_sizes/font_size = 25
 PopupMenu/fonts/font = ExtResource("1_8yh44")
+ScrollContainer/styles/panel = SubResource("StyleBoxFlat_624bp")

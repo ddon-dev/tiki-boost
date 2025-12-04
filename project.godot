@@ -22,6 +22,7 @@ GameManager="*res://scripts/globals/game_manager.gd"
 StageHandler="*res://scenes/globals/StageHandler.tscn"
 MusicManager="*res://scenes/globals/MusicManager.tscn"
 MenuManager="*res://scripts/globals/menu_manager.gd"
+PlayerMaterials="*res://scenes/globals/PlayerMaterials.tscn"
 
 [display]
 

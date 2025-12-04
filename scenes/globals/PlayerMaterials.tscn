@@ -1,0 +1,16 @@
+[gd_scene load_steps=11 format=3 uid="uid://b0ypi7gfejbdr"]
+
+[ext_resource type="Script" uid="uid://b8riounqy2s7x" path="res://scripts/globals/player_materials.gd" id="1_qooaq"]
+[ext_resource type="Script" uid="uid://qfuvka13ckmy" path="res://scripts/globals/material_data.gd" id="2_5fybk"]
+[ext_resource type="Resource" uid="uid://crqrvast76nef" path="res://scripts/skins/marble/matdata_marble_01.tres" id="3_6h0y6"]
+[ext_resource type="Resource" uid="uid://dlbqf5s481kfy" path="res://scripts/skins/marble/matdata_marble_02.tres" id="4_qn80q"]
+[ext_resource type="Resource" uid="uid://qy57fhw3ehib" path="res://scripts/skins/marble/matdata_marble_03.tres" id="5_mevpy"]
+[ext_resource type="Resource" uid="uid://cp5n4aku1c7wp" path="res://scripts/skins/marble/matdata_marble_04.tres" id="6_p74jo"]
+[ext_resource type="Resource" uid="uid://b2cktoti3wtq5" path="res://scripts/skins/marble/matdata_marble_05.tres" id="7_eiphp"]
+[ext_resource type="Resource" uid="uid://o71f3yps8yyg" path="res://scripts/skins/marble/matdata_marble_06.tres" id="8_57jyt"]
+[ext_resource type="Resource" uid="uid://df2m08hkvdetb" path="res://scripts/skins/marble/matdata_marble_07.tres" id="9_g7kvd"]
+[ext_resource type="Resource" uid="uid://j7ca3fjkcje4" path="res://scripts/skins/marble/matdata_marble_08.tres" id="10_vrwi0"]
+
+[node name="PlayerMaterials" type="Node"]
+script = ExtResource("1_qooaq")
+skins = Array[ExtResource("2_5fybk")]([ExtResource("3_6h0y6"), ExtResource("4_qn80q"), ExtResource("5_mevpy"), ExtResource("6_p74jo"), ExtResource("7_eiphp"), ExtResource("8_57jyt"), ExtResource("9_g7kvd"), ExtResource("10_vrwi0")])

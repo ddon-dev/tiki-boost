@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://so18tatfe4un"]
+[gd_scene load_steps=16 format=3 uid="uid://so18tatfe4un"]
 
 [ext_resource type="Script" uid="uid://dndkv03yk8wya" path="res://scripts/ui/menus/main_menu.gd" id="1_2ysvc"]
 [ext_resource type="Texture2D" uid="uid://bup8l41f00ub0" path="res://assets/art/ui/title_small.png" id="1_vjtqc"]
@@ -7,38 +7,20 @@
 [ext_resource type="PackedScene" uid="uid://dips56jowu6et" path="res://scenes/ui/SceneTransition.tscn" id="2_bhu4a"]
 [ext_resource type="PackedScene" uid="uid://dvgka2vsrq0hy" path="res://scenes/ui/menus/SettingsMenu.tscn" id="8_7mi0g"]
 [ext_resource type="Script" uid="uid://c0ujljp70tj3o" path="res://scripts/ui/menus/customize_menu.gd" id="8_rlg63"]
-[ext_resource type="Texture2D" uid="uid://dn8fchq72w2yu" path="res://assets/art/ui/icons/marbles/normal/Onyx006.png" id="9_cbbg0"]
-[ext_resource type="Texture2D" uid="uid://cmm168j2fnyg5" path="res://assets/art/ui/icons/marbles/normal/Onyx002.png" id="9_j8oos"]
 [ext_resource type="Script" uid="uid://cw2plsd54xmuy" path="res://scripts/ui/menus/level_select.gd" id="9_nqjyj"]
-[ext_resource type="Texture2D" uid="uid://b8dbfljtdyv07" path="res://assets/art/ui/icons/marbles/normal/Onyx003.png" id="10_7vjx8"]
-[ext_resource type="Texture2D" uid="uid://c0cetg2kwbjsh" path="res://assets/art/ui/icons/marbles/normal/Onyx010.png" id="10_wp1be"]
-[ext_resource type="Texture2D" uid="uid://hypujry7hlu8" path="res://assets/art/ui/icons/marbles/normal/Onyx005.png" id="11_0m6a7"]
-[ext_resource type="Texture2D" uid="uid://cvsfmp234v3m8" path="res://assets/art/ui/icons/marbles/normal/Onyx008.png" id="11_1sy0c"]
-[ext_resource type="Texture2D" uid="uid://cwt0v8cj6tkgx" path="res://assets/art/ui/icons/marbles/normal/Onyx011.png" id="15_01hih"]
-[ext_resource type="Texture2D" uid="uid://huaue1as27ix" path="res://assets/art/ui/icons/marbles/normal/Onyx013.png" id="16_fgmo3"]
-[ext_resource type="Texture2D" uid="uid://c8r4ytdkc74tx" path="res://assets/art/ui/icons/marbles/normal/Onyx014.png" id="17_vyo64"]
-[ext_resource type="Texture2D" uid="uid://irwj4jrap12s" path="res://assets/art/ui/icons/marbles/normal/Marble016.png" id="18_fcbp7"]
-[ext_resource type="Texture2D" uid="uid://l2k0c41pte5p" path="res://assets/art/ui/icons/marbles/normal/Metal021.png" id="19_h5h0v"]
-[ext_resource type="Texture2D" uid="uid://cytl34q7twxn8" path="res://assets/art/ui/icons/marbles/normal/Fabric082B.png" id="20_7vjx8"]
-[ext_resource type="Texture2D" uid="uid://bor320fu70ob7" path="res://assets/art/ui/icons/marbles/normal/Metal022.png" id="20_cfnjw"]
-[ext_resource type="Texture2D" uid="uid://cbr70awkfmq4k" path="res://assets/art/ui/icons/marbles/normal/Metal041B.png" id="21_xijhu"]
-[ext_resource type="Texture2D" uid="uid://de0h65rp2sl6" path="res://assets/art/ui/icons/marbles/normal/Metal048C.png" id="22_p6vsb"]
-[ext_resource type="Texture2D" uid="uid://b13314ysjc371" path="res://assets/art/ui/icons/marbles/normal/Metal058B.png" id="23_lt0ik"]
-[ext_resource type="Texture2D" uid="uid://cqytdxllr2b8e" path="res://assets/art/ui/icons/marbles/normal/Metal058C.png" id="24_ulu4m"]
-[ext_resource type="Texture2D" uid="uid://l3ruuq4i8ul6" path="res://assets/art/ui/icons/marbles/normal/MetalPlates006.png" id="25_6syt0"]
-[ext_resource type="Texture2D" uid="uid://bxlv3g2b1xgpg" path="res://assets/art/ui/icons/marbles/normal/MetalPlates013.png" id="26_ak24h"]
-[ext_resource type="Texture2D" uid="uid://kyikw2cya3ek" path="res://assets/art/ui/icons/marbles/normal/PaintedWood007B.png" id="27_f015j"]
-[ext_resource type="Texture2D" uid="uid://dp3b4tyon5ypb" path="res://assets/art/ui/icons/marbles/normal/Plastic008.png" id="28_uvc7g"]
-[ext_resource type="Texture2D" uid="uid://gn7s3b3e5guv" path="res://assets/art/ui/icons/marbles/normal/Plastic015A.png" id="29_iiyxw"]
-[ext_resource type="Texture2D" uid="uid://c15g1ygmp5gg1" path="res://assets/art/ui/icons/marbles/normal/Terrazzo018.png" id="30_54o52"]
-[ext_resource type="Texture2D" uid="uid://c0tbjavfo4lg4" path="res://assets/art/ui/icons/marbles/normal/Tiles101.png" id="31_12wke"]
-[ext_resource type="Texture2D" uid="uid://bncr8sq3nxx32" path="res://assets/art/ui/icons/marbles/normal/ChristmasTreeOrnament013.png" id="32_kwgjm"]
-[ext_resource type="Texture2D" uid="uid://cumxpdk2od3as" path="res://assets/art/ui/icons/marbles/normal/ChristmasTreeOrnament014.png" id="33_vy3mf"]
-[ext_resource type="Texture2D" uid="uid://csr1xqr01elrf" path="res://assets/art/ui/icons/marbles/normal/ChristmasTreeOrnament015.png" id="34_ukv5i"]
-[ext_resource type="Texture2D" uid="uid://b4sgstqbsgu30" path="res://assets/art/ui/icons/marbles/normal/ChristmasTreeOrnament017.png" id="35_uf3wu"]
-[ext_resource type="Texture2D" uid="uid://cpehv0rdj5q67" path="res://assets/art/ui/icons/marbles/normal/Ice003.png" id="37_bnkwu"]
-[ext_resource type="Texture2D" uid="uid://cebujs5en80c" path="res://assets/art/ui/icons/marbles/normal/Lava004.png" id="38_yb5f3"]
-[ext_resource type="Texture2D" uid="uid://bh0i5y6ep8i02" path="res://assets/art/ui/icons/marbles/normal/Godot.png" id="39_h5h0v"]
+[ext_resource type="Script" uid="uid://ibxbuqsyaa86" path="res://scenes/ui/menus/trail_color_button.gd" id="47_f015j"]
+[ext_resource type="FontFile" uid="uid://y16hiud5i3rd" path="res://assets/fonts/gomarice_shmup_in_the_zone.ttf" id="48_uvc7g"]
+
+[sub_resource type="Theme" id="Theme_iiyxw"]
+default_font_size = 0
+Button/font_sizes/font_size = 25
+Button/fonts/font = ExtResource("48_uvc7g")
+Label/colors/font_color = Color(1, 1, 1, 1)
+Label/colors/font_outline_color = Color(0, 0, 0, 1)
+Label/colors/font_shadow_color = Color(0, 0, 0, 0)
+Label/constants/outline_size = 15
+Label/font_sizes/font_size = 25
+LineEdit/fonts/font = ExtResource("48_uvc7g")
 
 [sub_resource type="Animation" id="Animation_nqjyj"]
 length = 0.001
@@ -378,7 +360,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 1152.0
 offset_right = 1152.0
-offset_bottom = 91.0
+offset_bottom = 16.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -388,13 +370,12 @@ theme_override_constants/margin_top = 40
 theme_override_constants/margin_right = 80
 theme_override_constants/margin_bottom = 60
 
-[node name="CustomizeMenu" type="VBoxContainer" parent="Customize" node_paths=PackedStringArray("sfx_pressed", "menu_slide")]
+[node name="CustomizeMenu" type="VBoxContainer" parent="Customize"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_constants/separation = 100
+size_flags_vertical = 0
+theme_override_constants/separation = 25
 script = ExtResource("8_rlg63")
-sfx_pressed = NodePath("../../Sound/ButtonPressedSFX")
-menu_slide = NodePath("../../MenuSlides")
 
 [node name="Customize" type="Label" parent="Customize/CustomizeMenu"]
 custom_minimum_size = Vector2(0, 50)
@@ -404,17 +385,22 @@ theme_override_font_sizes/font_size = 60
 text = "Customize"
 horizontal_alignment = 1
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Customize/CustomizeMenu"]
-clip_contents = false
-custom_minimum_size = Vector2(0, 280)
+[node name="VBoxContainer" type="VBoxContainer" parent="Customize/CustomizeMenu"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Customize/CustomizeMenu/VBoxContainer"]
+custom_minimum_size = Vector2(300, 300)
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
 theme = ExtResource("2_6jbdy")
 draw_focus_border = true
-horizontal_scroll_mode = 0
+horizontal_scroll_mode = 2
+vertical_scroll_mode = 3
 
-[node name="MarginContainer" type="MarginContainer" parent="Customize/CustomizeMenu/ScrollContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Customize/CustomizeMenu/VBoxContainer/ScrollContainer"]
+clip_contents = true
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
@@ -423,268 +409,77 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="SkinsContainer" type="GridContainer" parent="Customize/CustomizeMenu/ScrollContainer/MarginContainer"]
+[node name="SkinsContainer" type="GridContainer" parent="Customize/CustomizeMenu/VBoxContainer/ScrollContainer/MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
 theme_override_constants/h_separation = 15
 theme_override_constants/v_separation = 15
-columns = 4
+columns = 13
 
-[node name="ColorRect" type="TextureButton" parent="Customize/CustomizeMenu/ScrollContainer/MarginContainer/SkinsContainer"]
-custom_minimum_size = Vector2(80, 80)
+[node name="TrailEnable" type="CheckButton" parent="Customize/CustomizeMenu/VBoxContainer"]
 layout_mode = 2
-theme = ExtResource("2_6jbdy")
-texture_normal = ExtResource("9_j8oos")
-ignore_texture_size = true
-stretch_mode = 0
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 28
+button_pressed = true
+text = "ENABLE TRAIL"
+flat = true
 
-[node name="ColorRect2" type="TextureButton" parent="Customize/CustomizeMenu/ScrollContainer/MarginContainer/SkinsContainer"]
-custom_minimum_size = Vector2(80, 80)
+[node name="TrailSettings" type="Button" parent="Customize/CustomizeMenu/VBoxContainer"]
 layout_mode = 2
-theme = ExtResource("2_6jbdy")
-texture_normal = ExtResource("10_7vjx8")
-ignore_texture_size = true
-stretch_mode = 0
+size_flags_horizontal = 0
+theme_override_font_sizes/font_size = 28
+text = "Trail Color"
+flat = true
+alignment = 0
+script = ExtResource("47_f015j")
 
-[node name="ColorRect3" type="TextureButton" parent="Customize/CustomizeMenu/ScrollContainer/MarginContainer/SkinsContainer"]
-custom_minimum_size = Vector2(80, 80)
+[node name="TrailColorPicker" type="VBoxContainer" parent="Customize/CustomizeMenu"]
+unique_name_in_owner = true
+visible = false
 layout_mode = 2
-theme = ExtResource("2_6jbdy")
-texture_normal = ExtResource("11_0m6a7")
-ignore_texture_size = true
-stretch_mode = 0
 
-[node name="ColorRect4" type="TextureButton" parent="Customize/CustomizeMenu/ScrollContainer/MarginContainer/SkinsContainer"]
-custom_minimum_size = Vector2(80, 80)
+[node name="VBoxContainer" type="VBoxContainer" parent="Customize/CustomizeMenu/TrailColorPicker"]
 layout_mode = 2
-theme = ExtResource("2_6jbdy")
-texture_normal = ExtResource("9_cbbg0")
-ignore_texture_size = true
-stretch_mode = 0
 
-[node name="ColorRect5" type="TextureButton" parent="Customize/CustomizeMenu/ScrollContainer/MarginContainer/SkinsContainer"]
-custom_minimum_size = Vector2(80, 80)
+[node name="ColorPicker" type="ColorPicker" parent="Customize/CustomizeMenu/TrailColorPicker/VBoxContainer"]
 layout_mode = 2
-theme = ExtResource("2_6jbdy")
-texture_normal = ExtResource("11_1sy0c")
-ignore_texture_size = true
-stretch_mode = 0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = SubResource("Theme_iiyxw")
+theme_override_constants/sv_width = 150
+theme_override_constants/sv_height = 150
+edit_intensity = false
+picker_shape = 1
+color_modes_visible = false
 
-[node name="ColorRect6" type="TextureButton" parent="Customize/CustomizeMenu/ScrollContainer/MarginContainer/SkinsContainer"]
-custom_minimum_size = Vector2(80, 80)
+[node name="HBoxContainer" type="HBoxContainer" parent="Customize/CustomizeMenu/TrailColorPicker/VBoxContainer"]
 layout_mode = 2
-theme = ExtResource("2_6jbdy")
-texture_normal = ExtResource("10_wp1be")
-ignore_texture_size = true
-stretch_mode = 0
 
-[node name="ColorRect7" type="TextureButton" parent="Customize/CustomizeMenu/ScrollContainer/MarginContainer/SkinsContainer"]
-custom_minimum_size = Vector2(80, 80)
+[node name="Apply" type="Button" parent="Customize/CustomizeMenu/TrailColorPicker/VBoxContainer/HBoxContainer"]
 layout_mode = 2
-theme = ExtResource("2_6jbdy")
-texture_normal = ExtResource("15_01hih")
-ignore_texture_size = true
-stretch_mode = 0
+theme_override_font_sizes/font_size = 23
+text = "Apply"
+flat = true
 
-[node name="ColorRect8" type="TextureButton" parent="Customize/CustomizeMenu/ScrollContainer/MarginContainer/SkinsContainer"]
-custom_minimum_size = Vector2(80, 80)
+[node name="Reset" type="Button" parent="Customize/CustomizeMenu/TrailColorPicker/VBoxContainer/HBoxContainer"]
 layout_mode = 2
-theme = ExtResource("2_6jbdy")
-texture_normal = ExtResource("16_fgmo3")
-ignore_texture_size = true
-stretch_mode = 0
+theme_override_font_sizes/font_size = 23
+text = "Reset"
+flat = true
 
-[node name="ColorRect9" type="TextureButton" parent="Customize/CustomizeMenu/ScrollContainer/MarginContainer/SkinsContainer"]
-custom_minimum_size = Vector2(80, 80)
+[node name="Default" type="Button" parent="Customize/CustomizeMenu/TrailColorPicker/VBoxContainer/HBoxContainer"]
 layout_mode = 2
-theme = ExtResource("2_6jbdy")
-texture_normal = ExtResource("17_vyo64")
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="ColorRect10" type="TextureButton" parent="Customize/CustomizeMenu/ScrollContainer/MarginContainer/SkinsContainer"]
-custom_minimum_size = Vector2(80, 80)
-layout_mode = 2
-theme = ExtResource("2_6jbdy")
-texture_normal = ExtResource("18_fcbp7")
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="ColorRect11" type="TextureButton" parent="Customize/CustomizeMenu/ScrollContainer/MarginContainer/SkinsContainer"]
-custom_minimum_size = Vector2(80, 80)
-layout_mode = 2
-theme = ExtResource("2_6jbdy")
-texture_normal = ExtResource("19_h5h0v")
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="ColorRect12" type="TextureButton" parent="Customize/CustomizeMenu/ScrollContainer/MarginContainer/SkinsContainer"]
-custom_minimum_size = Vector2(80, 80)
-layout_mode = 2
-theme = ExtResource("2_6jbdy")
-texture_normal = ExtResource("20_cfnjw")
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="ColorRect13" type="TextureButton" parent="Customize/CustomizeMenu/ScrollContainer/MarginContainer/SkinsContainer"]
-custom_minimum_size = Vector2(80, 80)
-layout_mode = 2
-theme = ExtResource("2_6jbdy")
-texture_normal = ExtResource("21_xijhu")
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="ColorRect14" type="TextureButton" parent="Customize/CustomizeMenu/ScrollContainer/MarginContainer/SkinsContainer"]
-custom_minimum_size = Vector2(80, 80)
-layout_mode = 2
-theme = ExtResource("2_6jbdy")
-texture_normal = ExtResource("22_p6vsb")
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="ColorRect15" type="TextureButton" parent="Customize/CustomizeMenu/ScrollContainer/MarginContainer/SkinsContainer"]
-custom_minimum_size = Vector2(80, 80)
-layout_mode = 2
-theme = ExtResource("2_6jbdy")
-texture_normal = ExtResource("23_lt0ik")
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="ColorRect16" type="TextureButton" parent="Customize/CustomizeMenu/ScrollContainer/MarginContainer/SkinsContainer"]
-custom_minimum_size = Vector2(80, 80)
-layout_mode = 2
-theme = ExtResource("2_6jbdy")
-texture_normal = ExtResource("24_ulu4m")
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="ColorRect17" type="TextureButton" parent="Customize/CustomizeMenu/ScrollContainer/MarginContainer/SkinsContainer"]
-custom_minimum_size = Vector2(80, 80)
-layout_mode = 2
-theme = ExtResource("2_6jbdy")
-texture_normal = ExtResource("25_6syt0")
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="ColorRect18" type="TextureButton" parent="Customize/CustomizeMenu/ScrollContainer/MarginContainer/SkinsContainer"]
-custom_minimum_size = Vector2(80, 80)
-layout_mode = 2
-theme = ExtResource("2_6jbdy")
-texture_normal = ExtResource("26_ak24h")
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="ColorRect19" type="TextureButton" parent="Customize/CustomizeMenu/ScrollContainer/MarginContainer/SkinsContainer"]
-custom_minimum_size = Vector2(80, 80)
-layout_mode = 2
-theme = ExtResource("2_6jbdy")
-texture_normal = ExtResource("27_f015j")
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="ColorRect20" type="TextureButton" parent="Customize/CustomizeMenu/ScrollContainer/MarginContainer/SkinsContainer"]
-custom_minimum_size = Vector2(80, 80)
-layout_mode = 2
-theme = ExtResource("2_6jbdy")
-texture_normal = ExtResource("28_uvc7g")
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="ColorRect21" type="TextureButton" parent="Customize/CustomizeMenu/ScrollContainer/MarginContainer/SkinsContainer"]
-custom_minimum_size = Vector2(80, 80)
-layout_mode = 2
-theme = ExtResource("2_6jbdy")
-texture_normal = ExtResource("29_iiyxw")
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="ColorRect22" type="TextureButton" parent="Customize/CustomizeMenu/ScrollContainer/MarginContainer/SkinsContainer"]
-custom_minimum_size = Vector2(80, 80)
-layout_mode = 2
-theme = ExtResource("2_6jbdy")
-texture_normal = ExtResource("30_54o52")
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="ColorRect23" type="TextureButton" parent="Customize/CustomizeMenu/ScrollContainer/MarginContainer/SkinsContainer"]
-custom_minimum_size = Vector2(80, 80)
-layout_mode = 2
-theme = ExtResource("2_6jbdy")
-texture_normal = ExtResource("31_12wke")
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="ColorRect24" type="TextureButton" parent="Customize/CustomizeMenu/ScrollContainer/MarginContainer/SkinsContainer"]
-custom_minimum_size = Vector2(80, 80)
-layout_mode = 2
-theme = ExtResource("2_6jbdy")
-texture_normal = ExtResource("32_kwgjm")
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="ColorRect25" type="TextureButton" parent="Customize/CustomizeMenu/ScrollContainer/MarginContainer/SkinsContainer"]
-custom_minimum_size = Vector2(80, 80)
-layout_mode = 2
-theme = ExtResource("2_6jbdy")
-texture_normal = ExtResource("33_vy3mf")
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="ColorRect26" type="TextureButton" parent="Customize/CustomizeMenu/ScrollContainer/MarginContainer/SkinsContainer"]
-custom_minimum_size = Vector2(80, 80)
-layout_mode = 2
-theme = ExtResource("2_6jbdy")
-texture_normal = ExtResource("34_ukv5i")
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="ColorRect27" type="TextureButton" parent="Customize/CustomizeMenu/ScrollContainer/MarginContainer/SkinsContainer"]
-custom_minimum_size = Vector2(80, 80)
-layout_mode = 2
-theme = ExtResource("2_6jbdy")
-texture_normal = ExtResource("35_uf3wu")
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="ColorRect28" type="TextureButton" parent="Customize/CustomizeMenu/ScrollContainer/MarginContainer/SkinsContainer"]
-custom_minimum_size = Vector2(80, 80)
-layout_mode = 2
-theme = ExtResource("2_6jbdy")
-texture_normal = ExtResource("20_7vjx8")
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="ColorRect29" type="TextureButton" parent="Customize/CustomizeMenu/ScrollContainer/MarginContainer/SkinsContainer"]
-custom_minimum_size = Vector2(80, 80)
-layout_mode = 2
-theme = ExtResource("2_6jbdy")
-texture_normal = ExtResource("37_bnkwu")
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="ColorRect30" type="TextureButton" parent="Customize/CustomizeMenu/ScrollContainer/MarginContainer/SkinsContainer"]
-custom_minimum_size = Vector2(80, 80)
-layout_mode = 2
-theme = ExtResource("2_6jbdy")
-texture_normal = ExtResource("38_yb5f3")
-ignore_texture_size = true
-stretch_mode = 0
-
-[node name="ColorRect31" type="TextureButton" parent="Customize/CustomizeMenu/ScrollContainer/MarginContainer/SkinsContainer"]
-custom_minimum_size = Vector2(80, 80)
-layout_mode = 2
-theme = ExtResource("2_6jbdy")
-texture_normal = ExtResource("39_h5h0v")
-ignore_texture_size = true
-stretch_mode = 0
+theme_override_font_sizes/font_size = 23
+text = "Default"
+flat = true
 
 [node name="CustomizeReturn" type="Button" parent="Customize/CustomizeMenu"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 4
+size_flags_vertical = 10
 theme_override_font_sizes/font_size = 50
 text = "Return"
 flat = true
@@ -693,3 +488,5 @@ flat = true
 libraries = {
 &"": SubResource("AnimationLibrary_nqjyj")
 }
+
+[connection signal="pressed" from="Customize/CustomizeMenu/VBoxContainer/TrailSettings" to="Customize/CustomizeMenu/VBoxContainer/TrailSettings" method="_on_pressed"]
