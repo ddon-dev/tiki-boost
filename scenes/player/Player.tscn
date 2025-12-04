@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bguscvtdsubse"]
+[gd_scene load_steps=20 format=3 uid="uid://bguscvtdsubse"]
 
 [ext_resource type="Texture2D" uid="uid://ce6yr0wy8nkns" path="res://icon.svg" id="1_g1eag"]
 [ext_resource type="Script" uid="uid://djiifaqjw6fvn" path="res://scripts/player/marble.gd" id="1_gmlin"]
@@ -9,7 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://yq8glkop4dbp" path="res://assets/audio/sfx/player/marble_rolling.ogg" id="6_c3xxp"]
 [ext_resource type="AudioStream" uid="uid://bxcgpjw54clla" path="res://assets/audio/sfx/player/jump.ogg" id="6_v42im"]
 [ext_resource type="Script" uid="uid://624jrwp2a8ps" path="res://scripts/player/trail_3d.gd" id="7_7oing"]
-[ext_resource type="Shader" path="res://assets/shaders/radial_blur.gdshader" id="9_pn6s4"]
+[ext_resource type="Shader" uid="uid://b7kqw2nuowsau" path="res://assets/shaders/radial_blur.gdshader" id="9_pn6s4"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_lr6ob"]
 bounce = 0.5
@@ -32,6 +32,8 @@ transparency = 1
 cull_mode = 2
 shading_mode = 0
 albedo_texture = SubResource("GradientTexture2D_5stf6")
+
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_7oing"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7oing"]
 shader = ExtResource("9_pn6s4")
@@ -80,6 +82,7 @@ stream = ExtResource("6_v42im")
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_180ig")
 cast_shadow = 0
+mesh = SubResource("ImmediateMesh_7oing")
 script = ExtResource("7_7oing")
 fromWidth = 0.12
 lifespan = 0.5

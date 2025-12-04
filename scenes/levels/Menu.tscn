@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dh6qat532gkdc"]
+[gd_scene load_steps=26 format=3 uid="uid://dh6qat532gkdc"]
 
 [ext_resource type="PackedScene" uid="uid://so18tatfe4un" path="res://scenes/ui/menus/MainMenu.tscn" id="1_dex4k"]
 [ext_resource type="Texture2D" uid="uid://brrjqum3ry1jw" path="res://assets/art/skyboxes/skybox1.png" id="2_5au3h"]
@@ -7,6 +7,10 @@
 [ext_resource type="PackedScene" uid="uid://1tjylehjm63n" path="res://scenes/objects/DeathZone.tscn" id="3_5au3h"]
 [ext_resource type="PackedScene" uid="uid://cht4105owcyed" path="res://scenes/objects/Checkpoint.tscn" id="4_lijdy"]
 [ext_resource type="Script" uid="uid://brhgl7cs7y3em" path="res://scripts/ui/menus/menu_camera.gd" id="5_bfhna"]
+[ext_resource type="Script" uid="uid://b172pur0or3bn" path="res://scripts/ui/menus/menu_marble.gd" id="8_32dg4"]
+[ext_resource type="Texture2D" uid="uid://ce6yr0wy8nkns" path="res://icon.svg" id="9_ljdvk"]
+[ext_resource type="Script" uid="uid://624jrwp2a8ps" path="res://scripts/player/trail_3d.gd" id="10_1dw0u"]
+[ext_resource type="Texture2D" uid="uid://ba5gguq1pvpp7" path="res://assets/art/textures/Light/texture_06.png" id="11_ljdvk"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lijdy"]
 albedo_color = Color(0, 0, 0, 1)
@@ -30,6 +34,35 @@ _data = {
 "tilts": PackedFloat32Array(0, 0, 0, 0)
 }
 point_count = 4
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_bibbj"]
+bounce = 0.5
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_6uihs"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_oxmp5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vibhy"]
+albedo_texture = ExtResource("9_ljdvk")
+
+[sub_resource type="Gradient" id="Gradient_nvvxc"]
+colors = PackedColorArray(0, 0.4088182, 0.8235936, 1, 0, 0.40784314, 0.8235294, 0.67058825)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_5stf6"]
+gradient = SubResource("Gradient_nvvxc")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2ix1n"]
+transparency = 1
+cull_mode = 2
+shading_mode = 0
+albedo_texture = SubResource("GradientTexture2D_5stf6")
+
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_ljdvk"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1dw0u"]
+albedo_texture = ExtResource("11_ljdvk")
+uv1_triplanar = true
+uv1_world_triplanar = true
 
 [node name="Node3D" type="Node3D"]
 
@@ -109,6 +142,10 @@ script = null
 [node name="StageCenter" type="Marker3D" parent="MenuCamera"]
 unique_name_in_owner = true
 
+[node name="DefaultPosition" type="Marker3D" parent="MenuCamera"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 0.7904117, 0.612576, 0, -0.61257607, 0.7904117, -0.056907654, 27.555782, 46.94144)
+
 [node name="Path3D" type="Path3D" parent="MenuCamera"]
 transform = Transform3D(1, 0, 0, 0, 0.7904117, 0.61257607, 0, -0.61257607, 0.7904117, 0, 27.55573, 47.20968)
 curve = SubResource("Curve3D_ppyta")
@@ -122,3 +159,56 @@ transform = Transform3D(1, 0, 0, 0, 1, -2.9802322e-08, 0, 2.9802322e-08, 1, 0, 0
 current = true
 near = 2.274
 script = ExtResource("5_bfhna")
+
+[node name="CustomizeArea" type="Node3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 125.286026, 0, 0)
+
+[node name="CustomizeCenter" type="Marker3D" parent="CustomizeArea"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6996613, 0.60108817, 0)
+
+[node name="Marble" type="RigidBody3D" parent="CustomizeArea"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.6616287, 0.54522943, 0)
+collision_mask = 6
+physics_material_override = SubResource("PhysicsMaterial_bibbj")
+gravity_scale = 0.95
+contact_monitor = true
+max_contacts_reported = 4
+linear_damp = 0.8
+script = ExtResource("8_32dg4")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CustomizeArea/Marble"]
+shape = SubResource("SphereShape3D_6uihs")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="CustomizeArea/Marble"]
+mesh = SubResource("SphereMesh_oxmp5")
+surface_material_override/0 = SubResource("StandardMaterial3D_vibhy")
+
+[node name="Trail3D" type="MeshInstance3D" parent="CustomizeArea"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0.54522943, 0)
+material_override = SubResource("StandardMaterial3D_2ix1n")
+cast_shadow = 0
+mesh = SubResource("ImmediateMesh_ljdvk")
+script = ExtResource("10_1dw0u")
+fromWidth = 0.12
+lifespan = 0.5
+scaleTexture = false
+startColor = Color(0, 0.40784314, 0.8235294, 1)
+
+[node name="CSGBox3D" type="CSGCylinder3D" parent="CustomizeArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.25, -0.64697266, 0.25)
+material_override = SubResource("StandardMaterial3D_1dw0u")
+use_collision = true
+collision_layer = 2
+collision_mask = 0
+radius = 4.159668
+height = 0.7060547
+sides = 15
+
+[node name="CustomizePosition" type="Marker3D" parent="CustomizeArea"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9922028, 7.3120766, -3.1378455)
+
+[connection signal="body_entered" from="CustomizeArea/Marble" to="CustomizeArea/Marble" method="_on_body_entered"]
