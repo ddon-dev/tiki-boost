@@ -5,8 +5,8 @@ class_name Marble extends RigidBody3D
 @export var max_velocity: float = 20.0
 @export var jump_force: float = 7.5
 @export var finish_decel: float = 0.25
-@export var jump_buffer_window: float = 0.08
-@export var coyote_time_window: float = 0.1
+@export var jump_buffer_window: float = 0.2
+@export var coyote_time_window: float = 0.2
 @export var boost_default_speed: float = 40.0
 @export var boost_default_duration: float = 0.6
 
@@ -38,6 +38,7 @@ var is_jumping: bool = false
 var can_move: bool = true
 
 var coyote_timer: float
+var coyote_window_active: bool = false
 var jump_buffer_timer: float
 
 var level_finished: bool = false
@@ -57,9 +58,12 @@ func _physics_process(delta: float) -> void:
 	
 	if ground_check_ray.is_colliding():
 		if is_jumping: is_jumping = false
-	else: 
-		if !is_jumping && coyote_timer <= 0.0: 
-			coyote_timer = coyote_time_window
+		coyote_window_active = false
+	else:
+		if !coyote_window_active:
+			if !is_jumping && coyote_timer <= 0.0:
+				coyote_timer = coyote_time_window
+				coyote_window_active = true
 	
 	ground_check_ray.global_position = global_position
 	ground_check_ray.force_raycast_update()

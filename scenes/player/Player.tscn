@@ -9,7 +9,7 @@
 [ext_resource type="AudioStream" uid="uid://yq8glkop4dbp" path="res://assets/audio/sfx/player/marble_rolling.ogg" id="6_c3xxp"]
 [ext_resource type="AudioStream" uid="uid://bxcgpjw54clla" path="res://assets/audio/sfx/player/jump.ogg" id="6_v42im"]
 [ext_resource type="Script" uid="uid://624jrwp2a8ps" path="res://scripts/player/trail_3d.gd" id="7_7oing"]
-[ext_resource type="Shader" uid="uid://b7kqw2nuowsau" path="res://assets/shaders/radial_blur.gdshader" id="9_pn6s4"]
+[ext_resource type="Shader" path="res://assets/shaders/radial_blur.gdshader" id="9_pn6s4"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_lr6ob"]
 bounce = 0.5

@@ -1,0 +1,52 @@
+[gd_scene load_steps=10 format=3 uid="uid://0ka3te4x8ya0"]
+
+[ext_resource type="PackedScene" uid="uid://cihamo12cblla" path="res://scenes/handlers/LevelManager.tscn" id="1_ev6jf"]
+[ext_resource type="Texture2D" uid="uid://brrjqum3ry1jw" path="res://assets/art/skyboxes/skybox1.png" id="2_jnp3q"]
+[ext_resource type="PackedScene" uid="uid://c1bkxh8p1litp" path="res://scenes/objects/FinishPoint.tscn" id="3_d4rqk"]
+[ext_resource type="PackedScene" uid="uid://1tjylehjm63n" path="res://scenes/objects/DeathZone.tscn" id="4_1ttgc"]
+[ext_resource type="PackedScene" uid="uid://bguscvtdsubse" path="res://scenes/player/Player.tscn" id="5_a1c6h"]
+[ext_resource type="PackedScene" uid="uid://g6kt40g48fnf" path="res://scenes/ui/UI.tscn" id="6_j1utv"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_k2p1l"]
+panorama = ExtResource("2_jnp3q")
+
+[sub_resource type="Sky" id="Sky_bij1w"]
+sky_material = SubResource("PanoramaSkyMaterial_k2p1l")
+
+[sub_resource type="Environment" id="Environment_7dsvl"]
+background_mode = 2
+sky = SubResource("Sky_bij1w")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="Level_05" type="Node3D"]
+
+[node name="LevelManager" parent="." instance=ExtResource("1_ev6jf")]
+unique_name_in_owner = true
+
+[node name="Environment" type="Node3D" parent="."]
+unique_name_in_owner = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Environment"]
+environment = SubResource("Environment_7dsvl")
+
+[node name="Sun" type="DirectionalLight3D" parent="Environment"]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, -10)
+shadow_enabled = true
+
+[node name="Objects" type="Node3D" parent="Environment"]
+
+[node name="FinishPoint" parent="Environment/Objects" instance=ExtResource("3_d4rqk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66, -0.4208498, -7)
+
+[node name="DeathZone" parent="Environment/Objects" instance=ExtResource("4_1ttgc")]
+
+[node name="Terrain" type="Node3D" parent="Environment"]
+
+[node name="Player" parent="." instance=ExtResource("5_a1c6h")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, -10)
+
+[node name="SpawnPosition" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 71, 2, 68)
+
+[node name="UI" parent="." instance=ExtResource("6_j1utv")]
