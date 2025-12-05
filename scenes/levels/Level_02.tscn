@@ -1,11 +1,11 @@
 [gd_scene load_steps=20 format=3 uid="uid://d2n2p5hgeocs0"]
 
 [ext_resource type="Script" uid="uid://beeirwibgd8ew" path="res://scripts/levels/level_02.gd" id="1_juc02"]
-[ext_resource type="Texture2D" uid="uid://brrjqum3ry1jw" path="res://assets/art/skyboxes/skybox1.png" id="2_3njdy"]
 [ext_resource type="PackedScene" uid="uid://cihamo12cblla" path="res://scenes/handlers/LevelManager.tscn" id="2_folmu"]
 [ext_resource type="Resource" uid="uid://jdvbhk4e8qq8" path="res://scripts/levels/resources/level_02.tres" id="3_8ccjp"]
 [ext_resource type="PackedScene" uid="uid://cht4105owcyed" path="res://scenes/objects/Checkpoint.tscn" id="3_ivapw"]
 [ext_resource type="PackedScene" uid="uid://c1bkxh8p1litp" path="res://scenes/objects/FinishPoint.tscn" id="3_vvr1n"]
+[ext_resource type="Texture2D" uid="uid://cfv7382718ioh" path="res://assets/art/skyboxes/skybox8.png" id="4_dsu4p"]
 [ext_resource type="PackedScene" uid="uid://1tjylehjm63n" path="res://scenes/objects/DeathZone.tscn" id="4_ivapw"]
 [ext_resource type="PackedScene" uid="uid://dp0oysvtwt18b" path="res://scenes/objects/MovingPlatform.tscn" id="5_3njdy"]
 [ext_resource type="Material" uid="uid://dn1m1wale5wxo" path="res://assets/materials/white_terrain.tres" id="5_juc02"]
@@ -16,7 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://g6kt40g48fnf" path="res://scenes/ui/UI.tscn" id="14_dsu4p"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_vjhk1"]
-panorama = ExtResource("2_3njdy")
+panorama = ExtResource("4_dsu4p")
 
 [sub_resource type="Sky" id="Sky_bij1w"]
 sky_material = SubResource("PanoramaSkyMaterial_vjhk1")

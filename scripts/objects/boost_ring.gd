@@ -4,6 +4,8 @@ extends Area3D
 @export_category("Settings")
 @export var boost_speed: float = 40.0
 @export var boost_duration: float = 0.6
+@export var boost_forward: bool = false
+@export var keep_y_velocity: bool = true
 @export var one_shot: bool = false
 
 # Audio
@@ -15,20 +17,19 @@ func _ready() -> void:
 
 func _on_body_entered(body: Node3D) -> void:
 	if body is Marble:
-		var marble := body as Marble
-
+		var marble: Marble = body as Marble
 		var vel: Vector3 = marble.linear_velocity
-
-		# Si la bola está casi quieta, evitamos un vector casi cero
-		if vel.length() < 0.1:
-			# fallback opcional: usar orientación del anillo o no hacer nada
-			# var fallback_dir = -global_transform.basis.z
-			# marble.apply_speed_boost(fallback_dir, boost_speed, boost_duration)
-			return
-
-		var boost_dir: Vector3 = vel.normalized()
-
-		marble.apply_speed_boost(boost_dir, boost_speed, boost_duration)
+	
+		var boost_dir: Vector3
+	
+		if boost_forward:
+			# boosts towards the direction the ring is looking at, hard-traced trajectory
+			boost_dir = -global_transform.basis.z
+		else:
+			# boosts towards the direction of the marble movement
+			boost_dir = vel.normalized()
+		
+		marble.apply_speed_boost(boost_dir, boost_speed, boost_duration, keep_y_velocity)
 		sfx_boost.play()
 
 		if one_shot:

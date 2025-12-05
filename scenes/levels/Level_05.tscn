@@ -1,14 +1,18 @@
-[gd_scene load_steps=10 format=3 uid="uid://0ka3te4x8ya0"]
+[gd_scene load_steps=15 format=3 uid="uid://0ka3te4x8ya0"]
 
 [ext_resource type="PackedScene" uid="uid://cihamo12cblla" path="res://scenes/handlers/LevelManager.tscn" id="1_ev6jf"]
-[ext_resource type="Texture2D" uid="uid://brrjqum3ry1jw" path="res://assets/art/skyboxes/skybox1.png" id="2_jnp3q"]
+[ext_resource type="Resource" uid="uid://b30q6qq3qcses" path="res://scripts/levels/resources/level_05.tres" id="2_1ttgc"]
+[ext_resource type="Texture2D" uid="uid://roc8kihyqhse" path="res://assets/art/skyboxes/skybox5.png" id="2_ev6jf"]
 [ext_resource type="PackedScene" uid="uid://c1bkxh8p1litp" path="res://scenes/objects/FinishPoint.tscn" id="3_d4rqk"]
 [ext_resource type="PackedScene" uid="uid://1tjylehjm63n" path="res://scenes/objects/DeathZone.tscn" id="4_1ttgc"]
 [ext_resource type="PackedScene" uid="uid://bguscvtdsubse" path="res://scenes/player/Player.tscn" id="5_a1c6h"]
+[ext_resource type="Material" uid="uid://dn1m1wale5wxo" path="res://assets/materials/white_terrain.tres" id="5_d4rqk"]
+[ext_resource type="PackedScene" uid="uid://25tan4gxgpbv" path="res://scenes/objects/BoostRing.tscn" id="5_j1utv"]
+[ext_resource type="Material" uid="uid://cmuff7c3uviht" path="res://assets/materials/dark_terrain.tres" id="6_1ttgc"]
 [ext_resource type="PackedScene" uid="uid://g6kt40g48fnf" path="res://scenes/ui/UI.tscn" id="6_j1utv"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_k2p1l"]
-panorama = ExtResource("2_jnp3q")
+panorama = ExtResource("2_ev6jf")
 
 [sub_resource type="Sky" id="Sky_bij1w"]
 sky_material = SubResource("PanoramaSkyMaterial_k2p1l")
@@ -19,10 +23,13 @@ sky = SubResource("Sky_bij1w")
 tonemap_mode = 2
 glow_enabled = true
 
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_1ttgc"]
+
 [node name="Level_05" type="Node3D"]
 
 [node name="LevelManager" parent="." instance=ExtResource("1_ev6jf")]
 unique_name_in_owner = true
+level_data = ExtResource("2_1ttgc")
 
 [node name="Environment" type="Node3D" parent="."]
 unique_name_in_owner = true
@@ -36,17 +43,72 @@ shadow_enabled = true
 
 [node name="Objects" type="Node3D" parent="Environment"]
 
+[node name="BoostRing" parent="Environment/Objects" instance=ExtResource("5_j1utv")]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 84, 0)
+boost_forward = true
+keep_y_velocity = false
+
 [node name="FinishPoint" parent="Environment/Objects" instance=ExtResource("3_d4rqk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 66, -0.4208498, -7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0000005, 0)
 
 [node name="DeathZone" parent="Environment/Objects" instance=ExtResource("4_1ttgc")]
 
 [node name="Terrain" type="Node3D" parent="Environment"]
 
+[node name="BasicPlatform" type="CSGCombiner3D" parent="Environment/Terrain"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, -2, 0)
+use_collision = true
+collision_layer = 2
+collision_mask = 0
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Environment/Terrain/BasicPlatform"]
+radius = 5.0
+height = 4.0
+sides = 32
+material = ExtResource("5_d4rqk")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="Environment/Terrain/BasicPlatform/CSGCylinder3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+operation = 1
+radius = 5.0
+radial_segments = 32
+rings = 25
+material = ExtResource("6_1ttgc")
+
+[node name="SpawnPlatform" type="CSGCombiner3D" parent="Environment/Terrain"]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 86, 0)
+use_collision = true
+collision_layer = 2
+collision_mask = 0
+
+[node name="CSGTorus3D" type="CSGTorus3D" parent="Environment/Terrain/SpawnPlatform"]
+transform = Transform3D(0.99999994, -2.3283064e-10, 0, 0, 1, 0, 3.7252903e-09, 0, 0.99999994, 0, 0, 0)
+inner_radius = 14.0
+outer_radius = 3.0
+sides = 32
+ring_sides = 25
+material = ExtResource("6_1ttgc")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Environment/Terrain/SpawnPlatform/CSGTorus3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, -1.2407709e-24, 1, 0, 4.000001, 0)
+operation = 2
+radius = 14.0
+height = 6.0
+sides = 32
+material = ExtResource("5_d4rqk")
+
 [node name="Player" parent="." instance=ExtResource("5_a1c6h")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, -10)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0, 0, 0)
+
+[node name="Trail3D" parent="Player" index="1"]
+mesh = SubResource("ImmediateMesh_1ttgc")
+
+[node name="CameraContainer" parent="Player" index="3"]
+v_min = -65.0
 
 [node name="SpawnPosition" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 71, 2, 68)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.5, 89.5, 0)
 
 [node name="UI" parent="." instance=ExtResource("6_j1utv")]
+
+[editable path="Player"]

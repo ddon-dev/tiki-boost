@@ -2,8 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://cihamo12cblla" path="res://scenes/handlers/LevelManager.tscn" id="1_sywh5"]
 [ext_resource type="Resource" uid="uid://dueocbx11abo0" path="res://scripts/levels/resources/level_03.tres" id="2_sywh5"]
-[ext_resource type="Texture2D" uid="uid://brrjqum3ry1jw" path="res://assets/art/skyboxes/skybox1.png" id="2_tqvfx"]
 [ext_resource type="PackedScene" uid="uid://c1bkxh8p1litp" path="res://scenes/objects/FinishPoint.tscn" id="3_gmvll"]
+[ext_resource type="Texture2D" uid="uid://bxtg3keyv8abp" path="res://assets/art/skyboxes/skybox10.png" id="3_mr7xf"]
 [ext_resource type="PackedScene" uid="uid://25tan4gxgpbv" path="res://scenes/objects/BoostRing.tscn" id="3_tqvfx"]
 [ext_resource type="PackedScene" uid="uid://1tjylehjm63n" path="res://scenes/objects/DeathZone.tscn" id="4_mr7xf"]
 [ext_resource type="Material" uid="uid://dn1m1wale5wxo" path="res://assets/materials/white_terrain.tres" id="5_x63ga"]
@@ -14,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://g6kt40g48fnf" path="res://scenes/ui/UI.tscn" id="12_mr7xf"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_fei51"]
-panorama = ExtResource("2_tqvfx")
+panorama = ExtResource("3_mr7xf")
 
 [sub_resource type="Sky" id="Sky_bij1w"]
 sky_material = SubResource("PanoramaSkyMaterial_fei51")

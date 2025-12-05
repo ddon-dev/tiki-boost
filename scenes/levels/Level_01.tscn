@@ -141,5 +141,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.7000003)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 81.40349)
 
 [node name="UI" parent="." instance=ExtResource("11_vlkw4")]
-
-[editable path="UI"]

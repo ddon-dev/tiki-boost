@@ -6,7 +6,7 @@ class_name Marble extends RigidBody3D
 @export var jump_force: float = 7.5
 @export var finish_decel: float = 0.25
 @export var jump_buffer_window: float = 0.2
-@export var coyote_time_window: float = 0.2
+@export var coyote_time_window: float = 0.35
 @export var boost_default_speed: float = 40.0
 @export var boost_default_duration: float = 0.6
 
@@ -152,17 +152,18 @@ func _movement(delta: float) -> void:
 	apply_central_force(f_direction * move_speed * delta)
 	apply_central_force(h_direction * move_speed * delta)
 
-func apply_speed_boost(direction: Vector3, speed: float, duration: float) -> void:
-	is_boosted = true
-	boost_timer = duration
-	
-	var dir := direction.normalized()
+func apply_speed_boost(direction: Vector3, speed: float, duration: float, keep_y_vel: bool = true) -> void:
+	var dir: Vector3 = direction.normalized()
 	if dir == Vector3.ZERO:
 		return
 	
-	var vy := linear_velocity.y
-	var new_vel := dir * speed
-	new_vel.y = vy
+	is_boosted = true
+	boost_timer = duration
+	
+	var new_vel: Vector3 = dir * speed
+	if keep_y_vel:
+		var vy: float = linear_velocity.y
+		new_vel.y = vy
 	
 	linear_velocity = new_vel
 

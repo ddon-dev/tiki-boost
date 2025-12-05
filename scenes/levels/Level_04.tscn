@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://cihamo12cblla" path="res://scenes/handlers/LevelManager.tscn" id="1_m4rvq"]
 [ext_resource type="Resource" uid="uid://btwy3aeds0ss4" path="res://scripts/levels/resources/level_04.tres" id="2_m4rvq"]
-[ext_resource type="Texture2D" uid="uid://brrjqum3ry1jw" path="res://assets/art/skyboxes/skybox1.png" id="3_qrwky"]
+[ext_resource type="Texture2D" uid="uid://crxd81fs6tuck" path="res://assets/art/skyboxes/skybox7.png" id="3_bh6y1"]
 [ext_resource type="PackedScene" uid="uid://1tjylehjm63n" path="res://scenes/objects/DeathZone.tscn" id="4_bh6y1"]
 [ext_resource type="PackedScene" uid="uid://c1bkxh8p1litp" path="res://scenes/objects/FinishPoint.tscn" id="4_dn1an"]
 [ext_resource type="PackedScene" uid="uid://bguscvtdsubse" path="res://scenes/player/Player.tscn" id="5_fcxuc"]
@@ -15,7 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://g6kt40g48fnf" path="res://scenes/ui/UI.tscn" id="13_bh6y1"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_y4fcd"]
-panorama = ExtResource("3_qrwky")
+panorama = ExtResource("3_bh6y1")
 
 [sub_resource type="Sky" id="Sky_bij1w"]
 sky_material = SubResource("PanoramaSkyMaterial_y4fcd")
@@ -82,12 +82,13 @@ transform = Transform3D(0.6703748, 0, 0.74202263, 0, 1, 0, -0.74202263, 0, 0.670
 boost_speed = 36.0
 
 [node name="BoostRing2" parent="Environment/Objects" instance=ExtResource("6_qrwky")]
-transform = Transform3D(0.76243126, 0, -0.6470693, 0, 1, 0, 0.6470693, 0, 0.76243126, -69.323425, 40.10277, -57.62104)
-boost_speed = 36.0
+transform = Transform3D(0.8263048, 0, -0.5632232, 0, 1, 0, 0.5632232, 0, 0.8263048, -69.323425, 40.10277, -57.62104)
 
 [node name="BoostRing3" parent="Environment/Objects" instance=ExtResource("6_qrwky")]
 transform = Transform3D(0.19906244, -0.07786413, -0.4520081, -1.8626451e-09, 0.4927425, -0.08488115, 0.4586656, 0.0337933, 0.19617306, -15.889537, 49.449387, -120.243355)
-boost_speed = 36.0
+
+[node name="BoostRing4" parent="Environment/Objects" instance=ExtResource("6_qrwky")]
+transform = Transform3D(0.68, 0, 0, 0, 0.65682954, 0.17599694, 0, -0.17599694, 0.65682954, -3.8895369, 54.273388, -114.900185)
 
 [node name="Checkpoint" parent="Environment/Objects" instance=ExtResource("7_bh6y1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 14.5, -22)
@@ -187,7 +188,7 @@ rings = 25
 material = ExtResource("7_y4fcd")
 
 [node name="BasicPlatform5" type="CSGCombiner3D" parent="Environment/Terrain"]
-transform = Transform3D(0.99999994, 0, 0, 0, 0.98162717, -0.19080898, 0, 0.190809, 0.9816271, -3, 2, -89)
+transform = Transform3D(0.99999994, 0, 0, 0, 0.98162717, -0.19080898, 0, 0.190809, 0.9816271, -3, 1.2, -89)
 use_collision = true
 collision_layer = 2
 collision_mask = 0
@@ -207,7 +208,7 @@ rings = 25
 material = ExtResource("7_y4fcd")
 
 [node name="BasicPlatform6" type="CSGCombiner3D" parent="Environment/Terrain"]
-transform = Transform3D(0.8660254, 0.4330127, 0.24999999, 0, 0.5, -0.8660253, -0.5, 0.75, 0.43301263, -19.049038, 7.6339746, -93.816986)
+transform = Transform3D(0.8660254, 0.4330127, 0.24999999, 0, 0.5, -0.8660253, -0.5, 0.75, 0.43301263, -19.049, 6.834, -93.817)
 use_collision = true
 collision_layer = 2
 collision_mask = 0
@@ -348,7 +349,7 @@ rings = 25
 material = ExtResource("7_y4fcd")
 
 [node name="BasicPlatform13" type="CSGCombiner3D" parent="Environment/Terrain"]
-transform = Transform3D(0.9, 0, 0, 0, 0.9, 0, 0, 0, 0.9, -45.1, 41.199997, -113.1)
+transform = Transform3D(0.8978078, -0.062762715, -0.0013332397, 0.059834965, 0.86132395, -0.2540485, 0.01899236, 0.25334117, 0.8633988, -47.1, 40.7, -114.1)
 use_collision = true
 collision_layer = 2
 collision_mask = 0
@@ -388,7 +389,7 @@ rings = 25
 material = ExtResource("7_y4fcd")
 
 [node name="BasicPlatform15" type="CSGCombiner3D" parent="Environment/Terrain"]
-transform = Transform3D(0.7, 0, 0, 0, 0.67614806, 0.18117332, 0, -0.18117332, 0.67614806, 0, 50, -107)
+transform = Transform3D(0.7, 0, 0, 0, 0.60621774, 0.35, 0, -0.35, 0.60621774, -3.89, 50.229717, -111.33809)
 use_collision = true
 collision_layer = 2
 collision_mask = 0
@@ -618,7 +619,7 @@ rings = 25
 material = ExtResource("7_y4fcd")
 
 [node name="LargePlatform2" type="CSGCombiner3D" parent="Environment/Terrain"]
-transform = Transform3D(0.32648808, -0.020306714, 0.9449831, 0.07825792, 0.99691737, -0.005615088, -0.94195604, 0.07578567, 0.32707077, -53.23061, 38.44557, -91.186966)
+transform = Transform3D(0.32648808, -0.020306714, 0.9449831, 0.07825792, 0.99691737, -0.005615088, -0.94195604, 0.07578567, 0.32707077, -54.210075, 38.210796, -88.3611)
 use_collision = true
 collision_layer = 2
 collision_mask = 0
@@ -1159,6 +1160,6 @@ material = SubResource("StandardMaterial3D_sdfdg")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 
 [node name="SpawnPosition" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -54, 44, -92)
 
 [node name="UI" parent="." instance=ExtResource("13_bh6y1")]
