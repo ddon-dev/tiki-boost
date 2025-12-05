@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="MaterialData" load_steps=4 format=3 uid="uid://ckfhv67bmttj7"]
+
+[ext_resource type="Texture2D" uid="uid://kyikw2cya3ek" path="res://assets/art/ui/icons/skins/normal/nature/wood.png" id="1_cj25w"]
+[ext_resource type="Script" uid="uid://qfuvka13ckmy" path="res://scripts/globals/material_data.gd" id="1_derbi"]
+[ext_resource type="Material" uid="uid://wnc7xq8j0h3k" path="res://assets/materials/skins/nature/wood.tres" id="2_eqy46"]
+
+[resource]
+script = ExtResource("1_derbi")
+material = ExtResource("2_eqy46")
+icon = ExtResource("1_cj25w")
+metadata/_custom_type_script = "uid://qfuvka13ckmy"

@@ -20,6 +20,12 @@ enum AUDIOBUS {
 var def_vol: float = 0.75
 #endregion
 
+#region Player Customization Vars
+const PLAYER_CUSTOMIZATION_PATH = "user://player_customization.tres"
+var player_customization: PlayerCustomization
+var def_skin = preload("uid://b6myh8ll5udm3")
+#endregion
+
 func _ready():
 	if ResourceLoader.exists(GAME_SETTINGS_PATH):
 		game_settings = load(GAME_SETTINGS_PATH)
@@ -28,6 +34,14 @@ func _ready():
 		game_settings = GameSettings.new()
 		ResourceSaver.save(game_settings, GAME_SETTINGS_PATH)
 		load_default_settings()
+	
+	if ResourceLoader.exists(PLAYER_CUSTOMIZATION_PATH):
+		player_customization = load(PLAYER_CUSTOMIZATION_PATH)
+		apply_saved_skin(player_customization.current_skin)
+	else:
+		player_customization = PlayerCustomization.new()
+		ResourceSaver.save(player_customization, PLAYER_CUSTOMIZATION_PATH)
+		player_customization.current_skin = def_skin
 
 #region Game Settings Functions
 func load_default_settings():
@@ -53,6 +67,12 @@ func apply_settings(new_game_settings: GameSettings):
 	GameManager.game_settings.screen_mode = get_window().mode
 	GameManager.game_settings.resolution = get_window().size
 #endregion
+
+func apply_saved_skin(new_custom_skin: StandardMaterial3D):
+	player_customization.current_skin = new_custom_skin
+
+func save_current_skin():
+	ResourceSaver.save(player_customization, PLAYER_CUSTOMIZATION_PATH)
 
 #region Level Music
 func play_music():

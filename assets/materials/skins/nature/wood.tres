@@ -1,0 +1,20 @@
+[gd_resource type="StandardMaterial3D" load_steps=6 format=3 uid="uid://wnc7xq8j0h3k"]
+
+[ext_resource type="Texture2D" uid="uid://dsl6d3y0hspbb" path="res://assets/art/textures/skins/nature/wood/wood_ambient_occlusion.png" id="AmbientOcclusion"]
+[ext_resource type="Texture2D" uid="uid://brfiyw8unaxip" path="res://assets/art/textures/skins/nature/wood/wood_color.png" id="Color"]
+[ext_resource type="Texture2D" uid="uid://06dqd0ai2gv8" path="res://assets/art/textures/skins/nature/wood/wood_displacement.png" id="Displacement"]
+[ext_resource type="Texture2D" uid="uid://oqb0wqmad5wd" path="res://assets/art/textures/skins/nature/wood/wood_normal_gl.png" id="NormalGL"]
+[ext_resource type="Texture2D" uid="uid://cr3xp00gua4k7" path="res://assets/art/textures/skins/nature/wood/wood_roughness.png" id="Roughness"]
+
+[resource]
+albedo_texture = ExtResource("Color")
+roughness_texture = ExtResource("Roughness")
+roughness_texture_channel = 4
+normal_enabled = true
+normal_texture = ExtResource("NormalGL")
+ao_enabled = true
+ao_texture = ExtResource("AmbientOcclusion")
+ao_texture_channel = 4
+heightmap_enabled = true
+heightmap_scale = 1.0
+heightmap_texture = ExtResource("Displacement")

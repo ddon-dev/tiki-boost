@@ -1,0 +1,20 @@
+[gd_resource type="StandardMaterial3D" load_steps=6 format=3 uid="uid://daly8f63j50hi"]
+
+[ext_resource type="Texture2D" uid="uid://dia1i2ajrvgxu" path="res://assets/art/textures/skins/xmas/xmas_01/xmas_01_color.png" id="Color"]
+[ext_resource type="Texture2D" uid="uid://ctfha0h53ho1x" path="res://assets/art/textures/skins/xmas/xmas_01/xmas_01_displacement.png" id="Displacement"]
+[ext_resource type="Texture2D" uid="uid://deghop2kbehum" path="res://assets/art/textures/skins/xmas/xmas_01/xmas_01_metalness.png" id="Metalness"]
+[ext_resource type="Texture2D" uid="uid://b3u2rehpak2il" path="res://assets/art/textures/skins/xmas/xmas_01/xmas_01_normal_gl.png" id="NormalGL"]
+[ext_resource type="Texture2D" uid="uid://ct2bys4e4qdi0" path="res://assets/art/textures/skins/xmas/xmas_01/xmas_01_roughness.png" id="Roughness"]
+
+[resource]
+albedo_texture = ExtResource("Color")
+metallic = 1.0
+metallic_texture = ExtResource("Metalness")
+metallic_texture_channel = 4
+roughness_texture = ExtResource("Roughness")
+roughness_texture_channel = 4
+normal_enabled = true
+normal_texture = ExtResource("NormalGL")
+heightmap_enabled = true
+heightmap_scale = 1.0
+heightmap_texture = ExtResource("Displacement")

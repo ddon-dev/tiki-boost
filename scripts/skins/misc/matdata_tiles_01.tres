@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="MaterialData" load_steps=4 format=3 uid="uid://dn14cexr7s7in"]
+
+[ext_resource type="Texture2D" uid="uid://c664l1ncc33pm" path="res://assets/art/ui/icons/skins/normal/misc/tiles_01.png" id="1_fukxb"]
+[ext_resource type="Script" uid="uid://qfuvka13ckmy" path="res://scripts/globals/material_data.gd" id="1_q0x82"]
+[ext_resource type="Material" path="res://assets/materials/skins/misc/tiles_01.tres" id="2_sxnho"]
+
+[resource]
+script = ExtResource("1_q0x82")
+material = ExtResource("2_sxnho")
+icon = ExtResource("1_fukxb")
+metadata/_custom_type_script = "uid://qfuvka13ckmy"

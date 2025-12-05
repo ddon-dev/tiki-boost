@@ -370,12 +370,15 @@ theme_override_constants/margin_top = 40
 theme_override_constants/margin_right = 80
 theme_override_constants/margin_bottom = 60
 
-[node name="CustomizeMenu" type="VBoxContainer" parent="Customize"]
+[node name="CustomizeMenu" type="VBoxContainer" parent="Customize" node_paths=PackedStringArray("sfx_pressed", "menu_slide")]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 size_flags_vertical = 0
 theme_override_constants/separation = 25
 script = ExtResource("8_rlg63")
+sfx_pressed = NodePath("../../Sound/ButtonPressedSFX")
+menu_slide = NodePath("../../MenuSlides")
 
 [node name="Customize" type="Label" parent="Customize/CustomizeMenu"]
 custom_minimum_size = Vector2(0, 50)

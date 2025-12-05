@@ -1,0 +1,17 @@
+[gd_resource type="StandardMaterial3D" load_steps=5 format=3 uid="uid://c0rgn8omrjh7e"]
+
+[ext_resource type="Texture2D" uid="uid://c114ij455bv3e" path="res://assets/art/textures/skins/xmas/xmas_candy/xmas_candy_color.png" id="Color"]
+[ext_resource type="Texture2D" uid="uid://daer3uh5qkaji" path="res://assets/art/textures/skins/xmas/xmas_candy/xmas_candy_displacement.png" id="Displacement"]
+[ext_resource type="Texture2D" uid="uid://cyqyungprqmc7" path="res://assets/art/textures/skins/xmas/xmas_candy/xmas_candy_normal_gl.png" id="NormalGL"]
+[ext_resource type="Texture2D" uid="uid://cp5wypl0y1xg5" path="res://assets/art/textures/skins/xmas/xmas_candy/xmas_candy_roughness.png" id="Roughness"]
+
+[resource]
+albedo_texture = ExtResource("Color")
+roughness_texture = ExtResource("Roughness")
+roughness_texture_channel = 4
+normal_enabled = true
+normal_texture = ExtResource("NormalGL")
+heightmap_enabled = true
+heightmap_scale = 1.0
+heightmap_texture = ExtResource("Displacement")
+grow_amount = -0.405

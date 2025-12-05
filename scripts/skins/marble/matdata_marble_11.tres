@@ -1,7 +1,11 @@
-[gd_resource type="Resource" script_class="MaterialData" load_steps=2 format=3 uid="uid://dugq30w6drqwc"]
+[gd_resource type="Resource" script_class="MaterialData" load_steps=4 format=3 uid="uid://dugq30w6drqwc"]
 
+[ext_resource type="Texture2D" uid="uid://bwdk4qbqsgj37" path="res://assets/art/ui/icons/skins/normal/marble/marble_11.png" id="1_1c6dx"]
 [ext_resource type="Script" uid="uid://qfuvka13ckmy" path="res://scripts/globals/material_data.gd" id="2_1c6dx"]
+[ext_resource type="Material" path="res://assets/materials/skins/marble/marble_11.tres" id="2_3tawo"]
 
 [resource]
 script = ExtResource("2_1c6dx")
+material = ExtResource("2_3tawo")
+icon = ExtResource("1_1c6dx")
 metadata/_custom_type_script = "uid://qfuvka13ckmy"

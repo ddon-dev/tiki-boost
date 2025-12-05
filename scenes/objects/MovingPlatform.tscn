@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://dp0oysvtwt18b"]
 
 [ext_resource type="Script" uid="uid://ory4vut2kgrx" path="res://scripts/objects/moving_platform.gd" id="1_rrka8"]
-[ext_resource type="Texture2D" uid="uid://c4cttp2mmq5g4" path="res://assets/art/textures/Orange/texture_10.png" id="2_rrka8"]
+[ext_resource type="Texture2D" uid="uid://c4cttp2mmq5g4" path="res://assets/art/textures/terrain/Orange/texture_10.png" id="2_rrka8"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_rrka8"]
 rough = true

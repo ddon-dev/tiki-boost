@@ -12,6 +12,7 @@ class_name Marble extends RigidBody3D
 
 @onready var camera: Camera3D = %Camera3D
 @onready var ground_check_ray: RayCast3D = %GroundCheckRay
+@onready var marble_mesh: MeshInstance3D = %MarbleMesh
 
 # VFX
 @onready var speed_lines: ColorRect = %SpeedLines
@@ -42,6 +43,9 @@ var jump_buffer_timer: float
 var level_finished: bool = false
 var target_volume_db: float
 var target_pitch: float
+
+func _ready() -> void:
+	marble_mesh.material_override = GameManager.player_customization.current_skin
 
 func _physics_process(delta: float) -> void:
 	#%JumpBufferLabel.text = "jump_buffer == %0.2f" % jump_buffer_timer

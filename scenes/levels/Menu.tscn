@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://dh6qat532gkdc"]
+[gd_scene load_steps=25 format=3 uid="uid://dh6qat532gkdc"]
 
 [ext_resource type="PackedScene" uid="uid://so18tatfe4un" path="res://scenes/ui/menus/MainMenu.tscn" id="1_dex4k"]
 [ext_resource type="Texture2D" uid="uid://brrjqum3ry1jw" path="res://assets/art/skyboxes/skybox1.png" id="2_5au3h"]
@@ -8,9 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://cht4105owcyed" path="res://scenes/objects/Checkpoint.tscn" id="4_lijdy"]
 [ext_resource type="Script" uid="uid://brhgl7cs7y3em" path="res://scripts/ui/menus/menu_camera.gd" id="5_bfhna"]
 [ext_resource type="Script" uid="uid://b172pur0or3bn" path="res://scripts/ui/menus/menu_marble.gd" id="8_32dg4"]
-[ext_resource type="Texture2D" uid="uid://ce6yr0wy8nkns" path="res://icon.svg" id="9_ljdvk"]
 [ext_resource type="Script" uid="uid://624jrwp2a8ps" path="res://scripts/player/trail_3d.gd" id="10_1dw0u"]
-[ext_resource type="Texture2D" uid="uid://c664l1ncc33pm" path="res://assets/art/ui/icons/marbles/normal/tiles_01.png" id="11_ljdvk"]
+[ext_resource type="Texture2D" uid="uid://c664l1ncc33pm" path="res://assets/art/ui/icons/skins/normal/misc/tiles_01.png" id="11_ljdvk"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lijdy"]
 albedo_color = Color(0, 0, 0, 1)
@@ -50,9 +49,6 @@ bounce = 0.5
 
 [sub_resource type="SphereMesh" id="SphereMesh_oxmp5"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vibhy"]
-albedo_texture = ExtResource("9_ljdvk")
-
 [sub_resource type="Gradient" id="Gradient_nvvxc"]
 colors = PackedColorArray(0, 0.4088182, 0.8235936, 1, 0, 0.40784314, 0.8235294, 0.67058825)
 
@@ -65,7 +61,7 @@ cull_mode = 2
 shading_mode = 0
 albedo_texture = SubResource("GradientTexture2D_5stf6")
 
-[sub_resource type="ImmediateMesh" id="ImmediateMesh_ljdvk"]
+[sub_resource type="ImmediateMesh" id="ImmediateMesh_32dg4"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1dw0u"]
 albedo_texture = ExtResource("11_ljdvk")
@@ -199,13 +195,12 @@ shape = SubResource("SphereShape3D_6uihs")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="CustomizeArea/Path3D/MarblePath/Marble"]
 mesh = SubResource("SphereMesh_oxmp5")
-surface_material_override/0 = SubResource("StandardMaterial3D_vibhy")
 
 [node name="Trail3D" type="MeshInstance3D" parent="CustomizeArea/Path3D/MarblePath/Marble"]
 transform = Transform3D(1.0000212, 5.1507817e-05, 0, -5.150499e-05, 1.000076, 0.00015919878, 8.199134e-09, -0.00015920315, 1.0000486, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_2ix1n")
 cast_shadow = 0
-mesh = SubResource("ImmediateMesh_ljdvk")
+mesh = SubResource("ImmediateMesh_32dg4")
 skeleton = NodePath("../../../..")
 script = ExtResource("10_1dw0u")
 fromWidth = 0.12

@@ -1,0 +1,6 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://itnpslk8oirm"]
+
+[ext_resource type="Texture2D" uid="uid://b5p37ncep8lmo" path="res://assets/art/textures/skins/misc/godot/godot.svg" id="1_1o3jx"]
+
+[resource]
+albedo_texture = ExtResource("1_1o3jx")

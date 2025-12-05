@@ -1,9 +1,9 @@
-[gd_scene load_steps=20 format=3 uid="uid://bguscvtdsubse"]
+[gd_scene load_steps=19 format=3 uid="uid://bguscvtdsubse"]
 
-[ext_resource type="Texture2D" uid="uid://ce6yr0wy8nkns" path="res://icon.svg" id="1_g1eag"]
 [ext_resource type="Script" uid="uid://djiifaqjw6fvn" path="res://scripts/player/marble.gd" id="1_gmlin"]
 [ext_resource type="Script" uid="uid://dmcm12douotfi" path="res://scripts/player/player.gd" id="1_tpg5x"]
 [ext_resource type="Script" uid="uid://cfnlnq2oyww3u" path="res://scripts/player/camera_container.gd" id="2_lr6ob"]
+[ext_resource type="Material" uid="uid://itnpslk8oirm" path="res://assets/materials/skins/misc/godot.tres" id="3_7oing"]
 [ext_resource type="AudioStream" uid="uid://b7qxxe8uxevgb" path="res://assets/audio/sfx/player/marble_land.ogg" id="5_npwbq"]
 [ext_resource type="PackedScene" uid="uid://cyiegm8n0mtur" path="res://scenes/ui/SpeedLines.tscn" id="5_tpg5x"]
 [ext_resource type="AudioStream" uid="uid://yq8glkop4dbp" path="res://assets/audio/sfx/player/marble_rolling.ogg" id="6_c3xxp"]
@@ -17,9 +17,6 @@ bounce = 0.5
 [sub_resource type="SphereShape3D" id="SphereShape3D_blcux"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_lkvwd"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l0f2b"]
-albedo_texture = ExtResource("1_g1eag")
 
 [sub_resource type="Gradient" id="Gradient_7oing"]
 colors = PackedColorArray(0, 0.4088182, 0.8235936, 1, 0, 0.40784314, 0.8235294, 0.67058825)
@@ -59,9 +56,10 @@ max_velocity = 30.0
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Marble"]
 shape = SubResource("SphereShape3D_blcux")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Marble"]
+[node name="MarbleMesh" type="MeshInstance3D" parent="Marble"]
+unique_name_in_owner = true
 mesh = SubResource("SphereMesh_lkvwd")
-surface_material_override/0 = SubResource("StandardMaterial3D_l0f2b")
+surface_material_override/0 = ExtResource("3_7oing")
 
 [node name="SFX" type="Node3D" parent="Marble"]
 

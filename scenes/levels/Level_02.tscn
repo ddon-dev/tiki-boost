@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://dp0oysvtwt18b" path="res://scenes/objects/MovingPlatform.tscn" id="5_3njdy"]
 [ext_resource type="Material" uid="uid://dn1m1wale5wxo" path="res://assets/materials/white_terrain.tres" id="5_juc02"]
 [ext_resource type="PackedScene" uid="uid://bguscvtdsubse" path="res://scenes/player/Player.tscn" id="6_dsu4p"]
-[ext_resource type="Texture2D" uid="uid://dtlcxvr6jdgac" path="res://assets/art/textures/Green/texture_01.png" id="9_8ccjp"]
+[ext_resource type="Texture2D" uid="uid://dtlcxvr6jdgac" path="res://assets/art/textures/terrain/Green/texture_01.png" id="9_8ccjp"]
 [ext_resource type="Texture2D" uid="uid://1h7thk3hwfbp" path="res://assets/art/tutorial_signs/tutorial_checkpoint.png" id="9_dsu4p"]
 [ext_resource type="Texture2D" uid="uid://dqgdua2tuwsok" path="res://assets/art/tutorial_signs/tutorial_activate.png" id="10_folmu"]
 [ext_resource type="PackedScene" uid="uid://g6kt40g48fnf" path="res://scenes/ui/UI.tscn" id="14_dsu4p"]

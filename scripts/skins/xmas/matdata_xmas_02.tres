@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="MaterialData" load_steps=4 format=3 uid="uid://lsb78sijrw1r"]
+
+[ext_resource type="Script" uid="uid://qfuvka13ckmy" path="res://scripts/globals/material_data.gd" id="1_0wr2e"]
+[ext_resource type="Texture2D" uid="uid://cumxpdk2od3as" path="res://assets/art/ui/icons/skins/normal/xmas/xmas_02.png" id="1_vyfn6"]
+[ext_resource type="Material" path="res://assets/materials/skins/xmas/xmas_02.tres" id="2_f8nk0"]
+
+[resource]
+script = ExtResource("1_0wr2e")
+material = ExtResource("2_f8nk0")
+icon = ExtResource("1_vyfn6")
+metadata/_custom_type_script = "uid://qfuvka13ckmy"

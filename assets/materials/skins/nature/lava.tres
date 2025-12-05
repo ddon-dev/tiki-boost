@@ -1,0 +1,19 @@
+[gd_resource type="StandardMaterial3D" load_steps=6 format=3 uid="uid://bldt7w5ibqptm"]
+
+[ext_resource type="Texture2D" uid="uid://clokkhvm7jcr5" path="res://assets/art/textures/skins/nature/lava/lava_color.png" id="Color"]
+[ext_resource type="Texture2D" uid="uid://180aeoi4515e" path="res://assets/art/textures/skins/nature/lava/lava_displacement.png" id="Displacement"]
+[ext_resource type="Texture2D" uid="uid://06o1ey35x2qg" path="res://assets/art/textures/skins/nature/lava/lava_emission.png" id="Emission"]
+[ext_resource type="Texture2D" uid="uid://enpnncbd4r3l" path="res://assets/art/textures/skins/nature/lava/lava_normal_gl.png" id="NormalGL"]
+[ext_resource type="Texture2D" uid="uid://bsfv02pfn2c12" path="res://assets/art/textures/skins/nature/lava/lava_roughness.png" id="Roughness"]
+
+[resource]
+albedo_texture = ExtResource("Color")
+roughness_texture = ExtResource("Roughness")
+roughness_texture_channel = 4
+emission_enabled = true
+emission_texture = ExtResource("Emission")
+normal_enabled = true
+normal_texture = ExtResource("NormalGL")
+heightmap_enabled = true
+heightmap_scale = 1.0
+heightmap_texture = ExtResource("Displacement")

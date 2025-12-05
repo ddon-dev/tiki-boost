@@ -21,11 +21,12 @@ func _ready() -> void:
 		button.custom_minimum_size = Vector2(80, 80)
 		button.set_texture_normal(skin.icon)
 		skins_container.add_child(button)
-		#button.pressed.connect(func():
-			#sfx_pressed.play()
-			#await sfx_pressed.finished
-			#StageHandler.go_to_level(level_path)
-		#)
+		button.pressed.connect(func():
+			sfx_pressed.play()
+			GameManager.player_customization.current_skin = skin.material
+			PlayerMaterials.skin_changed.emit()
+			GameManager.save_current_skin()
+		)
 	
 func go_back():
 	sfx_pressed.play()

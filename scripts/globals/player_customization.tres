@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="PlayerCustomization" load_steps=2 format=3 uid="uid://n71uhpvwdwle"]
+
+[ext_resource type="Script" uid="uid://bctus7f2l7jss" path="res://scripts/globals/player_customization.gd" id="1_tpu1o"]
+
+[resource]
+script = ExtResource("1_tpu1o")
+metadata/_custom_type_script = "uid://bctus7f2l7jss"

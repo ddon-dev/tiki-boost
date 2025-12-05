@@ -21,7 +21,7 @@ func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _physics_process(delta: float) -> void:
-	global_position = lerp(global_position, marble.get_node("MeshInstance3D").global_position, smooth_camera_tolerance)
+	global_position = lerp(global_position, marble.get_node("MarbleMesh").global_position, smooth_camera_tolerance)
 	
 	cam_v_rotation = clamp(cam_v_rotation, v_min, v_max)
 	

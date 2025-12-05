@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://cht4105owcyed" path="res://scenes/objects/Checkpoint.tscn" id="7_bh6y1"]
 [ext_resource type="Material" uid="uid://cmuff7c3uviht" path="res://assets/materials/dark_terrain.tres" id="7_y4fcd"]
 [ext_resource type="PackedScene" uid="uid://dp0oysvtwt18b" path="res://scenes/objects/MovingPlatform.tscn" id="8_fcxuc"]
-[ext_resource type="Texture2D" uid="uid://dny4w2daixbqi" path="res://assets/art/textures/Light/texture_08.png" id="10_m4rvq"]
+[ext_resource type="Texture2D" uid="uid://dny4w2daixbqi" path="res://assets/art/textures/terrain/Light/texture_08.png" id="10_m4rvq"]
 [ext_resource type="PackedScene" uid="uid://g6kt40g48fnf" path="res://scenes/ui/UI.tscn" id="13_bh6y1"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_y4fcd"]

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="MaterialData" load_steps=4 format=3 uid="uid://nyvypv4bmlde"]
+
+[ext_resource type="Texture2D" uid="uid://c10iu4sqsycrs" path="res://assets/art/ui/icons/skins/normal/metal/metal_01b.png" id="1_w8q7j"]
+[ext_resource type="Script" uid="uid://qfuvka13ckmy" path="res://scripts/globals/material_data.gd" id="2_2fjim"]
+[ext_resource type="Material" path="res://assets/materials/skins/metal/metal_01b.tres" id="2_7ey5i"]
+
+[resource]
+script = ExtResource("2_2fjim")
+material = ExtResource("2_7ey5i")
+icon = ExtResource("1_w8q7j")
+metadata/_custom_type_script = "uid://qfuvka13ckmy"
