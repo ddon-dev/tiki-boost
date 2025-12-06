@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bpxvdwxu57ghd"]
+[gd_scene load_steps=9 format=3 uid="uid://bpxvdwxu57ghd"]
 
 [ext_resource type="Script" uid="uid://bhifx2n7dwxhc" path="res://scripts/globals/stage_handler.gd" id="1_srffu"]
 [ext_resource type="Script" path="res://scripts/globals/level_data.gd" id="2_ofldo"]
@@ -7,9 +7,10 @@
 [ext_resource type="Resource" uid="uid://ilhmg3po5exv" path="res://scripts/levels/resources/main_menu.tres" id="4_mbjur"]
 [ext_resource type="Resource" uid="uid://dueocbx11abo0" path="res://scripts/levels/resources/level_03.tres" id="5_p0552"]
 [ext_resource type="Resource" uid="uid://btwy3aeds0ss4" path="res://scripts/levels/resources/level_04.tres" id="6_p0552"]
+[ext_resource type="Resource" uid="uid://b30q6qq3qcses" path="res://scripts/levels/resources/level_05.tres" id="7_haopu"]
 
 [node name="StageHandler" type="Node"]
 script = ExtResource("1_srffu")
-levels = Array[ExtResource("2_ofldo")]([ExtResource("3_mbjur"), ExtResource("4_2sc2n"), ExtResource("5_p0552"), ExtResource("6_p0552")])
+levels = Array[ExtResource("2_ofldo")]([ExtResource("3_mbjur"), ExtResource("4_2sc2n"), ExtResource("5_p0552"), ExtResource("6_p0552"), ExtResource("7_haopu")])
 main_menu = ExtResource("4_mbjur")
 last_level = ExtResource("3_mbjur")

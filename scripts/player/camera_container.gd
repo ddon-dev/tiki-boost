@@ -1,7 +1,7 @@
 class_name CameraContainer extends Node3D
 
 @export_range(10.0, 25.0, 5.0) var v_max: float = 15.0
-@export_range(-65.0, -25.0, 5.0) var v_min: float = -45.0
+@export_range(-75.0, -25.0, 5.0) var v_min: float = -45.0
 @export_range(0.05, 0.15, 0.005) var h_sensitivity: float = 0.1
 @export_range(0.05, 0.15, 0.005) var v_sensitivity: float = 0.1
 @export_range(5.0, 45.0, 5.0) var h_accel: float = 15.0
