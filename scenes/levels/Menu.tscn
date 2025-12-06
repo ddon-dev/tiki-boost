@@ -165,6 +165,7 @@ script = ExtResource("5_bfhna")
 [node name="CustomizeArea" type="Node3D" parent="."]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 125.286026, 0, -0.24281836)
+visible = false
 
 [node name="CustomizeCenter" type="Marker3D" parent="CustomizeArea"]
 unique_name_in_owner = true

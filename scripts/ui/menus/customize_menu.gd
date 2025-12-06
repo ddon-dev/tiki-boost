@@ -20,6 +20,7 @@ func _ready() -> void:
 		button.stretch_mode = 0
 		button.custom_minimum_size = Vector2(80, 80)
 		button.set_texture_normal(skin.icon)
+		button.set_texture_hover(skin.highlight_icon)
 		skins_container.add_child(button)
 		button.pressed.connect(func():
 			sfx_pressed.play()

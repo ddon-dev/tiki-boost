@@ -424,6 +424,7 @@ columns = 13
 [node name="TrailEnable" type="CheckButton" parent="Customize/CustomizeMenu/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
+theme_override_constants/h_separation = 30
 theme_override_font_sizes/font_size = 28
 button_pressed = true
 text = "ENABLE TRAIL"

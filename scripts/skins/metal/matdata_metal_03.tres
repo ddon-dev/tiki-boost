@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="MaterialData" load_steps=4 format=3 uid="uid://cgvr3sc670ejh"]
+[gd_resource type="Resource" script_class="MaterialData" load_steps=5 format=3 uid="uid://cgvr3sc670ejh"]
 
+[ext_resource type="Texture2D" uid="uid://cid0nxmdqdons" path="res://assets/art/ui/icons/skins/highlight/metal/metal_03_highlight.png" id="1_0h13j"]
 [ext_resource type="Script" uid="uid://qfuvka13ckmy" path="res://scripts/globals/material_data.gd" id="1_6f0ef"]
 [ext_resource type="Texture2D" uid="uid://l2k0c41pte5p" path="res://assets/art/ui/icons/skins/normal/metal/metal_03.png" id="1_qamd6"]
 [ext_resource type="Material" path="res://assets/materials/skins/metal/metal_03.tres" id="2_cc2m0"]
@@ -8,4 +9,5 @@
 script = ExtResource("1_6f0ef")
 material = ExtResource("2_cc2m0")
 icon = ExtResource("1_qamd6")
+highlight_icon = ExtResource("1_0h13j")
 metadata/_custom_type_script = "uid://qfuvka13ckmy"

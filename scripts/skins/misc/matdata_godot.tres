@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="MaterialData" load_steps=4 format=3 uid="uid://l3l7cti7gjgf"]
+[gd_resource type="Resource" script_class="MaterialData" load_steps=5 format=3 uid="uid://l3l7cti7gjgf"]
 
 [ext_resource type="Texture2D" uid="uid://bh0i5y6ep8i02" path="res://assets/art/ui/icons/skins/normal/misc/godot.png" id="1_4qfkn"]
+[ext_resource type="Texture2D" uid="uid://doy5xi4dsc3rw" path="res://assets/art/ui/icons/skins/highlight/misc/godot_highlight.png" id="1_qe70o"]
 [ext_resource type="Script" uid="uid://qfuvka13ckmy" path="res://scripts/globals/material_data.gd" id="1_vfk6s"]
 [ext_resource type="Material" uid="uid://itnpslk8oirm" path="res://assets/materials/skins/misc/godot.tres" id="2_nsleh"]
 
@@ -8,4 +9,5 @@
 script = ExtResource("1_vfk6s")
 material = ExtResource("2_nsleh")
 icon = ExtResource("1_4qfkn")
+highlight_icon = ExtResource("1_qe70o")
 metadata/_custom_type_script = "uid://qfuvka13ckmy"

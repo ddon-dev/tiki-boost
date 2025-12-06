@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="MaterialData" load_steps=4 format=3 uid="uid://0qwqcp2kpv53"]
+[gd_resource type="Resource" script_class="MaterialData" load_steps=5 format=3 uid="uid://0qwqcp2kpv53"]
 
+[ext_resource type="Texture2D" uid="uid://brf2s4uhxpw5u" path="res://assets/art/ui/icons/skins/highlight/misc/tiles_02_highlight.png" id="1_cpf2h"]
 [ext_resource type="Script" uid="uid://qfuvka13ckmy" path="res://scripts/globals/material_data.gd" id="1_mxuqt"]
 [ext_resource type="Texture2D" uid="uid://c0tbjavfo4lg4" path="res://assets/art/ui/icons/skins/normal/misc/tiles_02.png" id="1_yv4ty"]
 [ext_resource type="Material" path="res://assets/materials/skins/misc/tiles_02.tres" id="2_t4lsg"]
@@ -8,4 +9,5 @@
 script = ExtResource("1_mxuqt")
 material = ExtResource("2_t4lsg")
 icon = ExtResource("1_yv4ty")
+highlight_icon = ExtResource("1_cpf2h")
 metadata/_custom_type_script = "uid://qfuvka13ckmy"

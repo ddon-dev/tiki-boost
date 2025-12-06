@@ -1,5 +1,6 @@
-[gd_resource type="Resource" script_class="MaterialData" load_steps=4 format=3 uid="uid://bg5wukun5luhe"]
+[gd_resource type="Resource" script_class="MaterialData" load_steps=5 format=3 uid="uid://bg5wukun5luhe"]
 
+[ext_resource type="Texture2D" uid="uid://bnl1j2frirbpm" path="res://assets/art/ui/icons/skins/highlight/nature/ice_highlight.png" id="1_123hi"]
 [ext_resource type="Texture2D" uid="uid://cpehv0rdj5q67" path="res://assets/art/ui/icons/skins/normal/nature/ice.png" id="1_tvs0u"]
 [ext_resource type="Script" uid="uid://qfuvka13ckmy" path="res://scripts/globals/material_data.gd" id="1_yko7y"]
 [ext_resource type="Material" uid="uid://b3rjcw0n0ydy" path="res://assets/materials/skins/nature/ice.tres" id="2_jl85d"]
@@ -8,4 +9,5 @@
 script = ExtResource("1_yko7y")
 material = ExtResource("2_jl85d")
 icon = ExtResource("1_tvs0u")
+highlight_icon = ExtResource("1_123hi")
 metadata/_custom_type_script = "uid://qfuvka13ckmy"

@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="MaterialData" load_steps=4 format=3 uid="uid://crqrvast76nef"]
+[gd_resource type="Resource" script_class="MaterialData" load_steps=5 format=3 uid="uid://crqrvast76nef"]
 
 [ext_resource type="Texture2D" uid="uid://cmm168j2fnyg5" path="res://assets/art/ui/icons/skins/normal/marble/marble_01.png" id="1_2wjhy"]
+[ext_resource type="Texture2D" uid="uid://b5er7g2te8dfp" path="res://assets/art/ui/icons/skins/highlight/marble/marble_01_highlight.png" id="1_6auwd"]
 [ext_resource type="Script" uid="uid://qfuvka13ckmy" path="res://scripts/globals/material_data.gd" id="1_pfglf"]
 [ext_resource type="Material" uid="uid://b6myh8ll5udm3" path="res://assets/materials/skins/marble/marble_01.tres" id="2_2gg2m"]
 
@@ -8,4 +9,5 @@
 script = ExtResource("1_pfglf")
 material = ExtResource("2_2gg2m")
 icon = ExtResource("1_2wjhy")
+highlight_icon = ExtResource("1_6auwd")
 metadata/_custom_type_script = "uid://qfuvka13ckmy"

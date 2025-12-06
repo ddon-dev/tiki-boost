@@ -1,11 +1,13 @@
-[gd_resource type="Resource" script_class="MaterialData" load_steps=4 format=3 uid="uid://dcb6xmpe1252w"]
+[gd_resource type="Resource" script_class="MaterialData" load_steps=5 format=3 uid="uid://dcb6xmpe1252w"]
 
 [ext_resource type="Script" uid="uid://qfuvka13ckmy" path="res://scripts/globals/material_data.gd" id="1_au8pc"]
 [ext_resource type="Texture2D" uid="uid://bncr8sq3nxx32" path="res://assets/art/ui/icons/skins/normal/xmas/xmas_01.png" id="1_few20"]
+[ext_resource type="Texture2D" uid="uid://d233vl6n2um0h" path="res://assets/art/ui/icons/skins/highlight/xmas/xmas_01_highlight.png" id="1_gtulw"]
 [ext_resource type="Material" uid="uid://daly8f63j50hi" path="res://assets/materials/skins/xmas/xmas_01.tres" id="2_x2kfs"]
 
 [resource]
 script = ExtResource("1_au8pc")
 material = ExtResource("2_x2kfs")
 icon = ExtResource("1_few20")
+highlight_icon = ExtResource("1_gtulw")
 metadata/_custom_type_script = "uid://qfuvka13ckmy"
