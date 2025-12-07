@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://so18tatfe4un"]
+[gd_scene load_steps=18 format=3 uid="uid://so18tatfe4un"]
 
 [ext_resource type="Script" uid="uid://dndkv03yk8wya" path="res://scripts/ui/menus/main_menu.gd" id="1_2ysvc"]
 [ext_resource type="Texture2D" uid="uid://bup8l41f00ub0" path="res://assets/art/ui/title_small.png" id="1_vjtqc"]
@@ -7,19 +7,21 @@
 [ext_resource type="PackedScene" uid="uid://dips56jowu6et" path="res://scenes/ui/SceneTransition.tscn" id="2_bhu4a"]
 [ext_resource type="PackedScene" uid="uid://dvgka2vsrq0hy" path="res://scenes/ui/menus/SettingsMenu.tscn" id="8_7mi0g"]
 [ext_resource type="Script" uid="uid://c0ujljp70tj3o" path="res://scripts/ui/menus/customize_menu.gd" id="8_rlg63"]
+[ext_resource type="Script" uid="uid://b20ewrl538tel" path="res://scenes/ui/menus/trail_toggle.gd" id="9_1sy0c"]
 [ext_resource type="Script" uid="uid://cw2plsd54xmuy" path="res://scripts/ui/menus/level_select.gd" id="9_nqjyj"]
-[ext_resource type="Script" uid="uid://ibxbuqsyaa86" path="res://scenes/ui/menus/trail_color_button.gd" id="47_f015j"]
+[ext_resource type="Script" uid="uid://b6nhyicnfko5g" path="res://scenes/ui/menus/trail_color_picker.gd" id="11_ehd34"]
+[ext_resource type="Script" uid="uid://du3352k3k16eh" path="res://scenes/ui/menus/color_picker.gd" id="12_jhkfs"]
 [ext_resource type="FontFile" uid="uid://y16hiud5i3rd" path="res://assets/fonts/gomarice_shmup_in_the_zone.ttf" id="48_uvc7g"]
 
 [sub_resource type="Theme" id="Theme_iiyxw"]
 default_font_size = 0
-Button/font_sizes/font_size = 25
+Button/font_sizes/font_size = 16
 Button/fonts/font = ExtResource("48_uvc7g")
 Label/colors/font_color = Color(1, 1, 1, 1)
 Label/colors/font_outline_color = Color(0, 0, 0, 1)
 Label/colors/font_shadow_color = Color(0, 0, 0, 0)
 Label/constants/outline_size = 15
-Label/font_sizes/font_size = 25
+Label/font_sizes/font_size = 18
 LineEdit/fonts/font = ExtResource("48_uvc7g")
 
 [sub_resource type="Animation" id="Animation_nqjyj"]
@@ -360,7 +362,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 1152.0
 offset_right = 1152.0
-offset_bottom = 16.0
+offset_bottom = 466.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -372,7 +374,7 @@ theme_override_constants/margin_bottom = 60
 
 [node name="CustomizeMenu" type="VBoxContainer" parent="Customize" node_paths=PackedStringArray("sfx_pressed", "menu_slide")]
 unique_name_in_owner = true
-visible = false
+custom_minimum_size = Vector2(992, 595)
 layout_mode = 2
 size_flags_vertical = 0
 theme_override_constants/separation = 25
@@ -388,11 +390,13 @@ theme_override_font_sizes/font_size = 60
 text = "Customize"
 horizontal_alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Customize/CustomizeMenu"]
+[node name="SkinsMenu" type="VBoxContainer" parent="Customize/CustomizeMenu"]
+unique_name_in_owner = true
+visible = false
 layout_mode = 2
-theme_override_constants/separation = 10
+theme_override_constants/separation = 24
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Customize/CustomizeMenu/VBoxContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Customize/CustomizeMenu/SkinsMenu"]
 custom_minimum_size = Vector2(300, 300)
 layout_mode = 2
 size_flags_horizontal = 0
@@ -402,7 +406,7 @@ draw_focus_border = true
 horizontal_scroll_mode = 2
 vertical_scroll_mode = 3
 
-[node name="MarginContainer" type="MarginContainer" parent="Customize/CustomizeMenu/VBoxContainer/ScrollContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Customize/CustomizeMenu/SkinsMenu/ScrollContainer"]
 clip_contents = true
 layout_mode = 2
 size_flags_horizontal = 0
@@ -412,7 +416,7 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="SkinsContainer" type="GridContainer" parent="Customize/CustomizeMenu/VBoxContainer/ScrollContainer/MarginContainer"]
+[node name="SkinsContainer" type="GridContainer" parent="Customize/CustomizeMenu/SkinsMenu/ScrollContainer/MarginContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 0
@@ -421,33 +425,41 @@ theme_override_constants/h_separation = 15
 theme_override_constants/v_separation = 15
 columns = 13
 
-[node name="TrailEnable" type="CheckButton" parent="Customize/CustomizeMenu/VBoxContainer"]
+[node name="TrailToggle" type="CheckButton" parent="Customize/CustomizeMenu/SkinsMenu"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_constants/h_separation = 30
-theme_override_font_sizes/font_size = 28
+theme_override_font_sizes/font_size = 30
 button_pressed = true
 text = "ENABLE TRAIL"
 flat = true
+script = ExtResource("9_1sy0c")
 
-[node name="TrailSettings" type="Button" parent="Customize/CustomizeMenu/VBoxContainer"]
+[node name="TrailSettings" type="Button" parent="Customize/CustomizeMenu/SkinsMenu"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_font_sizes/font_size = 28
-text = "Trail Color"
+text = "Change Trail Color"
 flat = true
 alignment = 0
-script = ExtResource("47_f015j")
 
-[node name="TrailColorPicker" type="VBoxContainer" parent="Customize/CustomizeMenu"]
+[node name="TrailColorPicker" type="VBoxContainer" parent="Customize/CustomizeMenu" node_paths=PackedStringArray("sfx_pressed")]
 unique_name_in_owner = true
-visible = false
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/separation = 42
+script = ExtResource("11_ehd34")
+sfx_pressed = NodePath("../../../Sound/ButtonPressedSFX")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Customize/CustomizeMenu/TrailColorPicker"]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Customize/CustomizeMenu/TrailColorPicker"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Customize/CustomizeMenu/TrailColorPicker/HBoxContainer"]
 layout_mode = 2
 
-[node name="ColorPicker" type="ColorPicker" parent="Customize/CustomizeMenu/TrailColorPicker/VBoxContainer"]
+[node name="ColorPicker" type="ColorPicker" parent="Customize/CustomizeMenu/TrailColorPicker/HBoxContainer/VBoxContainer" node_paths=PackedStringArray("sfx_pressed")]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
@@ -457,30 +469,57 @@ theme_override_constants/sv_height = 150
 edit_intensity = false
 picker_shape = 1
 color_modes_visible = false
+script = ExtResource("12_jhkfs")
+sfx_pressed = NodePath("../../../../../../Sound/ButtonPressedSFX")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Customize/CustomizeMenu/TrailColorPicker/VBoxContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="Customize/CustomizeMenu/TrailColorPicker/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 26
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="Customize/CustomizeMenu/TrailColorPicker/HBoxContainer/VBoxContainer2"]
 layout_mode = 2
 
-[node name="Apply" type="Button" parent="Customize/CustomizeMenu/TrailColorPicker/VBoxContainer/HBoxContainer"]
+[node name="HSlider" type="HSlider" parent="Customize/CustomizeMenu/TrailColorPicker/HBoxContainer/VBoxContainer2/VBoxContainer3"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 23
+size_flags_horizontal = 3
+
+[node name="VBoxContainer4" type="VBoxContainer" parent="Customize/CustomizeMenu/TrailColorPicker/HBoxContainer/VBoxContainer2"]
+layout_mode = 2
+
+[node name="HSlider" type="HSlider" parent="Customize/CustomizeMenu/TrailColorPicker/HBoxContainer/VBoxContainer2/VBoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Customize/CustomizeMenu/TrailColorPicker"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+
+[node name="Apply" type="Button" parent="Customize/CustomizeMenu/TrailColorPicker/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 30
 text = "Apply"
 flat = true
 
-[node name="Reset" type="Button" parent="Customize/CustomizeMenu/TrailColorPicker/VBoxContainer/HBoxContainer"]
+[node name="Reset" type="Button" parent="Customize/CustomizeMenu/TrailColorPicker/HBoxContainer2"]
+unique_name_in_owner = true
 layout_mode = 2
-theme_override_font_sizes/font_size = 23
+theme_override_font_sizes/font_size = 30
 text = "Reset"
 flat = true
 
-[node name="Default" type="Button" parent="Customize/CustomizeMenu/TrailColorPicker/VBoxContainer/HBoxContainer"]
+[node name="Default" type="Button" parent="Customize/CustomizeMenu/TrailColorPicker/HBoxContainer2"]
+unique_name_in_owner = true
 layout_mode = 2
-theme_override_font_sizes/font_size = 23
+theme_override_font_sizes/font_size = 30
 text = "Default"
 flat = true
 
 [node name="CustomizeReturn" type="Button" parent="Customize/CustomizeMenu"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 10
@@ -493,4 +532,5 @@ libraries = {
 &"": SubResource("AnimationLibrary_nqjyj")
 }
 
-[connection signal="pressed" from="Customize/CustomizeMenu/VBoxContainer/TrailSettings" to="Customize/CustomizeMenu/VBoxContainer/TrailSettings" method="_on_pressed"]
+[connection signal="toggled" from="Customize/CustomizeMenu/SkinsMenu/TrailToggle" to="Customize/CustomizeMenu/SkinsMenu/TrailToggle" method="_on_toggled"]
+[connection signal="color_changed" from="Customize/CustomizeMenu/TrailColorPicker/HBoxContainer/VBoxContainer/ColorPicker" to="Customize/CustomizeMenu/TrailColorPicker/HBoxContainer/VBoxContainer/ColorPicker" method="_on_color_changed"]

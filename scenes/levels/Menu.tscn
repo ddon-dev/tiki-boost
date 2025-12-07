@@ -50,7 +50,8 @@ bounce = 0.5
 [sub_resource type="SphereMesh" id="SphereMesh_oxmp5"]
 
 [sub_resource type="Gradient" id="Gradient_nvvxc"]
-colors = PackedColorArray(0, 0.4088182, 0.8235936, 1, 0, 0.40784314, 0.8235294, 0.67058825)
+offsets = PackedFloat32Array(0, 0.9910714)
+colors = PackedColorArray(0.044255413, 0.5151716, 0.8405714, 1, 0.043137256, 0.5137255, 0.8392157, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_5stf6"]
 gradient = SubResource("Gradient_nvvxc")
@@ -198,7 +199,7 @@ shape = SubResource("SphereShape3D_6uihs")
 mesh = SubResource("SphereMesh_oxmp5")
 
 [node name="Trail3D" type="MeshInstance3D" parent="CustomizeArea/Path3D/MarblePath/Marble"]
-transform = Transform3D(1.0000212, 5.1507817e-05, 0, -5.150499e-05, 1.000076, 0.00015919878, 8.199134e-09, -0.00015920315, 1.0000486, 0, 0, 0)
+transform = Transform3D(0.007418329, -0.00015881668, 1.0000211, -5.150499e-05, 1.000076, 0.00015919878, -0.9999937, -5.2687392e-05, 0.007418524, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_2ix1n")
 cast_shadow = 0
 mesh = SubResource("ImmediateMesh_32dg4")
@@ -206,8 +207,7 @@ skeleton = NodePath("../../../..")
 script = ExtResource("10_1dw0u")
 fromWidth = 0.12
 scaleAcceleration = 1.5
-scaleTexture = false
-startColor = Color(0, 0.40784314, 0.8235294, 1)
+startColor = Color(0, 0.5952482, 0.8925889, 1)
 
 [node name="CSGBox3D" type="CSGCylinder3D" parent="CustomizeArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.25, -0.64697266, 0.25)

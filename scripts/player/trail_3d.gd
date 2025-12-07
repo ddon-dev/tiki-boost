@@ -1,4 +1,3 @@
-@tool
 class_name Trail3D extends MeshInstance3D
 
 enum InterpolationMode {
@@ -25,7 +24,7 @@ var lifePoints: Array[float] = []
 @export var motionDelta: float = 0.1
 @export var lifespan: float = 1.0
 
-@export var scaleTexture: bool = true
+@export var scaleTexture: bool = false
 @export var startColor: Color = Color(1.0, 1.0, 1.0, 1.0)
 @export var endColor: Color = Color(1.0, 1.0, 1.0, 0.0)
 
@@ -36,11 +35,21 @@ var lifePoints: Array[float] = []
 var oldPos: Vector3
 
 func _ready() -> void:
+	PlayerMaterials.trail_color_changed.connect(trail_color_update)
+	trail_color_update()
 	oldPos = get_global_transform().origin
 	mesh = ImmediateMesh.new()
+	var material = StandardMaterial3D.new()
+	material.vertex_color_use_as_albedo = true
+	self.material_override = material
+	material.cull_mode = StandardMaterial3D.CULL_DISABLED
+	material.transparency = StandardMaterial3D.TRANSPARENCY_ALPHA
+	material.shading_mode = StandardMaterial3D.SHADING_MODE_UNSHADED
 
 func _process(delta: float) -> void:
-	if (oldPos - get_global_transform().origin).length() > motionDelta and trailEnabled:
+	if (oldPos -
+		get_global_transform().origin
+		).length()> motionDelta and GameManager.player_customization.trail_enabled:
 		appendPoint()
 		oldPos = get_global_transform().origin
 
@@ -119,3 +128,9 @@ func removePoint(i: int) -> void:
 	points.remove_at(i)
 	widths.remove_at(i)
 	lifePoints.remove_at(i)
+
+func trail_color_update():
+	var new_color = GameManager.player_customization.trail_color
+	var new_linear_color = new_color.srgb_to_linear()
+	startColor = new_linear_color
+	endColor = Color(new_linear_color.r, new_linear_color.g, new_linear_color.b, 0.0)
