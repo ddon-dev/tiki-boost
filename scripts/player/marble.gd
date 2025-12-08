@@ -88,8 +88,6 @@ func _physics_process(delta: float) -> void:
 	
 	if jump_buffer_timer > 0.0 && (ground_check_ray.is_colliding() || coyote_timer > 0.0):
 		_jump()
-		if !sfx_jump.playing:
-			sfx_jump.play()
 	
 	current_velocity = linear_velocity.length()
 	# Speed Lines
@@ -167,10 +165,17 @@ func apply_speed_boost(direction: Vector3, speed: float, duration: float, keep_y
 	
 	linear_velocity = new_vel
 
+func apply_jump_boost(force: float) -> void:
+	apply_central_force(Vector3.UP * force)
+	if !sfx_jump.playing:
+		sfx_jump.play()
+
 func _jump() -> void:
 	is_jumping = true
 	coyote_timer = 0.0
 	set_axis_velocity(Vector3.UP * jump_force)
+	if !sfx_jump.playing:
+		sfx_jump.play()
 
 func reset_position() -> void:
 	linear_velocity = Vector3.ZERO

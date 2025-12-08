@@ -5,9 +5,9 @@ extends Node3D
 @onready var deadly_gates_area: Area3D = $Environment/Terrain/DeadlyGates/DeadlyGatesArea
 
 func _ready() -> void:
-	cone_death_area.body_entered.connect(_body_entered)
-	deadly_gates_area.body_entered.connect(_body_entered)
+	cone_death_area.body_entered.connect(_death_area_entered)
+	deadly_gates_area.body_entered.connect(_death_area_entered)
 
-func _body_entered(body: Node3D) -> void:
+func _death_area_entered(body: Node3D) -> void:
 	if body is Marble:
 		death_zone.deadly_object_touched.emit()

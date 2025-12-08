@@ -10,7 +10,7 @@
 [ext_resource type="Material" uid="uid://dn1m1wale5wxo" path="res://assets/materials/white_terrain.tres" id="6_y4fcd"]
 [ext_resource type="PackedScene" uid="uid://cht4105owcyed" path="res://scenes/objects/Checkpoint.tscn" id="7_bh6y1"]
 [ext_resource type="Material" uid="uid://cmuff7c3uviht" path="res://assets/materials/dark_terrain.tres" id="7_y4fcd"]
-[ext_resource type="PackedScene" uid="uid://dp0oysvtwt18b" path="res://scenes/objects/MovingPlatform.tscn" id="8_fcxuc"]
+[ext_resource type="PackedScene" uid="uid://dnpkerbmnhxxq" path="res://scenes/objects/JumpPad.tscn" id="8_bh6y1"]
 [ext_resource type="Texture2D" uid="uid://dny4w2daixbqi" path="res://assets/art/textures/terrain/Light/texture_08.png" id="10_m4rvq"]
 [ext_resource type="PackedScene" uid="uid://g6kt40g48fnf" path="res://scenes/ui/UI.tscn" id="13_bh6y1"]
 
@@ -93,10 +93,9 @@ transform = Transform3D(0.68, 0, 0, 0, 0.65682954, 0.17599694, 0, -0.17599694, 0
 [node name="Checkpoint" parent="Environment/Objects" instance=ExtResource("7_bh6y1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 14.5, -22)
 
-[node name="MovingPlatform" parent="Environment/Objects" instance=ExtResource("8_fcxuc")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28, 14, -8)
-move_duration = 0.5
-move_direction = 2
+[node name="JumpPad" parent="Environment/Objects" instance=ExtResource("8_bh6y1")]
+transform = Transform3D(1.1, 0, 0, 0, 1.0892949, 0.15309042, 0, -0.15309042, 1.0892949, -28, 16.5, -8)
+jump_force = 1900.0
 
 [node name="Terrain" type="Node3D" parent="Environment"]
 
@@ -145,8 +144,29 @@ radial_segments = 32
 rings = 25
 material = ExtResource("7_y4fcd")
 
-[node name="BasicPlatform3" type="CSGCombiner3D" parent="Environment/Terrain"]
+[node name="BasicPlatform2" type="CSGCombiner3D" parent="Environment/Terrain"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -17)
+use_collision = true
+collision_layer = 2
+collision_mask = 0
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Environment/Terrain/BasicPlatform2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
+radius = 5.0
+height = 4.0
+sides = 32
+material = ExtResource("6_y4fcd")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="Environment/Terrain/BasicPlatform2/CSGCylinder3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+operation = 1
+radius = 5.0
+radial_segments = 32
+rings = 25
+material = ExtResource("7_y4fcd")
+
+[node name="BasicPlatform3" type="CSGCombiner3D" parent="Environment/Terrain"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, -1, -32)
 use_collision = true
 collision_layer = 2
 collision_mask = 0
@@ -167,13 +187,12 @@ rings = 25
 material = ExtResource("7_y4fcd")
 
 [node name="BasicPlatform4" type="CSGCombiner3D" parent="Environment/Terrain"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14, -1, -32)
+transform = Transform3D(0.99999994, 0, 0, 0, 0.98162717, -0.19080898, 0, 0.190809, 0.9816271, -3, 1.2, -89)
 use_collision = true
 collision_layer = 2
 collision_mask = 0
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="Environment/Terrain/BasicPlatform4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
 radius = 5.0
 height = 4.0
 sides = 32
@@ -188,7 +207,7 @@ rings = 25
 material = ExtResource("7_y4fcd")
 
 [node name="BasicPlatform5" type="CSGCombiner3D" parent="Environment/Terrain"]
-transform = Transform3D(0.99999994, 0, 0, 0, 0.98162717, -0.19080898, 0, 0.190809, 0.9816271, -3, 1.2, -89)
+transform = Transform3D(0.8660254, 0.4330127, 0.24999999, 0, 0.5, -0.8660253, -0.5, 0.75, 0.43301263, -19.049, 6.834, -93.817)
 use_collision = true
 collision_layer = 2
 collision_mask = 0
@@ -208,12 +227,13 @@ rings = 25
 material = ExtResource("7_y4fcd")
 
 [node name="BasicPlatform6" type="CSGCombiner3D" parent="Environment/Terrain"]
-transform = Transform3D(0.8660254, 0.4330127, 0.24999999, 0, 0.5, -0.8660253, -0.5, 0.75, 0.43301263, -19.049, 6.834, -93.817)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 9, -56)
 use_collision = true
 collision_layer = 2
 collision_mask = 0
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="Environment/Terrain/BasicPlatform6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -1, 2)
 radius = 5.0
 height = 4.0
 sides = 32
@@ -228,13 +248,12 @@ rings = 25
 material = ExtResource("7_y4fcd")
 
 [node name="BasicPlatform7" type="CSGCombiner3D" parent="Environment/Terrain"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 9, -56)
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -30, 11, -22)
 use_collision = true
 collision_layer = 2
 collision_mask = 0
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="Environment/Terrain/BasicPlatform7"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -1, 2)
 radius = 5.0
 height = 4.0
 sides = 32
@@ -249,7 +268,7 @@ rings = 25
 material = ExtResource("7_y4fcd")
 
 [node name="BasicPlatform8" type="CSGCombiner3D" parent="Environment/Terrain"]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -30, 11, -22)
+transform = Transform3D(1.2, 0, 0, 0, 1.1883217, 0.16700773, 0, -0.16700773, 1.1883217, -28, 13.5, -8)
 use_collision = true
 collision_layer = 2
 collision_mask = 0
@@ -618,17 +637,17 @@ radial_segments = 32
 rings = 25
 material = ExtResource("7_y4fcd")
 
-[node name="LargePlatform2" type="CSGCombiner3D" parent="Environment/Terrain"]
-transform = Transform3D(0.32648808, -0.020306714, 0.9449831, 0.07825792, 0.99691737, -0.005615088, -0.94195604, 0.07578567, 0.32707077, -54.210075, 38.210796, -88.3611)
+[node name="LargePlatform" type="CSGCombiner3D" parent="Environment/Terrain"]
+transform = Transform3D(0.35718662, -0.029482359, 0.9335675, 0.09584443, 0.99538255, -0.0052359635, -0.9291025, 0.09134748, 0.35836303, -54.210075, 38.210796, -88.3611)
 use_collision = true
 collision_layer = 2
 collision_mask = 0
 
-[node name="CSGBox3D" type="CSGBox3D" parent="Environment/Terrain/LargePlatform2"]
+[node name="CSGBox3D" type="CSGBox3D" parent="Environment/Terrain/LargePlatform"]
 size = Vector3(24, 4, 6)
 material = ExtResource("6_y4fcd")
 
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Environment/Terrain/LargePlatform2/CSGBox3D"]
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Environment/Terrain/LargePlatform/CSGBox3D"]
 transform = Transform3D(-4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0, 1, 0.024521828, 2, 0.0095825195)
 operation = 1
 radius = 3.0
@@ -636,12 +655,12 @@ height = 32.0
 sides = 32
 material = ExtResource("7_y4fcd")
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="Environment/Terrain/LargePlatform2"]
+[node name="CSGBox3D2" type="CSGBox3D" parent="Environment/Terrain/LargePlatform"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, -0.5, 0)
 size = Vector3(6, 5, 6)
 material = ExtResource("6_y4fcd")
 
-[node name="CSGSphere3D" type="CSGSphere3D" parent="Environment/Terrain/LargePlatform2/CSGBox3D2"]
+[node name="CSGSphere3D" type="CSGSphere3D" parent="Environment/Terrain/LargePlatform/CSGBox3D2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
 operation = 1
 radius = 3.0
@@ -649,12 +668,12 @@ radial_segments = 32
 rings = 25
 material = ExtResource("7_y4fcd")
 
-[node name="CSGBox3D3" type="CSGBox3D" parent="Environment/Terrain/LargePlatform2"]
+[node name="CSGBox3D3" type="CSGBox3D" parent="Environment/Terrain/LargePlatform"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, -0.5, 0)
 size = Vector3(6, 5, 6)
 material = ExtResource("6_y4fcd")
 
-[node name="CSGSphere3D" type="CSGSphere3D" parent="Environment/Terrain/LargePlatform2/CSGBox3D3"]
+[node name="CSGSphere3D" type="CSGSphere3D" parent="Environment/Terrain/LargePlatform/CSGBox3D3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
 operation = 1
 radius = 3.0
@@ -1160,6 +1179,6 @@ material = SubResource("StandardMaterial3D_sdfdg")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 
 [node name="SpawnPosition" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
 
 [node name="UI" parent="." instance=ExtResource("13_bh6y1")]

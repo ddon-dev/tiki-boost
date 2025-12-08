@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://r5802t4ayrt0"]
+[gd_scene load_steps=21 format=3 uid="uid://r5802t4ayrt0"]
 
 [ext_resource type="PackedScene" uid="uid://bguscvtdsubse" path="res://scenes/player/Player.tscn" id="1_a6j5x"]
 [ext_resource type="Texture2D" uid="uid://brrjqum3ry1jw" path="res://assets/art/skyboxes/skybox1.png" id="2_bij1w"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://25tan4gxgpbv" path="res://scenes/objects/BoostRing.tscn" id="4_6l1bd"]
 [ext_resource type="PackedScene" uid="uid://cht4105owcyed" path="res://scenes/objects/Checkpoint.tscn" id="4_frr72"]
 [ext_resource type="PackedScene" uid="uid://1tjylehjm63n" path="res://scenes/objects/DeathZone.tscn" id="4_rsu2w"]
+[ext_resource type="PackedScene" uid="uid://dnpkerbmnhxxq" path="res://scenes/objects/JumpPad.tscn" id="8_l4ybo"]
 [ext_resource type="PackedScene" uid="uid://g6kt40g48fnf" path="res://scenes/ui/UI.tscn" id="9_x1opv"]
 [ext_resource type="AudioStream" uid="uid://bjw4hoqt5hxkt" path="res://assets/audio/music/boogie - joyful, frozy, zachz winner.ogg" id="10_x1opv"]
 [ext_resource type="PackedScene" uid="uid://dp0oysvtwt18b" path="res://scenes/objects/MovingPlatform.tscn" id="12_6l1bd"]
@@ -98,6 +99,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40, 0, 40)
 [node name="FinishPoint" parent="Environment" instance=ExtResource("2_u1lr8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4208498, -16)
 
+[node name="JumpPad" parent="Environment" instance=ExtResource("8_l4ybo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, -16)
+
 [node name="DeathZone" parent="Environment" instance=ExtResource("4_rsu2w")]
 
 [node name="Checkpoint" parent="Environment" instance=ExtResource("4_frr72")]
@@ -106,7 +110,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 24)
 [node name="Player" parent="." instance=ExtResource("1_a6j5x")]
 
 [node name="SpawnPosition" type="Marker3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35, 2, 20)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18, 2, 4)
 
 [node name="UI" parent="." instance=ExtResource("9_x1opv")]
 
