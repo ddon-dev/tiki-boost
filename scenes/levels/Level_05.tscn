@@ -713,6 +713,9 @@ shape = SubResource("ConcavePolygonShape3D_bwlfq")
 [node name="Player" parent="." instance=ExtResource("5_a1c6h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
+[node name="Marble" parent="Player" index="0"]
+enable_gravity_accel = false
+
 [node name="Trail3D" parent="Player" index="1"]
 mesh = SubResource("ImmediateMesh_bwlfq")
 

@@ -7,6 +7,10 @@ class_name Marble extends RigidBody3D
 @export var finish_decel: float = 0.25
 @export var jump_buffer_window: float = 0.2
 @export var coyote_time_window: float = 0.35
+@export var enable_gravity_accel: bool = true
+@export var init_gravity_scale: float = 1.0
+@export var max_gravity_scale: float = 2.0
+@export var gravity_accel_rate: float = 0.1
 @export var boost_default_speed: float = 40.0
 @export var boost_default_duration: float = 0.6
 
@@ -47,17 +51,22 @@ var target_pitch: float
 
 func _ready() -> void:
 	marble_mesh.material_override = GameManager.player_customization.current_skin
+	gravity_scale = init_gravity_scale
 
 func _physics_process(delta: float) -> void:
+	print(gravity_scale)
 	#%JumpBufferLabel.text = "jump_buffer == %0.2f" % jump_buffer_timer
 	#%CoyoteLabel.text = "coyote_timer == %0.2f" % coyote_timer
 	#%JumpBoolLabel.text = "is_jumping == %s" % is_jumping
-
+	
+	var is_grounded = ground_check_ray.is_colliding()
+	
 	if coyote_timer > 0.0: coyote_timer -= delta
 	if jump_buffer_timer > 0.0: jump_buffer_timer -= delta
 	
 	if ground_check_ray.is_colliding():
-		if is_jumping: is_jumping = false
+		if is_jumping:
+			is_jumping = false
 		coyote_window_active = false
 	else:
 		if !coyote_window_active:
@@ -71,7 +80,15 @@ func _physics_process(delta: float) -> void:
 	if can_move: 
 		_movement(delta)
 	
-	if level_finished: gravity_scale = move_toward(gravity_scale, 0.0, finish_decel * delta)
+	if level_finished:
+		gravity_scale = move_toward(gravity_scale, 0.0, finish_decel * delta)
+		enable_gravity_accel = false
+	
+	if is_grounded:
+		gravity_scale = init_gravity_scale
+	elif !is_grounded and enable_gravity_accel:
+		gravity_scale += gravity_accel_rate * delta
+		gravity_scale = min(gravity_scale, max_gravity_scale)
 	
 	if is_boosted:
 		boost_timer -= delta
@@ -110,7 +127,6 @@ func _physics_process(delta: float) -> void:
 	radial_blur.material.set_shader_parameter("blur_power", blur_amount)
 	
 	# SFX
-	var is_grounded: bool = ground_check_ray.is_colliding()
 	velocity_percent = clamp(inverse_lerp(0.0, max_velocity, current_velocity), 0.0, 1.0)
 	target_volume_db = lerp(min_volume, max_volume, velocity_percent)
 	target_pitch = lerp(min_pitch, max_pitch, velocity_percent)
