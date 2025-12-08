@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://0ka3te4x8ya0"]
+[gd_scene load_steps=27 format=3 uid="uid://0ka3te4x8ya0"]
 
 [ext_resource type="PackedScene" uid="uid://cihamo12cblla" path="res://scenes/handlers/LevelManager.tscn" id="1_ev6jf"]
 [ext_resource type="Script" uid="uid://bg6swuapymkji" path="res://scripts/levels/level_05.gd" id="1_j1utv"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://dp0oysvtwt18b" path="res://scenes/objects/MovingPlatform.tscn" id="10_k2p1l"]
 [ext_resource type="Script" uid="uid://bvhmoyjepwvv2" path="res://scripts/objects/level_05_safe_area_3d.gd" id="11_7dbxd"]
 [ext_resource type="Material" uid="uid://23oyj1wpucjl" path="res://assets/materials/orange_terrain.tres" id="11_7dsvl"]
+[ext_resource type="AudioStream" uid="uid://bq7887raidsfh" path="res://assets/audio/correct_wall.ogg" id="11_gt81o"]
 [ext_resource type="Material" uid="uid://1bbt2k4ei36a" path="res://assets/materials/purple_terrain.tres" id="12_bwlfq"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_k2p1l"]
@@ -586,9 +587,15 @@ material = ExtResource("6_1ttgc")
 
 [node name="SafeGates" type="Node3D" parent="Environment/Terrain"]
 
-[node name="Area3D" type="Area3D" parent="Environment/Terrain/SafeGates"]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Environment/Terrain/SafeGates"]
+stream = ExtResource("11_gt81o")
+volume_db = -6.0
+bus = &"SFX"
+
+[node name="Area3D" type="Area3D" parent="Environment/Terrain/SafeGates" node_paths=PackedStringArray("sfx_correct")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17, 133, -16.5)
 script = ExtResource("11_7dbxd")
+sfx_correct = NodePath("../AudioStreamPlayer")
 
 [node name="Safe" type="CSGBox3D" parent="Environment/Terrain/SafeGates/Area3D"]
 size = Vector3(33, 0.1, 32)
@@ -597,8 +604,9 @@ material = ExtResource("11_7dsvl")
 [node name="CSGBakedCollisionShape3D" type="CollisionShape3D" parent="Environment/Terrain/SafeGates/Area3D"]
 shape = SubResource("ConcavePolygonShape3D_gt81o")
 
-[node name="Area3D2" type="Area3D" parent="Environment/Terrain/SafeGates"]
+[node name="Area3D2" type="Area3D" parent="Environment/Terrain/SafeGates" node_paths=PackedStringArray("sfx_correct")]
 script = ExtResource("11_7dbxd")
+sfx_correct = NodePath("../AudioStreamPlayer")
 
 [node name="Safe" type="CSGBox3D" parent="Environment/Terrain/SafeGates/Area3D2"]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -17.000002, 109, 16.7)
@@ -609,8 +617,9 @@ material = ExtResource("11_7dsvl")
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -17.000002, 109, 16.7)
 shape = SubResource("ConcavePolygonShape3D_6lrrs")
 
-[node name="Area3D3" type="Area3D" parent="Environment/Terrain/SafeGates"]
+[node name="Area3D3" type="Area3D" parent="Environment/Terrain/SafeGates" node_paths=PackedStringArray("sfx_correct")]
 script = ExtResource("11_7dbxd")
+sfx_correct = NodePath("../AudioStreamPlayer")
 
 [node name="Safe" type="CSGBox3D" parent="Environment/Terrain/SafeGates/Area3D3"]
 transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, -16.624998, 86, -16.925001)
@@ -621,8 +630,9 @@ material = ExtResource("11_7dsvl")
 transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, -16.624998, 86, -16.925001)
 shape = SubResource("ConcavePolygonShape3D_gamwt")
 
-[node name="Area3D4" type="Area3D" parent="Environment/Terrain/SafeGates"]
+[node name="Area3D4" type="Area3D" parent="Environment/Terrain/SafeGates" node_paths=PackedStringArray("sfx_correct")]
 script = ExtResource("11_7dbxd")
+sfx_correct = NodePath("../AudioStreamPlayer")
 
 [node name="Safe" type="CSGBox3D" parent="Environment/Terrain/SafeGates/Area3D4"]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 16.625, 65, 17.075003)

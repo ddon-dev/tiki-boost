@@ -88,14 +88,14 @@ transform = Transform3D(0.8263048, 0, -0.5632232, 0, 1, 0, 0.5632232, 0, 0.82630
 transform = Transform3D(0.19906244, -0.07786413, -0.4520081, -1.8626451e-09, 0.4927425, -0.08488115, 0.4586656, 0.0337933, 0.19617306, -15.889537, 49.449387, -120.243355)
 
 [node name="BoostRing4" parent="Environment/Objects" instance=ExtResource("6_qrwky")]
-transform = Transform3D(0.68, 0, 0, 0, 0.65682954, 0.17599694, 0, -0.17599694, 0.65682954, -3.8895369, 54.273388, -114.900185)
+transform = Transform3D(-0.6800001, 1.5386146e-08, -5.742188e-08, 4.9731614e-08, 0.5070899, -0.4530564, 3.2569492e-08, -0.4530564, -0.5070899, -3.8895369, 54.273388, -114.900185)
 
 [node name="Checkpoint" parent="Environment/Objects" instance=ExtResource("7_bh6y1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 14.5, -22)
 
 [node name="JumpPad" parent="Environment/Objects" instance=ExtResource("8_bh6y1")]
 transform = Transform3D(1.1, 0, 0, 0, 1.0892949, 0.15309042, 0, -0.15309042, 1.0892949, -28, 16.5, -8)
-jump_force = 1900.0
+jump_force = 2000.0
 
 [node name="Terrain" type="Node3D" parent="Environment"]
 

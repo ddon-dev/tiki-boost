@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://25tan4gxgpbv"]
+[gd_scene load_steps=13 format=3 uid="uid://25tan4gxgpbv"]
 
 [ext_resource type="Script" uid="uid://0384xmcpa5d6" path="res://scripts/objects/boost_ring.gd" id="1_j256n"]
 [ext_resource type="AudioStream" uid="uid://dhr7d56txob4b" path="res://assets/audio/sfx/player/boost.ogg" id="2_6ipah"]
@@ -8,12 +8,56 @@ height = 0.001
 radius = 3.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j256n"]
-albedo_color = Color(0, 0.8666667, 0.4745098, 1)
+albedo_color = Color(0, 0.72156864, 0.39215687, 0.9098039)
+emission_enabled = true
+emission = Color(2.2621452e-06, 0.50383776, 3.85046e-07, 1)
+emission_energy_multiplier = 10.0
 
 [sub_resource type="TorusMesh" id="TorusMesh_6ipah"]
 material = SubResource("StandardMaterial3D_j256n")
-inner_radius = 2.88
-outer_radius = 3.0
+inner_radius = 2.83
+outer_radius = 2.249
+rings = 32
+ring_segments = 3
+
+[sub_resource type="Curve" id="Curve_6ipah"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_lpncq"]
+curve = SubResource("Curve_6ipah")
+
+[sub_resource type="Curve" id="Curve_w26gy"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_mtk22"]
+curve = SubResource("Curve_w26gy")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_6ipah"]
+emission_shape_offset = Vector3(0, -0.1, 0)
+direction = Vector3(0, 0, 0)
+gravity = Vector3(0, -5, 0)
+scale_min = 5.68
+scale_max = 5.68
+scale_curve = SubResource("CurveTexture_mtk22")
+alpha_curve = SubResource("CurveTexture_lpncq")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lpncq"]
+transparency = 1
+vertex_color_use_as_albedo = true
+vertex_color_is_srgb = true
+albedo_color = Color(0.050980393, 0.6313726, 0, 0.25882354)
+emission_enabled = true
+emission = Color(0.060777903, 0.6948255, 1.92523e-07, 1)
+emission_energy_multiplier = 10.0
+
+[sub_resource type="TorusMesh" id="TorusMesh_mtk22"]
+material = SubResource("StandardMaterial3D_lpncq")
+inner_radius = 0.472
+outer_radius = 0.452
+rings = 40
+ring_segments = 3
 
 [node name="BoostRing" type="Area3D" node_paths=PackedStringArray("sfx_boost")]
 script = ExtResource("1_j256n")
@@ -26,6 +70,12 @@ shape = SubResource("CylinderShape3D_bug7d")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
 mesh = SubResource("TorusMesh_6ipah")
+
+[node name="GPUParticles3D2" type="GPUParticles3D" parent="MeshInstance3D"]
+lifetime = 1.5999999999999999
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_6ipah")
+draw_pass_1 = SubResource("TorusMesh_mtk22")
 
 [node name="BoostSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("2_6ipah")

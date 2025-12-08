@@ -15,7 +15,7 @@ extends VBoxContainer
 
 func _ready() -> void:
 	apply.pressed.connect(apply_settings)
-	reset.pressed.connect(previous_settings)
+	#reset.pressed.connect(previous_settings)
 	default.pressed.connect(default_settings)
 
 
@@ -26,12 +26,18 @@ func apply_settings():
 	skins_menu.visible = true
 	return_menu.visible = true
 	
-func previous_settings():
-	GameManager.load_settings()
-	sfx_pressed.play()
-	pass
+#func previous_settings():
+	#sfx_pressed.play()
+	#GameManager.load_settings()
+	#GameManager.apply_trail_settings(GameManager.player_customization.trail_enabled,
+	#GameManager.player_customization.trail_color)
+	#PlayerMaterials.trail_color_changed.emit()
+	#pass
 
 func default_settings():
 	GameManager.set_default_trail_color()
+	GameManager.apply_trail_settings(GameManager.def_state,
+	GameManager.def_color)
+	PlayerMaterials.trail_color_changed.emit()
 	sfx_pressed.play()
 	pass
