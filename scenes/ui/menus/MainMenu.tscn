@@ -11,7 +11,7 @@
 [ext_resource type="Script" uid="uid://cw2plsd54xmuy" path="res://scripts/ui/menus/level_select.gd" id="9_nqjyj"]
 [ext_resource type="Script" uid="uid://b6nhyicnfko5g" path="res://scenes/ui/menus/trail_color_picker.gd" id="11_ehd34"]
 [ext_resource type="Script" uid="uid://du3352k3k16eh" path="res://scenes/ui/menus/color_picker.gd" id="12_jhkfs"]
-[ext_resource type="FontFile" uid="uid://y16hiud5i3rd" path="res://assets/fonts/gomarice_shmup_in_the_zone.ttf" id="48_uvc7g"]
+[ext_resource type="FontFile" uid="uid://y16hiud5i3rd" path="res://fonts/gomarice_shmup_in_the_zone.ttf" id="48_uvc7g"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nrttg"]
 

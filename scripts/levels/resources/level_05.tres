@@ -6,4 +6,7 @@
 script = ExtResource("1_lqqso")
 level_path = "uid://oekjmftovfng"
 is_level_pack_1 = true
+gold_medal_time = 25.0
+silver_medal_time = 35.0
+bronze_medal_time = 50.0
 metadata/_custom_type_script = "uid://b07ncf70dsirm"

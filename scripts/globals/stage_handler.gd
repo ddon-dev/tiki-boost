@@ -39,7 +39,6 @@ func restart_level():
 
 
 
-
 func get_level_data(path: String) -> LevelData:
 	var level_data_path = ResourceLoader.load(path)
 	if level_data_path is LevelData:

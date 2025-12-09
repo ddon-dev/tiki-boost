@@ -10,6 +10,6 @@ extends Resource
 
 @export_category("Highscore and Medals")
 #All the records are saved in seconds
-@export var gold_medal_time: int
-@export var silver_medal_time: int
-@export var bronze_medal_time: int
+@export var gold_medal_time: float
+@export var silver_medal_time: float
+@export var bronze_medal_time: float

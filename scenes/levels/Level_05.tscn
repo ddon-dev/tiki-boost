@@ -24,8 +24,15 @@ sky_material = SubResource("PanoramaSkyMaterial_tylss")
 [sub_resource type="Environment" id="Environment_3e2mo"]
 background_mode = 2
 sky = SubResource("Sky_bij1w")
+ambient_light_source = 3
 tonemap_mode = 2
 glow_enabled = true
+glow_intensity = 1.0
+fog_enabled = true
+fog_mode = 1
+fog_sun_scatter = 0.84
+fog_density = 0.5959
+fog_sky_affect = 0.527
 
 [node name="Level_05" type="Node3D"]
 
@@ -62,7 +69,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -0.831, -117)
 jump_force = 20.0
 
 [node name="JumpPad3" parent="Environment/Objects" instance=ExtResource("8_bh6y1")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -1, -2.15, -249)
+transform = Transform3D(0.625, 0, 0, 0, 0.625, 0, 0, 0, 0.625, -1, -2.1459417, -249)
 jump_force = 40.0
 
 [node name="BoostRing" parent="Environment/Objects" instance=ExtResource("6_qrwky")]
