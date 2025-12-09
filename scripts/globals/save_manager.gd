@@ -27,11 +27,11 @@ func update_highscore(level_path: String, new_highscore: float):
 	var record = get_player_record(level_path)
 	if record.highscore == 0 or new_highscore < record.highscore:
 		record.highscore = new_highscore
-		#set_medal(record, level_path, new_highscore)
+		set_medal(record, level_path, new_highscore)
 		save_save_file()
 		
 func set_medal(record: PlayerRecord, level_path: String, time: float):
-	var level_data: LevelData = ResourceLoader.load(level_path)
+	var level_data: LevelData = StageHandler.current_level
 	var medal = 0
 	if time <= level_data.gold_medal_time:
 		medal = 3
