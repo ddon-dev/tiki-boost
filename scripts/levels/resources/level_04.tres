@@ -5,5 +5,5 @@
 [resource]
 script = ExtResource("1_mk8pp")
 level_path = "uid://0ka3te4x8ya0"
-is_level_pack_2 = true
+is_level_pack_1 = true
 metadata/_custom_type_script = "uid://b07ncf70dsirm"

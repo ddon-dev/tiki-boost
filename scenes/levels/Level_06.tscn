@@ -419,7 +419,7 @@ collision_layer = 2
 collision_mask = 0
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="Environment/Terrain/BasicPlatform15"]
-transform = Transform3D(1, 0, 0, 0, 0.9868809, -0.16144878, 0, 0.16144878, 0.9868809, 0, -0.6657715, -0.38438416)
+transform = Transform3D(1, 0, 0, 0, 0.9868813, -0.16144875, 0, 0.16144875, 0.9868813, 0, 2.8907166, -2.5403595)
 radius = 5.0
 height = 4.0
 sides = 32

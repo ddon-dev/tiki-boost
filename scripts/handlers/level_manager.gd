@@ -39,7 +39,6 @@ func _level_finished() -> void:
 	var final_time: float = stopwatch.get_time_seconds()
 	var current_level_path: String = level_data.level_path
 	stopwatch.stop()
-	
 	SaveManager.update_highscore(current_level_path, final_time)
 	
 func _process(_delta: float) -> void:

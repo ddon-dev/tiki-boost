@@ -63,6 +63,7 @@ func get_time_formatted(elapsed_time: float) -> String:
 	var milliseconds: int = int((elapsed_time - total_seconds) * 100)
 	return "%02d:%02d:%02d" % [minutes, seconds, milliseconds]
 
+
 func go_back():
 	sfx_pressed.play()
 	init_menu.visible = true
