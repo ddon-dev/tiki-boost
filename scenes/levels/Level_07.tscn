@@ -1,0 +1,287 @@
+[gd_scene load_steps=14 format=3 uid="uid://b0l3uyqrnh3aa"]
+
+[ext_resource type="PackedScene" uid="uid://cihamo12cblla" path="res://scenes/handlers/LevelManager.tscn" id="1_b122o"]
+[ext_resource type="Resource" uid="uid://cn714o1wk8y6b" path="res://scripts/levels/resources/level_01.tres" id="2_dn6tr"]
+[ext_resource type="Texture2D" uid="uid://brrjqum3ry1jw" path="res://assets/art/skyboxes/skybox1.png" id="3_wd2jq"]
+[ext_resource type="PackedScene" uid="uid://c1bkxh8p1litp" path="res://scenes/objects/FinishPoint.tscn" id="4_205cd"]
+[ext_resource type="PackedScene" uid="uid://1tjylehjm63n" path="res://scenes/objects/DeathZone.tscn" id="5_aaccl"]
+[ext_resource type="Script" uid="uid://0jicjsxuqi4f" path="res://scripts/objects/csg_cylinder_3d_6.gd" id="7_1w2dc"]
+[ext_resource type="Material" uid="uid://dn1m1wale5wxo" path="res://assets/materials/white_terrain.tres" id="9_t2jis"]
+[ext_resource type="PackedScene" uid="uid://cht4105owcyed" path="res://scenes/objects/Checkpoint.tscn" id="10_1ig0q"]
+[ext_resource type="PackedScene" uid="uid://bguscvtdsubse" path="res://scenes/player/Player.tscn" id="10_ae7fg"]
+[ext_resource type="PackedScene" uid="uid://g6kt40g48fnf" path="res://scenes/ui/UI.tscn" id="11_ug22y"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_5mpa8"]
+panorama = ExtResource("3_wd2jq")
+
+[sub_resource type="Sky" id="Sky_c83vx"]
+sky_material = SubResource("PanoramaSkyMaterial_5mpa8")
+
+[sub_resource type="Environment" id="Environment_10xc4"]
+background_mode = 2
+sky = SubResource("Sky_c83vx")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="Level_07" type="Node3D"]
+
+[node name="LevelManager" parent="." instance=ExtResource("1_b122o")]
+unique_name_in_owner = true
+level_data = ExtResource("2_dn6tr")
+
+[node name="Environment" type="Node3D" parent="."]
+unique_name_in_owner = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Environment"]
+environment = SubResource("Environment_10xc4")
+
+[node name="Sun" type="DirectionalLight3D" parent="Environment"]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, -4.7000003)
+shadow_enabled = true
+
+[node name="Objects" type="Node3D" parent="Environment"]
+
+[node name="FinishPoint" parent="Environment/Objects" instance=ExtResource("4_205cd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.4208498, -296.4779)
+
+[node name="DeathZone" parent="Environment/Objects" instance=ExtResource("5_aaccl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.7000003)
+
+[node name="Terrain" type="Node3D" parent="Environment"]
+
+[node name="NormalPlatform" type="CSGCombiner3D" parent="Environment/Terrain"]
+use_collision = true
+collision_layer = 2
+collision_mask = 0
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Environment/Terrain/NormalPlatform"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 81.40349)
+radius = 6.0
+height = 1.0
+sides = 32
+material = ExtResource("9_t2jis")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Environment/Terrain/NormalPlatform"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 58.5)
+size = Vector3(12, 1, 45)
+material = ExtResource("9_t2jis")
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Environment/Terrain/NormalPlatform"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 36)
+radius = 6.0
+height = 1.0
+sides = 32
+material = ExtResource("9_t2jis")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Environment/Terrain"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, -296.11618)
+use_collision = true
+collision_layer = 2
+collision_mask = 0
+radius = 6.0
+height = 1.0
+sides = 32
+material = ExtResource("9_t2jis")
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Environment/Terrain"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.957835, 8.333626, -109.47004)
+use_collision = true
+collision_layer = 2
+collision_mask = 0
+radius = 6.0
+height = 1.0
+sides = 32
+material = ExtResource("9_t2jis")
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="Environment/Terrain"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.522346, 7.9484406, -129.75171)
+use_collision = true
+collision_layer = 2
+collision_mask = 0
+radius = 6.0
+height = 1.0
+sides = 32
+material = ExtResource("9_t2jis")
+
+[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="Environment/Terrain"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.694542, 7.751652, -139.84816)
+use_collision = true
+collision_layer = 2
+collision_mask = 0
+radius = 6.0
+height = 1.0
+sides = 32
+material = ExtResource("9_t2jis")
+
+[node name="CSGCylinder3D5" type="CSGCylinder3D" parent="Environment/Terrain"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46.145218, 6.994766, -162.59297)
+use_collision = true
+collision_layer = 2
+collision_mask = 0
+radius = 6.0
+height = 1.0
+sides = 32
+material = ExtResource("9_t2jis")
+
+[node name="CSGCylinder3D6" type="CSGCylinder3D" parent="Environment/Terrain"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.915, -236.591)
+use_collision = true
+collision_layer = 2
+collision_mask = 0
+radius = 6.0
+height = 1.0
+sides = 32
+material = ExtResource("9_t2jis")
+script = ExtResource("7_1w2dc")
+speed = 10.0
+
+[node name="CSGCylinder3D7" type="CSGCylinder3D" parent="Environment/Terrain"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.49, -250.044)
+use_collision = true
+collision_layer = 2
+collision_mask = 0
+radius = 6.0
+height = 1.0
+sides = 32
+material = ExtResource("9_t2jis")
+script = ExtResource("7_1w2dc")
+speed = 10.0
+_direction = -1.0
+
+[node name="CSGCylinder3D10" type="CSGCylinder3D" parent="Environment/Terrain"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.304, -269.755)
+use_collision = true
+collision_layer = 2
+collision_mask = 0
+radius = 6.0
+height = 1.0
+sides = 32
+material = ExtResource("9_t2jis")
+script = ExtResource("7_1w2dc")
+speed = 10.0
+
+[node name="CirclePlatorm" type="CSGCylinder3D" parent="Environment/Terrain"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.47468, -1, -9.8)
+use_collision = true
+collision_layer = 2
+collision_mask = 0
+radius = 4.0
+height = 1.0
+sides = 32
+material = ExtResource("9_t2jis")
+
+[node name="CirclePlatorm3" type="CSGCylinder3D" parent="Environment/Terrain"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.348583, -3.1808238, -53.36459)
+use_collision = true
+collision_layer = 2
+collision_mask = 0
+radius = 4.0
+height = 1.0
+sides = 32
+material = ExtResource("9_t2jis")
+
+[node name="CirclePlatorm4" type="CSGCylinder3D" parent="Environment/Terrain"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57.13277, -3.472886, -66.19232)
+use_collision = true
+collision_layer = 2
+collision_mask = 0
+radius = 4.0
+height = 1.0
+sides = 32
+material = ExtResource("9_t2jis")
+
+[node name="TransPlatfrom" type="CSGCombiner3D" parent="Environment/Terrain"]
+transform = Transform3D(0.021378666, 0, 0.9997714, 0, 1, 0, -0.9997714, 0, 0.021378666, -38.719563, 0, 9.760963)
+use_collision = true
+collision_layer = 2
+collision_mask = 0
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Environment/Terrain/TransPlatfrom"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 81.40349)
+radius = 6.0
+height = 1.0
+sides = 32
+material = ExtResource("9_t2jis")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Environment/Terrain/TransPlatfrom"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 58.5)
+size = Vector3(12, 1, 45)
+material = ExtResource("9_t2jis")
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Environment/Terrain/TransPlatfrom"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 36)
+radius = 6.0
+height = 1.0
+sides = 32
+material = ExtResource("9_t2jis")
+
+[node name="TransPlatfrom2" type="CSGCombiner3D" parent="Environment/Terrain"]
+transform = Transform3D(0.5168153, 0.16953836, 0.8391417, 0.018452737, 0.97776073, -0.20890944, -0.8558982, 0.123452, 0.50219333, -22.520987, 16.283808, -115.327835)
+use_collision = true
+collision_layer = 2
+collision_mask = 0
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Environment/Terrain/TransPlatfrom2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 81.40349)
+radius = 6.0
+height = 1.0
+sides = 32
+material = ExtResource("9_t2jis")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="Environment/Terrain/TransPlatfrom2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 58.5)
+size = Vector3(12, 1, 45)
+material = ExtResource("9_t2jis")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="Environment/Terrain/TransPlatfrom2"]
+transform = Transform3D(0.5615844, 0.18985088, -0.80534565, 0.107158795, 0.9484379, 0.29830605, 0.8204537, -0.25382334, 0.5122817, 60.68702, -28.277843, -60.843735)
+size = Vector3(9.743652, 0.076660156, 43.59326)
+material = ExtResource("9_t2jis")
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Environment/Terrain/TransPlatfrom2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 36)
+radius = 6.0
+height = 1.0
+sides = 32
+material = ExtResource("9_t2jis")
+
+[node name="CirclePlatorm2" type="CSGCylinder3D" parent="Environment/Terrain"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 58.682724, -2.089714, -17.244184)
+use_collision = true
+collision_layer = 2
+collision_mask = 0
+radius = 4.0
+height = 1.0
+sides = 32
+material = ExtResource("9_t2jis")
+
+[node name="CirclePlatorm" type="CSGCylinder3D" parent="Environment/Terrain/CirclePlatorm2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.452576, -1, -13.114868)
+use_collision = true
+collision_layer = 2
+collision_mask = 0
+radius = 4.0
+height = 1.0
+sides = 32
+material = ExtResource("9_t2jis")
+
+[node name="CirclePlatorm2" type="CSGCylinder3D" parent="Environment/Terrain/CirclePlatorm2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4710655, -1.0764775, -27.559202)
+use_collision = true
+collision_layer = 2
+collision_mask = 0
+radius = 4.0
+height = 1.0
+sides = 32
+material = ExtResource("9_t2jis")
+
+[node name="Player" parent="." instance=ExtResource("10_ae7fg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.7000003)
+
+[node name="SpawnPosition" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 81.40349)
+
+[node name="UI" parent="." instance=ExtResource("11_ug22y")]
+
+[node name="Checkpoint" parent="." instance=ExtResource("10_1ig0q")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.404333, 9.62327, -109.200066)
