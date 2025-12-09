@@ -1,6 +1,6 @@
 [gd_resource type="Theme" load_steps=11 format=3 uid="uid://dg0bxpr4spgob"]
 
-[ext_resource type="FontFile" uid="uid://y16hiud5i3rd" path="res://assets/fonts/gomarice_shmup_in_the_zone.ttf" id="1_8yh44"]
+[ext_resource type="FontFile" uid="uid://y16hiud5i3rd" path="res://assets/fonts/gomarice_shmup_in_the_zone.ttf" id="1_ff7ft"]
 [ext_resource type="Texture2D" uid="uid://bp1pgb4k53drb" path="res://assets/art/ui/grabber.png" id="2_ff7ft"]
 [ext_resource type="Texture2D" uid="uid://c0p5svf6s4h8d" path="res://assets/art/ui/grabber_highlight.png" id="3_624bp"]
 
@@ -54,7 +54,7 @@ Button/colors/font_outline_color = Color(0, 0, 0, 1)
 Button/colors/font_pressed_color = Color(0.4, 1, 0.81960785, 1)
 Button/constants/outline_size = 21
 Button/font_sizes/font_size = 35
-Button/fonts/font = ExtResource("1_8yh44")
+Button/fonts/font = ExtResource("1_ff7ft")
 Button/styles/focus = SubResource("StyleBoxEmpty_8yh44")
 HSlider/icons/grabber = ExtResource("2_ff7ft")
 HSlider/icons/grabber_highlight = ExtResource("3_624bp")
@@ -67,12 +67,12 @@ Label/constants/outline_size = 26
 Label/constants/shadow_offset_x = 0
 Label/constants/shadow_offset_y = 3
 Label/constants/shadow_outline_size = 37
-Label/fonts/font = ExtResource("1_8yh44")
+Label/fonts/font = ExtResource("1_ff7ft")
 LineEdit/constants/minimum_character_width = 3
 LineEdit/constants/outline_size = 10
-LineEdit/fonts/font = ExtResource("1_8yh44")
+LineEdit/fonts/font = ExtResource("1_ff7ft")
 LineEdit/styles/focus = SubResource("StyleBoxFlat_h153x")
 LineEdit/styles/normal = SubResource("StyleBoxFlat_tvrs4")
 PopupMenu/font_sizes/font_size = 25
-PopupMenu/fonts/font = ExtResource("1_8yh44")
+PopupMenu/fonts/font = ExtResource("1_ff7ft")
 ScrollContainer/styles/panel = SubResource("StyleBoxFlat_624bp")
