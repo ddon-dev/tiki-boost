@@ -6,6 +6,12 @@ extends VBoxContainer
 # Scene Transition
 @export var scene_transition: Control
 
+# Medals
+const NO_MEDAL = preload("uid://ch4hngf405tw1")
+const BRONZE = preload("uid://dxao7mrly8ofl")
+const SILVER = preload("uid://betwq3un6qvv5")
+const GOLD = preload("uid://djcph6dppquhy")
+
 # Menus
 @onready var init_menu: VBoxContainer = %InitMenu
 @onready var level_menu: VBoxContainer = %LevelSelectMenu
@@ -22,7 +28,8 @@ func _ready() -> void:
 	var level_number: int = 1
 	var tut_number: int = 1
 	for level_path in StageHandler.levels:
-		
+		var record: PlayerRecord = SaveManager.get_player_record(
+			level_path.level_path)
 		# Level Button
 		var button = Button.new()
 		if level_path.is_tutorial:
@@ -32,16 +39,25 @@ func _ready() -> void:
 			button.text = "Level %s" % level_number
 			level_number += 1
 		button.flat = true
-		levels_container.add_child(button)
 		button.pressed.connect(func():
 			sfx_pressed.play()
 			scene_transition.fade_out()
 			await sfx_pressed.finished
 			StageHandler.go_to_level(level_path)
 		)
-		
+		match record.medal_achieved:
+			0:
+				button.icon = NO_MEDAL
+			1:
+				button.icon = BRONZE
+			2:
+				button.icon = SILVER
+			3:
+				button.icon = GOLD
+				
+		button.add_theme_constant_override("hseparation", 20)
+		button.add_theme_constant_override("icon_max_width", 40)
 		# Level Record
-		var record: PlayerRecord = SaveManager.get_player_record(level_path.level_path)
 		var highscore_seconds: float = record.highscore
 		var record_time = Label.new()
 		record_time.add_theme_font_size_override("font_size", 35)
@@ -53,6 +69,8 @@ func _ready() -> void:
 			record_time.text = "-- : -- : --"
 		else:
 			record_time.text = get_time_formatted(highscore_seconds)
+		
+		levels_container.add_child(button)
 		high_score_container.add_child(record_time)
 
 func get_time_formatted(elapsed_time: float) -> String:

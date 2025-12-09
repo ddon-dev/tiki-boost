@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cht4105owcyed" path="res://scenes/objects/Checkpoint.tscn" id="4_lijdy"]
 [ext_resource type="Script" uid="uid://brhgl7cs7y3em" path="res://scripts/ui/menus/menu_camera.gd" id="5_bfhna"]
 [ext_resource type="PackedScene" uid="uid://25tan4gxgpbv" path="res://scenes/objects/BoostRing.tscn" id="6_vibhy"]
-[ext_resource type="Script" path="res://scripts/ui/menus/menu_marble.gd" id="8_32dg4"]
+[ext_resource type="Script" uid="uid://b172pur0or3bn" path="res://scripts/ui/menus/menu_marble.gd" id="8_32dg4"]
 [ext_resource type="PackedScene" uid="uid://dnpkerbmnhxxq" path="res://scenes/objects/JumpPad.tscn" id="8_nvvxc"]
 [ext_resource type="Material" uid="uid://cmuff7c3uviht" path="res://assets/materials/dark_terrain.tres" id="9_2ix1n"]
 [ext_resource type="Script" uid="uid://624jrwp2a8ps" path="res://scripts/player/trail_3d.gd" id="10_1dw0u"]
