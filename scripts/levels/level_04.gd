@@ -1,13 +1,13 @@
 extends Node3D
 
-# Scene Transition
-@export var scene_transition: Control
-
-# Audio
-@onready var menu_music: AudioStreamPlayer = %Music
-
+@onready var death_zone: DeathZone = $Environment/Objects/DeathZone
+@onready var cone_death_area: Area3D = $Environment/Terrain/BorderCone/ConeDeathArea
+@onready var deadly_gates_area: Area3D = $Environment/Terrain/DeadlyGates/DeadlyGatesArea
 
 func _ready() -> void:
-	get_tree().paused = false
-	AudioServer.set_bus_effect_enabled(1,0,false)
-	menu_music.fade_in()
+	cone_death_area.body_entered.connect(_death_area_entered)
+	deadly_gates_area.body_entered.connect(_death_area_entered)
+
+func _death_area_entered(body: Node3D) -> void:
+	if body is Marble:
+		death_zone.deadly_object_touched.emit()

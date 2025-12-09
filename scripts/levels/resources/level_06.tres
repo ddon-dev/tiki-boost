@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="LevelData" load_steps=2 format=3 uid="uid://ch7drbjnq8hgf"]
+
+[ext_resource type="Script" uid="uid://b07ncf70dsirm" path="res://scripts/globals/level_data.gd" id="1_dqxi6"]
+
+[resource]
+script = ExtResource("1_dqxi6")
+level_path = "uid://deqynq8r0je81"
+is_level_pack_2 = true
+metadata/_custom_type_script = "uid://b07ncf70dsirm"
