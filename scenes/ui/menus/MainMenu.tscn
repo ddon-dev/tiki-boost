@@ -345,6 +345,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="LevelSelectMenu" type="VBoxContainer" parent="LevelSelect" node_paths=PackedStringArray("sfx_pressed", "scene_transition", "menu_slide")]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 theme_override_constants/separation = 40
 script = ExtResource("9_nqjyj")

@@ -41,17 +41,27 @@ func _ready() -> void:
 		)
 		
 		# Level Record
+		var record: PlayerRecord = SaveManager.get_player_record(level_path.level_path)
+		var highscore_seconds: float = record.highscore
 		var record_time = Label.new()
 		record_time.add_theme_font_size_override("font_size", 35)
 		record_time.add_theme_constant_override("shadow_outline_size", 0)
 		record_time.add_theme_constant_override("outline_size", 21)
 		record_time.custom_minimum_size = Vector2(224, 45)
 		record_time.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
-		if level_path.player_record == "":
+		if highscore_seconds == 0.0:
 			record_time.text = "-- : -- : --"
 		else:
-			record_time.text = level_path.player_record
+			record_time.text = get_time_formatted(highscore_seconds)
 		high_score_container.add_child(record_time)
+
+func get_time_formatted(elapsed_time: float) -> String:
+	var total_seconds: int = int(elapsed_time)
+	@warning_ignore_start("integer_division")
+	var minutes: int = total_seconds / 60
+	var seconds: int = total_seconds % 60
+	var milliseconds: int = int((elapsed_time - total_seconds) * 100)
+	return "%02d:%02d:%02d" % [minutes, seconds, milliseconds]
 
 func go_back():
 	sfx_pressed.play()

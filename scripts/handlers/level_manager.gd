@@ -36,8 +36,12 @@ func _checkpoint_reached(position: Vector3) -> void:
 	current_spawnpoint = position
 
 func _level_finished() -> void:
+	var final_time: float = stopwatch.get_time_seconds()
+	var current_level_path: String = level_data.level_path
 	stopwatch.stop()
-
+	
+	SaveManager.update_highscore(current_level_path, final_time)
+	
 func _process(_delta: float) -> void:
 	if stopwatch.running:
 		var time_label: Label = $"../UI/HUD/MarginContainer/TimeLabel"

@@ -10,9 +10,11 @@ const MODES = {
 "Fullscreen": Window.MODE_FULLSCREEN,
 "Windowed": Window.MODE_WINDOWED,
 }
+
 var current_screen = DisplayServer.window_get_current_screen()
 var def_res = DisplayServer.screen_get_size(current_screen)
-enum AUDIOBUS {
+
+enum AUDIOBUS{
 	master = 0,
 	music = 1,
 	sfx = 2,
@@ -29,6 +31,7 @@ var def_color: Color = Color("0068d2")
 #endregion
 
 func _ready():
+
 #region Game Settings
 	if ResourceLoader.exists(GAME_SETTINGS_PATH):
 		game_settings = load(GAME_SETTINGS_PATH)
@@ -38,13 +41,14 @@ func _ready():
 		ResourceSaver.save(game_settings, GAME_SETTINGS_PATH)
 		load_default_settings()
 #endregion
-	
+
 #region Player Customization
 	if ResourceLoader.exists(PLAYER_CUSTOMIZATION_PATH):
 		player_customization = load(PLAYER_CUSTOMIZATION_PATH)
 		apply_trail_settings(player_customization.trail_enabled,
 		player_customization.trail_color)
 		apply_saved_skin(player_customization.current_skin)
+
 	else:
 		player_customization = PlayerCustomization.new()
 		player_customization.current_skin = def_skin
@@ -52,6 +56,7 @@ func _ready():
 		player_customization.trail_color = def_color
 		save_current_customization()
 #endregion
+
 
 #region Game Settings Functions
 func load_default_settings():
@@ -61,7 +66,6 @@ func load_default_settings():
 	AudioServer.set_bus_volume_linear(AUDIOBUS.music, def_vol)
 	AudioServer.set_bus_volume_linear(AUDIOBUS.sfx, def_vol)
 	get_window().mode = Window.MODE_FULLSCREEN
-
 func save_settings():
 	ResourceSaver.save(game_settings, GAME_SETTINGS_PATH)
 
@@ -69,13 +73,14 @@ func load_settings():
 	ResourceLoader.load(GAME_SETTINGS_PATH)
 	game_settings = load(GAME_SETTINGS_PATH)
 	apply_settings(game_settings)
-	
+
 func apply_settings(new_game_settings: GameSettings):
 	AudioServer.set_bus_volume_linear(AUDIOBUS.master, new_game_settings.master_volume)
 	AudioServer.set_bus_volume_linear(AUDIOBUS.music, new_game_settings.music_volume)
 	AudioServer.set_bus_volume_linear(AUDIOBUS.sfx, new_game_settings.sfx_volume)
 	GameManager.game_settings.screen_mode = get_window().mode
 	GameManager.game_settings.resolution = get_window().size
+
 #endregion
 
 #region Player Customization Functions
@@ -88,7 +93,7 @@ func apply_trail_settings(current_state: bool, color: Color):
 
 func save_current_customization():
 	ResourceSaver.save(player_customization, PLAYER_CUSTOMIZATION_PATH)
-	
+
 func set_default_trail_color():
 	player_customization.trail_color = def_color
 #endregion
@@ -103,4 +108,5 @@ func play_music():
 		MusicManager.play_level_music_1()
 	elif StageHandler.current_level.is_level_pack_2:
 		MusicManager.play_level_music_2()
+
 #endregion
