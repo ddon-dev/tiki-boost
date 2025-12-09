@@ -31,7 +31,7 @@ func update_highscore(level_path: String, new_highscore: float):
 		save_save_file()
 		
 func set_medal(record: PlayerRecord, level_path: String, time: float):
-	var level_data = StageHandler.current_level.level_path
+	var level_data: LevelData = ResourceLoader.load(level_path)
 	var medal = 0
 	if time <= level_data.gold_medal_time:
 		medal = 3
