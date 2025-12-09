@@ -96,7 +96,11 @@ func set_default_trail_color():
 #region Level Music
 func play_music():
 	if StageHandler.current_level.is_tutorial:
-			MusicManager.play_tutorial_music()
-	if StageHandler.current_level.is_main_menu:
-			MusicManager.play_menu_music()
+		MusicManager.play_tutorial_music()
+	elif StageHandler.current_level.is_main_menu:
+		MusicManager.play_menu_music()
+	elif StageHandler.current_level.is_level_pack_1:
+		MusicManager.play_level_music_1()
+	elif StageHandler.current_level.is_level_pack_2:
+		MusicManager.play_level_music_2()
 #endregion

@@ -10,6 +10,7 @@ extends VBoxContainer
 @onready var init_menu: VBoxContainer = %InitMenu
 @onready var level_menu: VBoxContainer = %LevelSelectMenu
 @onready var levels_container: GridContainer = %LevelsContainer
+@onready var high_score_container: GridContainer = %HighScoreContainer
 @export var menu_slide: AnimationPlayer
 
 # Buttons
@@ -21,6 +22,8 @@ func _ready() -> void:
 	var level_number: int = 1
 	var tut_number: int = 1
 	for level_path in StageHandler.levels:
+		
+		# Level Button
 		var button = Button.new()
 		if level_path.is_tutorial:
 			button.text = "Tutorial %s" % tut_number
@@ -36,6 +39,19 @@ func _ready() -> void:
 			await sfx_pressed.finished
 			StageHandler.go_to_level(level_path)
 		)
+		
+		# Level Record
+		var record_time = Label.new()
+		record_time.add_theme_font_size_override("font_size", 35)
+		record_time.add_theme_constant_override("shadow_outline_size", 0)
+		record_time.add_theme_constant_override("outline_size", 21)
+		record_time.custom_minimum_size = Vector2(224, 45)
+		record_time.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+		if level_path.player_record == "":
+			record_time.text = "-- : -- : --"
+		else:
+			record_time.text = level_path.player_record
+		high_score_container.add_child(record_time)
 
 func go_back():
 	sfx_pressed.play()

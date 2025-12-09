@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dcichooy0from"
+path="res://.godot/imported/Replay - zachz winner.ogg-d5f3c95475fa255f460264f4d901a79f.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/audio/music/Replay - zachz winner.ogg"
+dest_files=["res://.godot/imported/Replay - zachz winner.ogg-d5f3c95475fa255f460264f4d901a79f.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

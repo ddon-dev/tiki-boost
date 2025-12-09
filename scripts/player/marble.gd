@@ -8,9 +8,10 @@ class_name Marble extends RigidBody3D
 @export var jump_buffer_window: float = 0.2
 @export var coyote_time_window: float = 0.35
 @export var enable_gravity_accel: bool = true
-@export var init_gravity_scale: float = 1.0
-@export var max_gravity_scale: float = 2.0
-@export var gravity_accel_rate: float = 0.1
+@export var init_gravity_scale: float = 0.9
+@export var max_gravity_scale: float = 5.0
+@export var init_gravity_accel_rate: float = 0.35
+@export var gravity_accel_rate: float = 0.35
 @export var boost_default_speed: float = 40.0
 @export var boost_default_duration: float = 0.6
 
@@ -54,7 +55,6 @@ func _ready() -> void:
 	gravity_scale = init_gravity_scale
 
 func _physics_process(delta: float) -> void:
-	print(gravity_scale)
 	#%JumpBufferLabel.text = "jump_buffer == %0.2f" % jump_buffer_timer
 	#%CoyoteLabel.text = "coyote_timer == %0.2f" % coyote_timer
 	#%JumpBoolLabel.text = "is_jumping == %s" % is_jumping
@@ -84,11 +84,18 @@ func _physics_process(delta: float) -> void:
 		gravity_scale = move_toward(gravity_scale, 0.0, finish_decel * delta)
 		enable_gravity_accel = false
 	
+	# Gravity Acceleration
+	
 	if is_grounded:
 		gravity_scale = init_gravity_scale
 	elif !is_grounded and enable_gravity_accel:
 		gravity_scale += gravity_accel_rate * delta
 		gravity_scale = min(gravity_scale, max_gravity_scale)
+		
+	if gravity_scale > 1.5:
+		gravity_accel_rate += 0.2 * delta
+	else:
+		gravity_accel_rate = init_gravity_accel_rate
 	
 	if is_boosted:
 		boost_timer -= delta
@@ -182,7 +189,10 @@ func apply_speed_boost(direction: Vector3, speed: float, duration: float, keep_y
 	linear_velocity = new_vel
 
 func apply_jump_boost(force: float) -> void:
-	apply_central_force(Vector3.UP * force)
+	gravity_scale = init_gravity_scale
+	var horizontal_velocity: Vector3 = linear_velocity
+	horizontal_velocity.y = 0.0
+	linear_velocity = horizontal_velocity + Vector3.UP * force
 	if !sfx_jump.playing:
 		sfx_jump.play()
 
@@ -194,5 +204,6 @@ func _jump() -> void:
 		sfx_jump.play()
 
 func reset_position() -> void:
+	gravity_scale = init_gravity_scale
 	linear_velocity = Vector3.ZERO
 	angular_velocity = Vector3.ZERO

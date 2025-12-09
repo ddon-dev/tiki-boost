@@ -45,7 +45,7 @@ func _process(_delta: float) -> void:
 		return
 	
 	for action in START_ACTIONS:
-		if Input.is_action_just_pressed(action):
+		if Input.is_action_pressed(action):
 			stopwatch.start()
 
 # Lógica del reloj del nivel, puntaje

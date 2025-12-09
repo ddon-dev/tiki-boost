@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://wtrjnlvwrf8x"
+path="res://.godot/imported/ネオン色のまち - Reo.ogg-0a7b62943c59c67af2df0df0a5bf81b5.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/audio/music/ネオン色のまち - Reo.ogg"
+dest_files=["res://.godot/imported/ネオン色のまち - Reo.ogg-0a7b62943c59c67af2df0df0a5bf81b5.oggvorbisstr"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4
