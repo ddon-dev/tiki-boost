@@ -2,7 +2,7 @@ extends Area3D
 
 # Ring Settings
 @export_category("Settings")
-@export var boost_speed: float = 40.0
+@export_range(20.0, 60.0, 2.0) var boost_speed: float = 40.0
 @export var boost_duration: float = 0.6
 @export var boost_forward: bool = false
 @export var keep_y_velocity: bool = true
