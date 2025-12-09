@@ -9,9 +9,10 @@
 [ext_resource type="Resource" uid="uid://b30q6qq3qcses" path="res://scripts/levels/resources/level_05.tres" id="7_haopu"]
 [ext_resource type="Resource" uid="uid://btwy3aeds0ss4" path="res://scripts/levels/resources/level_04.tres" id="8_16icm"]
 [ext_resource type="Resource" uid="uid://ch7drbjnq8hgf" path="res://scripts/levels/resources/level_06.tres" id="8_nvk2t"]
+[ext_resource type="Resource" uid="uid://new_level_07_resource" path="res://scripts/levels/resources/level_07.tres" id="9_lv07"]
 
 [node name="StageHandler" type="Node"]
 script = ExtResource("1_srffu")
-levels = Array[ExtResource("2_ofldo")]([ExtResource("3_mbjur"), ExtResource("4_2sc2n"), ExtResource("5_p0552"), ExtResource("8_16icm"), ExtResource("7_haopu"), ExtResource("8_nvk2t")])
+levels = Array[ExtResource("2_ofldo")]([ExtResource("3_mbjur"), ExtResource("4_2sc2n"), ExtResource("5_p0552"), ExtResource("8_16icm"), ExtResource("7_haopu"), ExtResource("8_nvk2t"), ExtResource("9_lv07")])
 main_menu = ExtResource("4_mbjur")
 last_level = ExtResource("3_mbjur")
