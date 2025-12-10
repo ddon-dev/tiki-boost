@@ -84,7 +84,7 @@ func _ready() -> void:
 		popup.add_icon_item(bronze_icon,
 		"%s" % get_time_formatted(level_path.bronze_medal_time),
 		 -1)
-		popup.add_theme_constant_override("icon_max_width", 25)
+		popup.add_theme_constant_override("icon_max_width", 28)
 		# Medals
 		var medal_particles: PackedScene
 		
