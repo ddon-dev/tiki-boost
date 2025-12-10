@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://bhsayiyv3bub6"]
+
+[ext_resource type="Texture2D" uid="uid://dghnsk3qttm84" path="res://assets/art/ui/icons/medals/sparkle.png" id="1_jkvof"]
+
+[sub_resource type="Curve" id="Curve_jkvof"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_hwdka"]
+curve = SubResource("Curve_jkvof")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_jkvof"]
+particle_flag_disable_z = true
+emission_shape = 2
+emission_sphere_radius = 19.15
+gravity = Vector3(0, 0, 0)
+scale_min = 0.0
+scale_max = 0.29999998
+scale_curve = SubResource("CurveTexture_hwdka")
+color = Color(1.9608799, 1.7558097, 1.0277812, 1)
+
+[node name="GoldMedalParticles" type="GPUParticles2D"]
+amount = 7
+texture = ExtResource("1_jkvof")
+randomness = 1.0
+local_coords = true
+process_material = SubResource("ParticleProcessMaterial_jkvof")
