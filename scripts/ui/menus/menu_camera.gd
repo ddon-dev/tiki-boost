@@ -13,7 +13,7 @@ extends Camera3D
 func _ready() -> void:
 	MenuManager.customize_exit.connect(return_default_position)
 
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	if MenuManager.customize_focus:
 		customize_area.visible = true
 		look_at(customize_center.global_position, Vector3.UP)

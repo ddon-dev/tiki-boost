@@ -1,6 +1,7 @@
-[gd_scene load_steps=22 format=4 uid="uid://cht4105owcyed"]
+[gd_scene load_steps=23 format=4 uid="uid://cht4105owcyed"]
 
 [ext_resource type="Script" uid="uid://dejkxaywesowi" path="res://scripts/objects/checkpoint.gd" id="1_glsx1"]
+[ext_resource type="AudioStream" uid="uid://bgv7ow3smhgse" path="res://assets/audio/sfx/checkpoint.ogg" id="2_glsx1"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7or6d"]
 resource_name = "Material.001"
@@ -267,5 +268,10 @@ shape = SubResource("SphereShape3D_62y4j")
 [node name="SpawnPosition" type="Marker3D" parent="."]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
+
+[node name="CheckSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_glsx1")
+volume_db = -6.0
+bus = &"SFX"
 
 [connection signal="body_entered" from="CheckpointArea" to="." method="_on_checkpoint_area_body_entered"]
