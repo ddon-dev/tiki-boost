@@ -17,6 +17,8 @@ extends Control
 @onready var ask_return_menu: VBoxContainer = %AskReturnMenu
 @onready var ask_exit_game: VBoxContainer = %AskExitGame
 @export var menu_slide: AnimationPlayer
+@onready var target_time_anim: AnimationPlayer = $"../HUD/MarginContainer2/TargetTimesAnim"
+@onready var target_times_display: HBoxContainer = $"../HUD/MarginContainer2/TargetTimes"
 
 # Buttons
 @onready var resume: Button = %Continue
@@ -38,20 +40,24 @@ func _input(event: InputEvent) -> void:
 			paused = !paused
 			sfx_paused.play()
 			visible = !visible
+			target_time_anim.play("RESET")
 			get_tree().paused = !get_tree().paused
 		
 			if paused:
 				AudioServer.set_bus_effect_enabled(1,0,true)
 				Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+
 			else:
 				AudioServer.set_bus_effect_enabled(1,0,false)
 				Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+				target_time_anim.play("RESET_OFFSCREEN")
 	
 func resume_game():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	AudioServer.set_bus_effect_enabled(1,0,false)
 	get_tree().paused = !get_tree().paused
 	sfx_paused.play()
+	target_time_anim.play("RESET_OFFSCREEN")
 	visible = !visible
 	paused = !paused
 

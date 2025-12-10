@@ -6,12 +6,15 @@ var ended_level: bool = false
 
 var personal_best: Vector3 = Vector3.ZERO
 
+signal started
+
 func _process(delta: float) -> void:
 	if running && !ended_level:
 		elapsed_time += delta
 
 func start() -> void:
 	if !ended_level: running = true
+	
 
 func stop() -> void:
 	running = false
