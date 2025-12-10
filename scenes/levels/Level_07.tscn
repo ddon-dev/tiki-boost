@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://cihamo12cblla" path="res://scenes/handlers/LevelManager.tscn" id="1_b122o"]
 [ext_resource type="Resource" uid="uid://cn714o1wk8y6b" path="res://scripts/levels/resources/level_01.tres" id="2_dn6tr"]
-[ext_resource type="Texture2D" path="res://assets/art/skyboxes/skybox15.png" id="3_dn6tr"]
+[ext_resource type="Texture2D" uid="uid://eyqgo67fohbw" path="res://assets/art/skyboxes/skybox13.png" id="3_dn6tr"]
 [ext_resource type="PackedScene" uid="uid://c1bkxh8p1litp" path="res://scenes/objects/FinishPoint.tscn" id="4_205cd"]
 [ext_resource type="PackedScene" uid="uid://1tjylehjm63n" path="res://scenes/objects/DeathZone.tscn" id="5_aaccl"]
 [ext_resource type="Script" uid="uid://0jicjsxuqi4f" path="res://scripts/objects/csg_cylinder_3d_6.gd" id="7_1w2dc"]
