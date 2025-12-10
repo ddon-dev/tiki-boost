@@ -30,6 +30,10 @@ SaveManager="*res://scripts/globals/save_manager.gd"
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
+[dotnet]
+
+project/assembly_name="tiki"
+
 [file_customization]
 
 folder_colors={
