@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://dlgljpd6h41g4"]
+[gd_scene load_steps=7 format=3 uid="uid://dlgljpd6h41g4"]
 
 [ext_resource type="Script" uid="uid://c87kdtl6cvvp0" path="res://scripts/globals/music_manager.gd" id="1_c6ore"]
 [ext_resource type="AudioStream" uid="uid://btk3vkog5moeq" path="res://assets/audio/music/StarEye Spaceway - ViRiX Dreamcore .ogg" id="2_247up"]
 [ext_resource type="AudioStream" uid="uid://bjw4hoqt5hxkt" path="res://assets/audio/music/boogie - joyful, frozy, zachz winner.ogg" id="2_dt7tt"]
 [ext_resource type="AudioStream" uid="uid://bnvi6yg0q245u" path="res://assets/audio/music/woah! - availax.ogg" id="4_u8423"]
 [ext_resource type="AudioStream" uid="uid://wtrjnlvwrf8x" path="res://assets/audio/music/ネオン色のまち - Reo.ogg" id="5_46qsl"]
+[ext_resource type="AudioStream" uid="uid://dcichooy0from" path="res://assets/audio/music/Replay - zachz winner.ogg" id="6_46qsl"]
 
 [node name="MusicManager" type="AudioStreamPlayer"]
 process_mode = 3
@@ -19,3 +20,4 @@ menu_music = ExtResource("2_247up")
 tutorial_music = ExtResource("2_dt7tt")
 level_music_1 = ExtResource("5_46qsl")
 level_music_2 = ExtResource("4_u8423")
+level_music_3 = ExtResource("6_46qsl")

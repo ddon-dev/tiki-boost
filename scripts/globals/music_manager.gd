@@ -12,6 +12,7 @@ extends AudioStreamPlayer
 @export var tutorial_music: AudioStream
 @export var level_music_1: AudioStream
 @export var level_music_2: AudioStream
+@export var level_music_3: AudioStream
 
 func play_tutorial_music():
 	if stream != tutorial_music:
@@ -26,6 +27,11 @@ func play_level_music_1():
 func play_level_music_2():
 	if stream != level_music_2:
 		stream = level_music_2
+		play()
+		
+func play_level_music_3():
+	if stream != level_music_3:
+		stream = level_music_3
 		play()
 
 func play_menu_music():

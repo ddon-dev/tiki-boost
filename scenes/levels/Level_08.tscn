@@ -1,0 +1,43 @@
+[gd_scene load_steps=9 format=3 uid="uid://2a2l8j7kwq35"]
+
+[ext_resource type="PackedScene" uid="uid://cihamo12cblla" path="res://scenes/handlers/LevelManager.tscn" id="1_b3b1k"]
+[ext_resource type="Texture2D" uid="uid://cfv7382718ioh" path="res://assets/art/skyboxes/skybox8.png" id="2_mtk3l"]
+[ext_resource type="Resource" uid="uid://dg32vnsyva4pe" path="res://scripts/levels/resources/level_08.tres" id="2_o4crq"]
+[ext_resource type="PackedScene" uid="uid://bguscvtdsubse" path="res://scenes/player/Player.tscn" id="4_op7sa"]
+[ext_resource type="PackedScene" uid="uid://g6kt40g48fnf" path="res://scenes/ui/UI.tscn" id="6_rrquf"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_2kst5"]
+panorama = ExtResource("2_mtk3l")
+
+[sub_resource type="Sky" id="Sky_c83vx"]
+sky_material = SubResource("PanoramaSkyMaterial_2kst5")
+
+[sub_resource type="Environment" id="Environment_op7sa"]
+background_mode = 2
+sky = SubResource("Sky_c83vx")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="Node3D" type="Node3D"]
+
+[node name="Environment" type="Node3D" parent="."]
+unique_name_in_owner = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Environment"]
+environment = SubResource("Environment_op7sa")
+
+[node name="Sun" type="DirectionalLight3D" parent="Environment"]
+transform = Transform3D(-0.50000006, -0.38333142, 0.7765674, 0, 0.89670295, 0.44263306, -0.8660255, 0.22131656, -0.44835153, 0, 2.8583488, 36.297165)
+shadow_enabled = true
+
+[node name="LevelManager" parent="." instance=ExtResource("1_b3b1k")]
+unique_name_in_owner = true
+level_data = ExtResource("2_o4crq")
+
+[node name="Player" parent="." instance=ExtResource("4_op7sa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+
+[node name="SpawnPosition" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+
+[node name="UI" parent="." instance=ExtResource("6_rrquf")]

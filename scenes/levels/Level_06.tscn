@@ -86,9 +86,11 @@ transform = Transform3D(0.8263048, 0, -0.5632232, 0, 1, 0, 0.5632232, 0, 0.82630
 
 [node name="BoostRing3" parent="Environment/Objects" instance=ExtResource("6_42o1l")]
 transform = Transform3D(0.19906244, -0.07786413, -0.4520081, -1.8626451e-09, 0.4927425, -0.08488115, 0.4586656, 0.0337933, 0.19617306, -15.889537, 49.449387, -120.243355)
+boost_forward = true
 
 [node name="BoostRing4" parent="Environment/Objects" instance=ExtResource("6_42o1l")]
 transform = Transform3D(-0.9891162, -0.024978228, -0.14500076, 0.019523367, 0.95449066, -0.29760092, 0.1458354, -0.2971928, -0.9436145, -4.468851, 54.450157, -115.08833)
+boost_forward = true
 
 [node name="Checkpoint" parent="Environment/Objects" instance=ExtResource("7_3mvic")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30, 14.5, -22)

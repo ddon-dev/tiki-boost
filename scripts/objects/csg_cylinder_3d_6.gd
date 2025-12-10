@@ -12,7 +12,8 @@ func _process(delta: float) -> void:
 	# Mover en X dentro del rango [_start_x - HALF_RANGE, _start_x + HALF_RANGE]
 	var pos: Vector3 = global_transform.origin
 	pos.x += speed * delta * _direction
-
+	
+	rotate_y(0.1)
 	if pos.x > _start_x + HALF_RANGE:
 		pos.x = _start_x + HALF_RANGE
 		_direction = -1.0
@@ -31,4 +32,4 @@ func _process(delta: float) -> void:
 
 var _start_x: float = 0.0
 @export var _direction: float = 1.0
-const HALF_RANGE: float = 50.0 # mitad del rango (50 -> rango total 100)
+const HALF_RANGE: float = 20.0 # mitad del rango (50 -> rango total 100)

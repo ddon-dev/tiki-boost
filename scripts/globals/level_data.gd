@@ -5,6 +5,7 @@ extends Resource
 @export var is_main_menu: bool
 @export var is_level_pack_1: bool
 @export var is_level_pack_2: bool
+@export var is_level_pack_3: bool
 @export var is_tutorial: bool
 
 

@@ -103,4 +103,6 @@ func play_music():
 		MusicManager.play_level_music_1()
 	elif StageHandler.current_level.is_level_pack_2:
 		MusicManager.play_level_music_2()
+	elif StageHandler.current_level.is_level_pack_3:
+		MusicManager.play_level_music_3()
 #endregion

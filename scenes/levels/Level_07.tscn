@@ -1,7 +1,7 @@
-[gd_scene load_steps=41 format=3 uid="uid://b0l3uyqrnh3aa"]
+[gd_scene load_steps=40 format=3 uid="uid://b0l3uyqrnh3aa"]
 
 [ext_resource type="PackedScene" uid="uid://cihamo12cblla" path="res://scenes/handlers/LevelManager.tscn" id="1_b122o"]
-[ext_resource type="Resource" uid="uid://cn714o1wk8y6b" path="res://scripts/levels/resources/level_01.tres" id="2_dn6tr"]
+[ext_resource type="Resource" uid="uid://dorm77ftavy8x" path="res://scripts/levels/resources/level_07.tres" id="2_wd2jq"]
 [ext_resource type="Texture2D" uid="uid://eyqgo67fohbw" path="res://assets/art/skyboxes/skybox13.png" id="3_dn6tr"]
 [ext_resource type="PackedScene" uid="uid://c1bkxh8p1litp" path="res://scenes/objects/FinishPoint.tscn" id="4_205cd"]
 [ext_resource type="PackedScene" uid="uid://1tjylehjm63n" path="res://scenes/objects/DeathZone.tscn" id="5_aaccl"]
@@ -11,12 +11,13 @@
 [ext_resource type="PackedScene" uid="uid://cht4105owcyed" path="res://scenes/objects/Checkpoint.tscn" id="10_1ig0q"]
 [ext_resource type="Texture2D" uid="uid://dfxv53m0tcs88" path="res://assets/art/textures/terrain/Red/texture_06.png" id="10_205cd"]
 [ext_resource type="PackedScene" uid="uid://bguscvtdsubse" path="res://scenes/player/Player.tscn" id="10_ae7fg"]
+[ext_resource type="PackedScene" uid="uid://dnpkerbmnhxxq" path="res://scenes/objects/JumpPad.tscn" id="10_wd2jq"]
 [ext_resource type="PackedScene" uid="uid://g6kt40g48fnf" path="res://scenes/ui/UI.tscn" id="11_ug22y"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_aaccl"]
 panorama = ExtResource("3_dn6tr")
 filter = false
-energy_multiplier = 0.7
+energy_multiplier = 2.2
 
 [sub_resource type="Sky" id="Sky_h5x77"]
 sky_material = SubResource("PanoramaSkyMaterial_aaccl")
@@ -99,26 +100,9 @@ uv1_scale = Vector3(0.5, 0.5, 0.5)
 uv1_triplanar = true
 uv1_world_triplanar = true
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oem0g"]
-albedo_texture = ExtResource("8_205cd")
-albedo_texture_force_srgb = true
-metallic = 1.0
-metallic_texture = ExtResource("8_205cd")
-uv1_scale = Vector3(0.5, 0.5, 0.5)
-uv1_triplanar = true
-uv1_world_triplanar = true
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oadvs"]
-albedo_texture = ExtResource("8_205cd")
-albedo_texture_force_srgb = true
-metallic = 1.0
-metallic_texture = ExtResource("8_205cd")
-uv1_scale = Vector3(0.5, 0.5, 0.5)
-uv1_triplanar = true
-uv1_world_triplanar = true
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8rx3s"]
-albedo_texture = ExtResource("8_205cd")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_205cd"]
+vertex_color_use_as_albedo = true
+albedo_color = Color(0, 0.87216014, 0.4150571, 1)
 albedo_texture_force_srgb = true
 metallic = 1.0
 metallic_texture = ExtResource("8_205cd")
@@ -243,7 +227,7 @@ uv1_world_triplanar = true
 
 [node name="LevelManager" parent="." instance=ExtResource("1_b122o")]
 unique_name_in_owner = true
-level_data = ExtResource("2_dn6tr")
+level_data = ExtResource("2_wd2jq")
 
 [node name="Environment" type="Node3D" parent="."]
 unique_name_in_owner = true
@@ -340,42 +324,88 @@ height = 1.0
 sides = 32
 material = SubResource("StandardMaterial3D_fcnrm")
 
-[node name="CSGCylinder3D6" type="CSGCylinder3D" parent="Environment/Terrain"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.915, -236.591)
-use_collision = true
-collision_layer = 2
-collision_mask = 0
-radius = 6.0
-height = 1.0
-sides = 32
-material = SubResource("StandardMaterial3D_oem0g")
-script = ExtResource("7_1w2dc")
-speed = 10.0
-
 [node name="CSGCylinder3D7" type="CSGCylinder3D" parent="Environment/Terrain"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.050933838, 3.2576294, -253.29146)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0509338, 3.2576294, -236.29146)
 use_collision = true
 collision_layer = 2
 collision_mask = 0
 radius = 6.0
 height = 1.0
 sides = 32
-material = SubResource("StandardMaterial3D_oadvs")
+material = SubResource("StandardMaterial3D_205cd")
 script = ExtResource("7_1w2dc")
-speed = 10.0
+speed = 7.0
 _direction = -1.0
 
+[node name="JumpPad3" parent="Environment/Terrain/CSGCylinder3D7" instance=ExtResource("10_wd2jq")]
+transform = Transform3D(1.6, 0, 0, 0, 1.6, 0, 0, 0, 1.6, 0.101867676, 1.5260653, -0.010299683)
+jump_force = 20.0
+
+[node name="UnderLight" type="Node3D" parent="Environment/Terrain/CSGCylinder3D7"]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Environment/Terrain/CSGCylinder3D7/UnderLight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+omni_range = 5.563
+omni_attenuation = -2.0
+
+[node name="SideLights" type="Node3D" parent="Environment/Terrain/CSGCylinder3D7"]
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="Environment/Terrain/CSGCylinder3D7/SideLights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6.1105347)
+light_color = Color(0.90532964, 0.8198382, 0, 1)
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="Environment/Terrain/CSGCylinder3D7/SideLights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -1)
+light_color = Color(0.90532964, 0.8198382, 0, 1)
+
+[node name="OmniLight3D5" type="OmniLight3D" parent="Environment/Terrain/CSGCylinder3D7/SideLights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -1)
+light_color = Color(0.90532964, 0.8198382, 0, 1)
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="Environment/Terrain/CSGCylinder3D7/SideLights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6.167465)
+light_color = Color(0.90532964, 0.8198382, 0, 1)
+
 [node name="CSGCylinder3D10" type="CSGCylinder3D" parent="Environment/Terrain"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.304, -269.755)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 7.304, -252.755)
 use_collision = true
 collision_layer = 2
 collision_mask = 0
 radius = 6.0
 height = 1.0
 sides = 32
-material = SubResource("StandardMaterial3D_8rx3s")
+material = SubResource("StandardMaterial3D_205cd")
 script = ExtResource("7_1w2dc")
-speed = 10.0
+speed = 7.0
+
+[node name="JumpPad4" parent="Environment/Terrain/CSGCylinder3D10" instance=ExtResource("10_wd2jq")]
+transform = Transform3D(1.6, 0, 0, 0, 1.6, 0, 0, 0, 1.6, 0.050933838, 1.6691542, -0.17552185)
+jump_force = 20.0
+
+[node name="UnderLight" type="Node3D" parent="Environment/Terrain/CSGCylinder3D10"]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Environment/Terrain/CSGCylinder3D10/UnderLight"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+omni_range = 5.563
+omni_attenuation = -2.0
+
+[node name="SideLights" type="Node3D" parent="Environment/Terrain/CSGCylinder3D10"]
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="Environment/Terrain/CSGCylinder3D10/SideLights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6.1566925)
+light_color = Color(0.90532964, 0.8198382, 0, 1)
+
+[node name="OmniLight3D4" type="OmniLight3D" parent="Environment/Terrain/CSGCylinder3D10/SideLights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -1)
+light_color = Color(0.90532964, 0.8198382, 0, 1)
+
+[node name="OmniLight3D5" type="OmniLight3D" parent="Environment/Terrain/CSGCylinder3D10/SideLights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, -1)
+light_color = Color(0.90532964, 0.8198382, 0, 1)
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="Environment/Terrain/CSGCylinder3D10/SideLights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6.1910095)
+light_color = Color(0.90532964, 0.8198382, 0, 1)
 
 [node name="CirclePlatorm" type="CSGCylinder3D" parent="Environment/Terrain"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.47468, -1, -9.8)
@@ -451,7 +481,7 @@ size = Vector3(12, 1, 45)
 material = SubResource("StandardMaterial3D_h5x77")
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="Environment/Terrain/TransPlatfrom2"]
-transform = Transform3D(0.562864, 0.17319252, -0.808202, 0.13935283, 0.94392204, 0.29932597, 0.81472033, -0.28110445, 0.50716275, 60.68702, -28.277843, -60.84372)
+transform = Transform3D(0.054188877, 0.19100805, -0.9800923, 0.184551, 0.9627111, 0.1978238, 0.9813304, -0.19159606, 0.016917318, 65.82319, -25.44439, -47.12858)
 size = Vector3(9, 1, 45)
 material = SubResource("StandardMaterial3D_j2ugy")
 
@@ -491,6 +521,10 @@ radius = 4.0
 height = 1.0
 sides = 32
 material = SubResource("StandardMaterial3D_gfvci")
+
+[node name="JumpPad" parent="Environment/Terrain" instance=ExtResource("10_wd2jq")]
+transform = Transform3D(0.9737114, 0.09381996, -0.50307417, -0.013400616, 1.0856597, 0.17653112, 0.5115723, -0.15013534, 0.96216065, -24.212662, 0.39615476, -214.04596)
+jump_force = 30.0
 
 [node name="Player" parent="." instance=ExtResource("10_ae7fg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.7000003)
