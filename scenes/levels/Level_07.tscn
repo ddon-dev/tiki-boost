@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://b0l3uyqrnh3aa"]
+[gd_scene load_steps=45 format=3 uid="uid://b0l3uyqrnh3aa"]
 
 [ext_resource type="PackedScene" uid="uid://cihamo12cblla" path="res://scenes/handlers/LevelManager.tscn" id="1_b122o"]
 [ext_resource type="Resource" uid="uid://dorm77ftavy8x" path="res://scripts/levels/resources/level_07.tres" id="2_wd2jq"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://2ftk1d0qjo3t" path="res://assets/art/textures/terrain/Orange/texture_04.png" id="8_205cd"]
 [ext_resource type="PackedScene" uid="uid://cht4105owcyed" path="res://scenes/objects/Checkpoint.tscn" id="10_1ig0q"]
 [ext_resource type="Texture2D" uid="uid://dfxv53m0tcs88" path="res://assets/art/textures/terrain/Red/texture_06.png" id="10_205cd"]
+[ext_resource type="Shader" uid="uid://x5yeil7ogny4" path="res://assets/shaders/n64_rays.gdshader" id="10_aaccl"]
 [ext_resource type="PackedScene" uid="uid://bguscvtdsubse" path="res://scenes/player/Player.tscn" id="10_ae7fg"]
 [ext_resource type="PackedScene" uid="uid://dnpkerbmnhxxq" path="res://scenes/objects/JumpPad.tscn" id="10_wd2jq"]
 [ext_resource type="PackedScene" uid="uid://g6kt40g48fnf" path="res://scenes/ui/UI.tscn" id="11_ug22y"]
@@ -109,6 +110,30 @@ metallic_texture = ExtResource("8_205cd")
 uv1_scale = Vector3(0.5, 0.5, 0.5)
 uv1_triplanar = true
 uv1_world_triplanar = true
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_205cd"]
+top_radius = 3.0
+bottom_radius = 6.0
+height = 5.0
+cap_bottom = false
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_205cd"]
+noise_type = 3
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_h5x77"]
+noise = SubResource("FastNoiseLite_205cd")
+seamless = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dsnfx"]
+render_priority = 0
+shader = ExtResource("10_aaccl")
+shader_parameter/beam_color = Color(0.99999994, 0.90146744, 0.40969327, 1)
+shader_parameter/vertical_speed = 0.5
+shader_parameter/reverse_direction = false
+shader_parameter/rotation_speed = 0.050000002375
+shader_parameter/density = 20.0000009025
+shader_parameter/ray_sharpness = 0.3790000180025
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_h5x77")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qq6op"]
 albedo_texture = ExtResource("8_205cd")
@@ -337,6 +362,11 @@ script = ExtResource("7_1w2dc")
 speed = 7.0
 _direction = -1.0
 
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="Environment/Terrain/CSGCylinder3D7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.8911612, 0)
+remote_path = NodePath("../../MeshInstance3D")
+update_rotation = false
+
 [node name="JumpPad3" parent="Environment/Terrain/CSGCylinder3D7" instance=ExtResource("10_wd2jq")]
 transform = Transform3D(1.6, 0, 0, 0, 1.6, 0, 0, 0, 1.6, 0.101867676, 1.5260653, -0.010299683)
 jump_force = 20.0
@@ -366,6 +396,12 @@ light_color = Color(0.90532964, 0.8198382, 0, 1)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6.167465)
 light_color = Color(0.90532964, 0.8198382, 0, 1)
 
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Environment/Terrain"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0509338, 0.3664682, -236.29146)
+mesh = SubResource("CylinderMesh_205cd")
+skeleton = NodePath("../CSGCylinder3D7")
+surface_material_override/0 = SubResource("ShaderMaterial_dsnfx")
+
 [node name="CSGCylinder3D10" type="CSGCylinder3D" parent="Environment/Terrain"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 7.304, -252.755)
 use_collision = true
@@ -377,6 +413,11 @@ sides = 32
 material = SubResource("StandardMaterial3D_205cd")
 script = ExtResource("7_1w2dc")
 speed = 7.0
+
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="Environment/Terrain/CSGCylinder3D10"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.966138, 0)
+remote_path = NodePath("../../MeshInstance3D2")
+update_rotation = false
 
 [node name="JumpPad4" parent="Environment/Terrain/CSGCylinder3D10" instance=ExtResource("10_wd2jq")]
 transform = Transform3D(1.6, 0, 0, 0, 1.6, 0, 0, 0, 1.6, 0.050933838, 1.6691542, -0.17552185)
@@ -406,6 +447,12 @@ light_color = Color(0.90532964, 0.8198382, 0, 1)
 [node name="OmniLight3D3" type="OmniLight3D" parent="Environment/Terrain/CSGCylinder3D10/SideLights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -6.1910095)
 light_color = Color(0.90532964, 0.8198382, 0, 1)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Environment/Terrain"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 4.337862, -252.755)
+mesh = SubResource("CylinderMesh_205cd")
+skeleton = NodePath("../CSGCylinder3D10")
+surface_material_override/0 = SubResource("ShaderMaterial_dsnfx")
 
 [node name="CirclePlatorm" type="CSGCylinder3D" parent="Environment/Terrain"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 45.47468, -1, -9.8)
